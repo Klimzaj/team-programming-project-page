@@ -1,9 +1,10 @@
+const path = require(`path`)
 module.exports = {
   siteMetadata: {
     title: 'Kitchen Helper',
   },
   plugins: [
-    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-react-helmet', 
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -17,5 +18,14 @@ module.exports = {
       },
     },
     'gatsby-plugin-offline',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: path.join(__dirname, `src`, `images`),
+      },
+    }
   ],
-}
+} 
