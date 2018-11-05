@@ -5,6 +5,11 @@ html {
 }
 body {
   margin: 0;
+  min-width: 380px;
+  max-width: 1920px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fff;
 }
 article,
 aside,

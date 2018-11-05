@@ -37,8 +37,10 @@ export const RightDiv = styled.div`
 export const Logo = styled.img`
   margin: 0;
   padding: 0;
+  /* width: 50%;
+  height: 50%; */
   @media (min-width: 1400px) {
-  
+ 
   }
 `
 export const DarkLine = styled.div`

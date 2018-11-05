@@ -11,10 +11,6 @@ const firstContent = [
     path: '/search'
   },
   {
-    name: 'Add a recipe',
-    path: '/addrecipe'
-  },
-  {
     name: 'Content',
     path: '/contact'
   }
