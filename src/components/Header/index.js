@@ -15,6 +15,10 @@ const Menu = [
     path: '/search'
   },
   {
+    name: 'Contact',
+    path: '/contact'
+  },
+  {
     name: 'Login',
     path: '/login'
   }
@@ -63,7 +67,13 @@ class Header extends React.Component {
             <div />
           </El.HamburgerMenu>
         </El.MainWrapper>
-        <El.HoverMenu isVisible={this.state.collapsed} />
+        <El.HoverMenu isVisible={collapsed} >
+          {Menu.map((el, i) => (
+              <El.HoverLink to={el.path} key={`menu_element__${i}`}>
+                  {el.name}
+              </El.HoverLink>
+            ))}
+        </El.HoverMenu>
       </div>
     )
   }

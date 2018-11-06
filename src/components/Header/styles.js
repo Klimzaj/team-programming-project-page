@@ -196,8 +196,19 @@ export const HamburgerMenu = styled.div`
 `
 export const HoverMenu = styled.div`
   width: 100%;
-  /* height: 0; */
-  height: ${props => props.isVisible ? '500px'  : '0px'};
-  background-color: red;
-  transition: height 1s ease;
+  display: flex;
+  opacity: ${props => props.isVisible ? '1'  : '0'};
+  flex-direction: column;
+  height: ${props => props.isVisible ? '200px'  : '0px'};
+  transition: height 1s ease, opacity 2s ease;
+`
+export const HoverLink = styled(Link)`
+  font-size: 23px;
+  padding: 10px;
+  color: #000;
+  text-decoration: none;
+  &:before {
+    content: '';
+  }
+  
 `

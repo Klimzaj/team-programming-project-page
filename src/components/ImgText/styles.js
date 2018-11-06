@@ -15,6 +15,7 @@ export const MainWrapper = styled.div`
 export const Image = styled.div`
   width: 100%;
   height:140px;
+  z-index: 999;
   background-position-y: -30px;
   /* background-position-x: -30px; */
   background-image: url(${props => props.ImgBg});
