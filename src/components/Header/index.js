@@ -23,6 +23,9 @@ const Menu = [
     path: '/login'
   }
 ]
+
+//zamykac hover menu przy skalowaniu
+// search recipe jesli zalogowany
 class Header extends React.Component {
   state = {
     collapsed: false
@@ -33,6 +36,9 @@ class Header extends React.Component {
 
   render () {
     const { collapsed } = this.state
+    const Path = windowGlobal ? windowGlobal.location.pathname : ' '
+    // const Path = windowGlobal.document.location
+    console.log(Path)
     return (
       <div>
         <El.MainWrapper>
@@ -48,7 +54,7 @@ class Header extends React.Component {
                 {
                   Menu.map((el, i) => (
                     <El.StyledLi key={`menu_element__${i}`}>
-                      <El.StyledLink to={el.path} className={windowGlobal.document.location.pathname===`${el.path}` ?'active':''}>
+                      <El.StyledLink to={el.path} className={Path===`${el.path}` ?'active':''}>
                         {el.name}
                       </El.StyledLink>
                     </El.StyledLi>

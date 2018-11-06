@@ -204,6 +204,7 @@ export const HoverMenu = styled.div`
 `
 export const HoverLink = styled(Link)`
   font-size: 23px;
+  width: 50%;
   padding: 10px;
   color: #000;
   text-decoration: none;
