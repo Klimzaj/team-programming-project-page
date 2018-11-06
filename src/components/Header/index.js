@@ -19,33 +19,53 @@ const Menu = [
     path: '/login'
   }
 ]
+class Header extends React.Component {
+  state = {
+    collapsed: false
+  }
 
-const Header = ({ siteTitle }) => {
-  return (
-    <El.MainWrapper>
-      <El.LeftDiv >
-        <El.DarkLine />
-      </El.LeftDiv>
-      <El.IconDiv>
-        <El.Logo src={logoImg} />
-      </El.IconDiv>
-      <El.RightDiv >
-        <El.MenuDiv>
-          <El.StyledUl>
-            {
-              Menu.map((el, i) => (
-                <El.StyledLi key={`menu_element__${i}`}>
-                  <El.StyledLink to={el.path} className={windowGlobal.document.location.pathname===`${el.path}` ?'active':''}>
-                    {el.name}
-                  </El.StyledLink>
-                </El.StyledLi>
-              ))
-            }
-          </El.StyledUl>
-        </El.MenuDiv>
-        <El.DarkLine />
-      </El.RightDiv>
-    </El.MainWrapper>
-)
+  handleCollapseMenu = () =>
+    this.setState(prevState => ({ collapsed: !prevState.collapsed }))
+
+  render () {
+    const { collapsed } = this.state
+    return (
+      <div>
+        <El.MainWrapper>
+          <El.LeftDiv >
+            <El.DarkLine />
+          </El.LeftDiv>
+          <El.IconDiv>
+            <El.Logo src={logoImg} />
+          </El.IconDiv>
+          <El.RightDiv >
+            <El.MenuDiv>
+              <El.StyledUl>
+                {
+                  Menu.map((el, i) => (
+                    <El.StyledLi key={`menu_element__${i}`}>
+                      <El.StyledLink to={el.path} className={windowGlobal.document.location.pathname===`${el.path}` ?'active':''}>
+                        {el.name}
+                      </El.StyledLink>
+                    </El.StyledLi>
+                  ))
+                }
+              </El.StyledUl>
+            </El.MenuDiv>
+            <El.DarkLine />
+          </El.RightDiv>
+          <El.HamburgerMenu
+            className={collapsed ? 'isOpen' : ''}
+            onClick={this.handleCollapseMenu}
+          >
+            <div />
+            <div />
+            <div />
+          </El.HamburgerMenu>
+        </El.MainWrapper>
+        <El.HoverMenu isVisible={this.state.collapsed} />
+      </div>
+    )
+  }
 }
 export default Header
