@@ -199,8 +199,9 @@ export const HoverMenu = styled.div`
   display: flex;
   opacity: ${props => props.isVisible ? '1'  : '0'};
   flex-direction: column;
+  visibility: ${props => props.isVisible ? 'visible'  : 'hidden'};
   height: ${props => props.isVisible ? '200px'  : '0px'};
-  transition: height 1s ease, opacity 2s ease;
+  transition: height 0.5s ease, visibility 0s;
 `
 export const HoverLink = styled(Link)`
   font-size: 23px;

@@ -10,7 +10,7 @@ const Features = ({item}) => (
 
         {item.map((el, i) => (
             <El.FeatureWrapper>
-                <img src={el.img} width='100px' height='100px' alt='Feature image'/>
+                <img src={el.img} width='100px' height='100px' alt='FeatureImg'/>
                 <p>{el.text}</p>
             </El.FeatureWrapper>
         ))}
