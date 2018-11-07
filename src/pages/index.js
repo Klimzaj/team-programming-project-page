@@ -3,25 +3,25 @@ import React from 'react'
 import Layout from '../components/Layout'
 import ImgText from '../components/ImgText'
 
-// import Features from '../components/Features'
+import Features from '../components/Features'
 
-import Img1 from '../images/baking-bread-cooking-1070880.jpg'
-import Img2 from '../images/adult-casual-chef-1418355.jpg'
+// import Img1 from '../images/baking-bread-cooking-1070880.jpg'
+// import Img2 from '../images/adult-casual-chef-1418355.jpg'
 
-// import clock from '../assets/clock.svg'
-// import money from '../assets/money.svg'
+import clock from '../assets/clock.svg'
+import money from '../assets/money.svg'
 
-// const Item = [
-//   {
-//     img: clock,
-//     text: 'Skorzystaj z naszej wyszukiwarki przepisów, aby w szybki i przyjemny sposób znaleźć pomysł na dzisiejszy posiłek! ',
-//   }, 
-//   {
-//     img: money,
-//     text: 'Powiemy Ci ile zapłacisz za produkty potrzebne do gotowania.',  
-//   }
+const Item = [
+  {
+    img: clock,
+    text: 'Skorzystaj z naszej wyszukiwarki przepisów, aby w szybki i przyjemny sposób znaleźć pomysł na dzisiejszy posiłek! ',
+  }, 
+  {
+    img: money,
+    text: 'Powiemy Ci ile zapłacisz za produkty potrzebne do gotowania.',  
+  }
 
-// ]
+]
 
 const Text1 = [
   {
