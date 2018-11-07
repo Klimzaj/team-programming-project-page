@@ -37,8 +37,6 @@ class Header extends React.Component {
   render () {
     const { collapsed } = this.state
     const Path = windowGlobal ? windowGlobal.location.pathname : ' '
-    // const Path = windowGlobal.document.location
-    console.log(Path)
     return (
       <div>
         <El.MainWrapper>
