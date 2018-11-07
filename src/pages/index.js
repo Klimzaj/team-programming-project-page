@@ -37,9 +37,11 @@ const Text2 = [
 ]
 const IndexPage = () => (
   <Layout>
-    <ImgText Text={Text1} ImgEl={Img1}/>
-    {/* <Features item={Item} /> */}
-    <ImgText TextOrder={'-1'} Text={Text2} ImgEl={Img2} />
+    {/* <ImgText Text={Text1} ImgEl={Img1}/> */}
+    <ImgText Text={Text1}/>
+    <Features item={Item} />
+    {/* <ImgText TextOrder={'-1'} Text={Text2} ImgEl={Img2} /> */}
+    <ImgText TextOrder={'-1'} Text={Text2} />
   </Layout>
 )
 
