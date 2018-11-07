@@ -24,7 +24,7 @@ const Menu = [
   }
 ]
 
-//zamykac hover menu przy skalowaniu
+//zamykac hover menu przy skalowaniu !!
 // search recipe jesli zalogowany
 class Header extends React.Component {
   state = {
