@@ -28,15 +28,20 @@ const Menu = [
 // search recipe jesli zalogowany
 class Header extends React.Component {
   state = {
-    collapsed: false
+    collapsed: false,
+    path: false
   }
-
+  
+  UNSAFE_componentWillMount() {
+    const path =  windowGlobal ? windowGlobal.location.pathname : false
+    this.setState(prevState => ({ path: path }))
+  }
   handleCollapseMenu = () =>
     this.setState(prevState => ({ collapsed: !prevState.collapsed }))
 
   render () {
     const { collapsed } = this.state
-    const Path = windowGlobal ? windowGlobal.location.pathname : ' '
+    
     return (
       <div>
         <El.MainWrapper>
@@ -52,7 +57,7 @@ class Header extends React.Component {
                 {
                   Menu.map((el, i) => (
                     <El.StyledLi key={`menu_element__${i}`}>
-                      <El.StyledLink to={el.path} className={Path===`${el.path}` ?'active':''}>
+                      <El.StyledLink to={el.path} className={this.state.path === `${el.path}` ?'active':''}>
                         {el.name}
                       </El.StyledLink>
                     </El.StyledLi>
