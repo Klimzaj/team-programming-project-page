@@ -3,7 +3,7 @@ import React from 'react'
 import Layout from '../components/Layout'
 import ImgText from '../components/ImgText'
 
-import Features from '../components/Features/Features'
+import Features from '../components/Features'
 
 import Img1 from '../images/baking-bread-cooking-1070880.jpg'
 import Img2 from '../images/adult-casual-chef-1418355.jpg'
