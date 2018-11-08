@@ -25,16 +25,17 @@ const Menu = [
 ]
 
 //zamykac hover menu przy skalowaniu !!
-// search recipe jesli zalogowany
+// search recipe jesli zalogowany !!
 class Header extends React.Component {
   state = {
     collapsed: false,
-    path: false
+    path: '/'
   }
   
   UNSAFE_componentWillMount() {
     const path =  windowGlobal ? windowGlobal.location.pathname : false
     this.setState(prevState => ({ path: path }))
+    console.log(path)
   }
   handleCollapseMenu = () =>
     this.setState(prevState => ({ collapsed: !prevState.collapsed }))
