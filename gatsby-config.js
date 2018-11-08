@@ -9,6 +9,7 @@ module.exports = {
     title: 'Kitchen Helper',
   },
   plugins: [
+    `gatsby-plugin-styled-components`,
     'gatsby-plugin-react-helmet', 
     {
       resolve: `gatsby-plugin-manifest`,
@@ -31,6 +32,13 @@ module.exports = {
         name: `images`,
         path: path.join(__dirname, `src`, `images`),
       },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `assets`,
+        path: `${__dirname}/src/assets/`
+      }
     }
   ],
 } 
