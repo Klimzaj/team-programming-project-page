@@ -3,7 +3,7 @@ import * as El from './styles'
 
 const Partner = () => (
     <El.MainWrapper>
-        <El.Title>Czas to pieniądz</El.Title>
+        <El.Title>Zostań twórcą</El.Title>
         <El.Underline></El.Underline>
 
         <El.MainText>
@@ -11,7 +11,7 @@ const Partner = () => (
             Razem stworzymy idealne miejsce dla kulinarnych miłośników.
         </El.MainText>
         
-        <El.Button>Dodaj własny przepis</El.Button>
+        <El.Button to='/login'>Dodaj własny przepis</El.Button>
     </El.MainWrapper>
   )
   
