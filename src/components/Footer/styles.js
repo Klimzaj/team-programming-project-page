@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {    Link } from 'gatsby'
+import { Link } from 'gatsby'
 
 export const MainWrapper = styled.div`
   width: 100%;
