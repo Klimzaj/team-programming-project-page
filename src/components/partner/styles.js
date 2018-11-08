@@ -46,6 +46,9 @@ export const MainText = styled.div`
         font-size: 1.3rem;
         line-height: 1.9rem;
     }
+    
+
+    
 `
 
 export const Button = styled(Link)`
