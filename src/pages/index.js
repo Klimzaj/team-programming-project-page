@@ -2,7 +2,9 @@ import React from 'react'
 // import { Link } from 'gatsby'
 import Layout from '../components/Layout'
 import ImgText from '../components/ImgText'
+// import Partner from '../components/Partner'
 
+import Partner from '../components/Partner'
 import Features from '../components/Features'
 
 import Img1 from '../images/baking-bread-cooking-1070880.jpg'
@@ -41,6 +43,7 @@ const IndexPage = () => (
     {/* <ImgText Text={Text1}/> */}
     <Features item={Item} />
     <ImgText TextOrder={'-1'} Text={Text2} ImgEl={Img2} />
+    <Partner/>
     {/* <ImgText TextOrder={'-1'} Text={Text2} /> */}
   </Layout>
 )
