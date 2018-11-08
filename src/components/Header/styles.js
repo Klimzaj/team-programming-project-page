@@ -56,6 +56,7 @@ export const LeftDiv = styled.div`
 export const IconDiv = styled.div`
     /* display: flex; */
   width: 30%;
+  margin-left: 15px;
   padding: 15px 0.5%;
   @media (min-width: 425px) {
     width: 20%;

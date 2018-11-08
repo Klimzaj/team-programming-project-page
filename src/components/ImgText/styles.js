@@ -11,6 +11,8 @@ export const MainWrapper = styled.div`
   @media (min-width: 768px) {
     flex-direction: row;
   }
+    /* box-shadow: 0 2px 2px 0 rgba(255, 0, 0, 0.07); */
+
 `
 export const Image = styled.div`
   width: 100%;

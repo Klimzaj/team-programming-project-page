@@ -1,6 +1,6 @@
 import React from 'react'
 import * as El from './styles'
-
+import {Link} from 'gatsby'
 import logoImg from './../../assets/kitchenHelperLogo.svg'
 
 const windowGlobal = typeof window !== 'undefined' && window
@@ -24,8 +24,9 @@ const Menu = [
   }
 ]
 
-//zamykac hover menu przy skalowaniu !!
+// zamykac hover menu przy skalowaniu !!
 // search recipe jesli zalogowany !!
+// dodać active dla login przy register
 class Header extends React.Component {
   state = {
     collapsed: false,
@@ -50,7 +51,7 @@ class Header extends React.Component {
             <El.DarkLine />
           </El.LeftDiv>
           <El.IconDiv>
-            <El.Logo src={logoImg} />
+            <Link to='/'><El.Logo src={logoImg} /></Link>
           </El.IconDiv>
           <El.RightDiv >
             <El.MenuDiv>
