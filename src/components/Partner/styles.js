@@ -69,7 +69,7 @@ export const Button = styled(Link)`
     justify-content: center;
     align-items: center;
 
-    text-shadow: 0px 1px 1px #c9c9c9; 
+    text-shadow: 0px 3px 13px #000000; 
     color: white;
     box-shadow: 0px 3px 13px #888888; 
     text-transform: uppercase;
