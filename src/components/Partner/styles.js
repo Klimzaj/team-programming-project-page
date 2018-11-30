@@ -15,36 +15,41 @@ export const MainWrapper = styled.div`
 `
 export const Title = styled.h2`
     color: #4B4B4B;
+    text-align: center;
     text-transform: uppercase;
-    margin-top: 20px;
-    font-size: 4rem;
-    margin-top: 25px;
-    margin-bottom: 25px;
+    font-size: 3rem;
+    /* margin-top: 25px; */
+    /* margin-bottom: 25px; */
+
+    margin: 25px 0 25px 0;
 
     @media (max-width: 768px) {
-        font-size: 2rem;
-        line-height: 2rem;
+        /* font-size: 2rem;
+        line-height: 2rem; */
     }
 `
 
 export const Underline = styled.div`
     display: block;
-    width: 245px;
-    height: 10px;
+    width: 100px;
+    height: 6px;
     background-color: #FFE600;
-    margin-bottom: 75px;
+    margin-bottom: 50px;
+    @media(min-width: 768px) {
+        width: 200px;
+    }
 `
 
 export const MainText = styled.div`
     max-width: 1000px;
     text-indent: 50px;
-    word-wrap: break-word;
-    font-size: 2rem;
-    line-height: 2.5rem;
-    padding: 0px 10px 0px 10px;
+    
+    text-align: justify;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    padding: 0px 1rem 0px 1rem;
+
     @media (max-width: 768px) {
-        font-size: 1.3rem;
-        line-height: 1.9rem;
     }
     
 
@@ -56,28 +61,28 @@ export const Button = styled(Link)`
     
     width: 500px;
 
+
     background-color: #FFE600;
 
-    margin-top: 100px;
-    margin-bottom: 100px;
+    margin: 50px 0 50px 0;
 
-    font-size: 1.5rem;
-    line-height: 1.2rem;
+    font-size: 1.3rem;
+    line-height: 1.3rem;
     text-align: center;
     
     display: flex;
     justify-content: center;
     align-items: center;
 
-    text-shadow: 0px 3px 13px #000000; 
+    text-shadow: 0px 2px 5px #d9d9d9; 
     color: white;
-    box-shadow: 0px 3px 13px #888888; 
+    box-shadow: 0px 2px 6px #949494; 
     text-transform: uppercase;
     text-decoration: none;
 
-    border-top-left-radius: 50px;
-    border-top-right-radius: 50px;
-    border-bottom-right-radius: 50px;
+    border-top-left-radius: 35px;
+    border-top-right-radius: 35px;
+    border-bottom-right-radius: 35px;
 
   
     @media (max-width: 768px) {
