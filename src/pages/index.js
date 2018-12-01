@@ -2,7 +2,6 @@ import React from 'react'
 // import { Link } from 'gatsby'
 import Layout from '../components/Layout'
 import ImgText from '../components/ImgText'
-// import Partner from '../components/Partner'
 
 import Partner from '../components/Partner'
 import Features from '../components/Features'
@@ -28,7 +27,7 @@ const Item = [
 const Text1 = [
   {
     title: 'Nie wiesz co ugotować?',
-    text: 'Dzięki nam znajdzijesz pomysł na obiad za który powiemy Ci, ile zapłacisz.'
+    text: 'Dzięki nam znajdziesz pomysł na obiad za który powiemy Ci, ile zapłacisz.'
   }
 ]
 const Text2 = [

@@ -124,7 +124,7 @@ export const StyledLine = styled.div`
   width: 90px;
   height: 5px;
   z-index:999;
-  position: absolute
+  position: absolute;
   
   /* color: #FFE600; */
   color: #fff;
