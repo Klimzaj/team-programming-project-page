@@ -32,7 +32,7 @@ const Text1 = [
 ]
 const Text2 = [
   {
-    title: 'Gotowanie jest Twoja pasja?',
+    title: 'Gotowanie jest Twoja pasją?',
     text: 'Dołącz do ludzi, którzy dzielą się swoim doświadczeniem i smakiem!'
   }
 ]

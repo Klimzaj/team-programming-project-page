@@ -78,10 +78,12 @@ export const Magnifier = styled.div`
     width: 25px;
     height: 25px;
     z-index: 999;
-
-    float: right;
+    /* background-color: red; */
+    /* float: right; */
     position: relative;
-    left: -50px;
-    top: 75px;
-
+    left: 380px;
+    top: 137px;
+    @media(max-width: 500px){
+        left: 190px;
+    }
 `

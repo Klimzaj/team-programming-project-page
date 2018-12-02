@@ -10,9 +10,10 @@ const FindRecipe = () => {
             <El.Image source = {MainImage}>
                 <El.MainText>
                     Znajdź pomysł na obiad!
-                    <El.Magnifier src = {magnifier}/> 
                 </El.MainText> 
-                <El.SearchInput placeholder = 'Recipe Name'/>
+                <El.Magnifier src = {magnifier}/> 
+                <El.SearchInput placeholder = 'Recipe Name'>
+                </El.SearchInput>
             </El.Image>
         </El.Wrapper>
     )

@@ -2,15 +2,21 @@ import styled from 'styled-components'
 
 export const Wrapper = styled.div`
     width: 100%;
+    height: auto;
+    /* max-width: 1500px; */
     background-color: #FFF8F2;
     padding: 50px 0 50px 0;
 
+    margin: auto;
+    /* margin: 20px 0 20px 0; */
+`
+export const AddintionalWrapper = styled.div`
+    margin: auto;
+    max-width: 1500px;
     display: flex;
     flex-direction: column;
 
-    /* margin: 20px 0 20px 0; */
-`
-
+` 
 export const Top = styled.div`
     min-height: 200px;
     height: auto;
@@ -25,6 +31,7 @@ export const Left = styled.div`
     display: flex;
     justify-content: center;
 
+    padding: 0 1rem 0 1rem;
     /* background-color: lightgreen; */
     
    
@@ -44,7 +51,7 @@ export const Image = styled.div`
 export const Right = styled.div`
     width: 50%;
     /* background-color: lightblue; */
-
+    padding: 0 1rem 0 1rem;
     display: flex;
     flex-direction: column;
 
@@ -55,9 +62,17 @@ export const Right = styled.div`
 export const Components = styled.div`
     width: 100%;
     height: auto;
-    padding: 0px 0 50px 0;
+    padding: 1rem 1rem 2rem 1rem;
+    p {
+        text-indent: 2rem;
+    }
 `
 export const ToDo = styled.div`
     width: 100%;
+
     height: auto;
+    padding: 0 1rem 0 1rem;
+    p {
+        text-indent: 2rem;
+    }
 `

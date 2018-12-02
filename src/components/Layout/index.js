@@ -7,17 +7,24 @@ import Header from './../Header'
 import Footer from './../Footer'
 import './layout.css'
 
-
-
+import * as fonts from '../../assets/Fonts/'
 import { createGlobalStyle } from 'styled-components'
-import font1 from '../../assets/fonts/segoeui.ttf'
-
 
 createGlobalStyle`
   @font-face {
-    font-family: 'Segoe UI';
-    src: url(${font1}) format('truetype');
+    font-family: "Segoe UI";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Segoe UI"), url(${fonts.SegoeUI}) format("truetype");
   };
+  @font-face{
+    font-family: "Segoe UI";
+    font-style: normal;
+    font-weight: bold;
+    src: local("Segoe UI"), url(${fonts.SegoeUIBold}) format("truetype");
+
+  };
+  
 
 `
 

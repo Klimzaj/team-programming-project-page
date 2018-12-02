@@ -21,6 +21,7 @@ export const Image = styled.div`
   background-image: url(${props => props.ImgBg});
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   
   @media (min-width: 425px) {
     height: 200px;
