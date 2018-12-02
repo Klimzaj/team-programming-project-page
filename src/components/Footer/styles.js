@@ -17,7 +17,7 @@ export const BottomDiv = styled.div`
 `
 export const BottomP = styled.p`
   color: #fff;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
   margin: 15px 0;
   font-size: 14px;
 `
@@ -34,7 +34,7 @@ export const StyledLink = styled(Link)`
   text-decoration: none;
   color: #fff;
   margin: 0 5px;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
   font-size: 18px;
 `
 export const StyledSpan = styled.span`

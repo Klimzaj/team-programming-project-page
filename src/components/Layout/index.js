@@ -7,6 +7,25 @@ import Header from './../Header'
 import Footer from './../Footer'
 import './layout.css'
 
+
+
+import { createGlobalStyle } from 'styled-components'
+import font1 from '../../assets/fonts/segoeui.ttf'
+
+
+createGlobalStyle`
+  @font-face {
+    font-family: 'Segoe UI';
+    src: url(${font1}) format('truetype');
+  };
+
+`
+
+
+
+
+
+
 const Layout = ({ children }) => (
   <StaticQuery
     query={graphql`

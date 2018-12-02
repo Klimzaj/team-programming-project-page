@@ -57,7 +57,7 @@ export const MainText = styled.h2 `
     color: white;
     font-size: 2rem;
     margin-left: 20px;
-
+    display: flex;
      @media(max-width: 320px){
         font-size: 1.5rem;
     }
@@ -72,4 +72,16 @@ export const RecipesWrapper = styled.div`
     height: auto;
     width: 100%;
 `
+export const Magnifier = styled.div`
+    background-image: url(${props => props.src});
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+    z-index: 999;
 
+    float: right;
+    position: relative;
+    left: -50px;
+    top: 75px;
+
+`

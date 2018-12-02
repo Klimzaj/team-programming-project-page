@@ -153,7 +153,7 @@ export const StyledLi = styled.li`
 export const StyledLink = styled(Link)`
   text-decoration: none;
   color: #000;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
   margin: 10px;
   @media (min-width: 768px) {
     font-size: 20px;
