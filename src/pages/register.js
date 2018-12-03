@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
 import { Link } from 'gatsby'
+import registerImage from '../images/register.jpeg'
+
 const MainWrapper = styled.div`
   margin-left: auto;
   margin-right: auto;
@@ -9,6 +11,7 @@ const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  
 
   h2 {
     text-align:center;
@@ -77,6 +80,19 @@ const SmallDiv = styled.div`
   display: flex;
   margin-top: 5px;
 `
+const MainImage = styled.div`
+  width: 100%;
+  height: 435px;
+  background-image: url(${props => props.source});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  -webkit-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
+
+`
+
 class Register extends React.Component {
   constructor (props) {
     super(props)
@@ -101,6 +117,7 @@ class Register extends React.Component {
     const {login, password, email, repassword} = this.state
     return (
       <Layout>
+        <MainImage source = {registerImage}/>
         <MainWrapper>
           <h2>Rejestracja</h2>
           <Form

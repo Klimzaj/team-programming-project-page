@@ -52,7 +52,7 @@ const Footer = () => (
     </El.TopDiv>
     <El.BottomDiv>
       <El.BottomP>
-          Copyright 2018 Kitchen Helper | All Rights reseved 
+        © {(typeof window)? `Kitchen Helper ${new Date().getFullYear()}`:''}
       </El.BottomP>
     </El.BottomDiv>
   </El.MainWrapper>

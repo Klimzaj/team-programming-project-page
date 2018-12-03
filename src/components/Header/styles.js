@@ -152,8 +152,7 @@ export const StyledLi = styled.li`
 `
 export const StyledLink = styled(Link)`
   text-decoration: none;
-  color: #000;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #483E37;
   margin: 10px;
   @media (min-width: 768px) {
     font-size: 20px;
@@ -164,8 +163,8 @@ export const StyledLink = styled(Link)`
 `
 export const HamburgerMenu = styled.div`
   position: absolute;
-  top: 30px;
-  right: 20px;
+  top: 53px;
+  right: 40px;
   & > div {
     width: 30px;
     height: 5px;
@@ -208,7 +207,8 @@ export const HoverLink = styled(Link)`
   font-size: 23px;
   width: 50%;
   padding: 10px;
-  color: #000;
+  color: #483E37;
+  margin-left: 10px;
   text-decoration: none;
   &:before {
     content: '';
