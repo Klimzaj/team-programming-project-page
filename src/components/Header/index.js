@@ -59,13 +59,26 @@ class Header extends React.Component {
             <El.MenuDiv>
               <El.StyledUl>
                 {
-                  Menu.map((el, i) => (
-                    <El.StyledLi key={`menu_element__${i}`}>
-                      <El.StyledLink to={el.path} className={this.state.path === `${el.path}` ?'active':''}>
-                        {el.name}
-                      </El.StyledLink>
-                    </El.StyledLi>
-                  ))
+                  Menu.map((el, i) => {
+                    if(windowGlobal && '/' + window.location.href.split('/').pop()   === el.path){
+                      return(
+                        <El.StyledLi key={`menu_element__${i}`}>
+                          <El.StyledLink style = {{fontWeight: 'bold', paddingLeft: '5px', borderBottom: '#FFE600 solid 4px'}} to={el.path} className={this.state.path === `${el.path}` ?'active':''}>
+                            {el.name}
+                          </El.StyledLink>
+                        </El.StyledLi>
+                      )
+                    } else {
+                      return(
+                        <El.StyledLi key={`menu_element__${i}`}>
+                          <El.StyledLink to={el.path} className={this.state.path === `${el.path}` ?'active':''}>
+                            {el.name}
+                          </El.StyledLink>
+                        </El.StyledLi>
+                      )
+                    }
+                  }
+                  )
                 }
               </El.StyledUl>
             </El.MenuDiv>
@@ -81,11 +94,24 @@ class Header extends React.Component {
           </El.HamburgerMenu>
         </El.MainWrapper>
         <El.HoverMenu isVisible={collapsed} >
-          {Menu.map((el, i) => (
-              <El.HoverLink to={el.path} key={`menu_element__${i}`}>
-                  {el.name}
-              </El.HoverLink>
-            ))}
+          {
+            Menu.map((el, i) => {
+              if(windowGlobal && '/'+window.location.href.split('/').pop()   === el.path){
+                return(
+                  <El.HoverLink style = {{fontWeight: 'bold', paddingLeft: '5px', borderLeft: '#FFE600 solid 4px'}} to={el.path} key={`menu_element__${i}`}>
+                        {el.name}
+                    </El.HoverLink>
+                )
+              }else{
+                return(
+                  <El.HoverLink to={el.path} key={`menu_element__${i}`}>
+                    {el.name}
+                  </El.HoverLink>
+                )
+              } 
+            }
+            )
+          }
         </El.HoverMenu>
       </div>
     )
