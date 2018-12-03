@@ -2,6 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
 import { Link } from 'gatsby'
+
+import loginImage from '../images/login.jpeg'
+
 const MainWrapper = styled.div`
   margin-left: auto;
   margin-right: auto;
@@ -37,6 +40,20 @@ const MainWrapper = styled.div`
     }
   } 
 `
+
+const MainImage = styled.div`
+  width: 100%;
+  height: 435px;
+  background-image: url(${props => props.source});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  
+  -webkit-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
+`
+
 const SubmitButton = styled.input`
   padding: 13px 29px;
   line-height: 17px;
@@ -62,11 +79,12 @@ const LoginInput = styled(BorderInput)`
 const PasswordInput = styled(BorderInput)`
 `
 const FormP = styled.p`
-  font-weight: 700;
+  /* font-weight: 700; */
   font-size: inherit;
-  line-height: 1.3;
+  /* line-height: 1.3; */
   margin-bottom: 10px;
   margin-top: 10px;
+  /* color: #B1B1B1; */
 `
 const SmallP = styled.p`
   font-size: 13px;
@@ -76,6 +94,14 @@ const SmallDiv = styled.div`
   display: flex;
   margin-top: 5px;
 `
+const RegisterLink = styled(Link) `
+  text-decoration: none;
+  color: #737373;
+  &:hover {
+    text-decoration: underline;
+  }
+`
+
 class Login extends React.Component {
   constructor (props) {
     super(props)
@@ -98,6 +124,7 @@ class Login extends React.Component {
     const {login, password} = this.state
     return (
       <Layout>
+        <MainImage source = {loginImage}/>
         <MainWrapper>
           <h2>Logowanie</h2>
           <Form
@@ -119,7 +146,7 @@ class Login extends React.Component {
               onChange={this.onChangeInput}
               required
             />
-            <SmallDiv><SmallP>Nie masz konta?</SmallP><Link to='register'>Zarejestruj</Link></SmallDiv>
+            <SmallDiv><SmallP>Nie masz konta?</SmallP><RegisterLink to='register'>Zarejestruj się!</RegisterLink></SmallDiv>
             <SubmitButton
               type='submit'
               value='Login'
