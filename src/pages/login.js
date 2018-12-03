@@ -2,6 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
 import { Link } from 'gatsby'
+
+import loginImage from '../images/login.jpeg'
+
 const MainWrapper = styled.div`
   margin-left: auto;
   margin-right: auto;
@@ -37,6 +40,16 @@ const MainWrapper = styled.div`
     }
   } 
 `
+
+const MainImage = styled.div`
+  width: 100%;
+  height: 435px;
+  background-image: url(${props => props.source});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+`
+
 const SubmitButton = styled.input`
   padding: 13px 29px;
   line-height: 17px;
@@ -98,6 +111,7 @@ class Login extends React.Component {
     const {login, password} = this.state
     return (
       <Layout>
+        <MainImage source = {loginImage}/>
         <MainWrapper>
           <h2>Logowanie</h2>
           <Form

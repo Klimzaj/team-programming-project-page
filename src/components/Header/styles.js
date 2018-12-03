@@ -152,11 +152,12 @@ export const StyledLi = styled.li`
 `
 export const StyledLink = styled(Link)`
   text-decoration: none;
-  color: #000;
+  color: #483E37;
   /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
   margin: 10px;
   @media (min-width: 768px) {
     font-size: 20px;
+    /* font-size: 1rem; */
   }
   @media (min-width: 1024px) {
     font-size: 25px;
@@ -164,8 +165,8 @@ export const StyledLink = styled(Link)`
 `
 export const HamburgerMenu = styled.div`
   position: absolute;
-  top: 30px;
-  right: 20px;
+  top: 53px;
+  right: 40px;
   & > div {
     width: 30px;
     height: 5px;

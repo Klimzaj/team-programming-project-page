@@ -24,15 +24,7 @@ createGlobalStyle`
     src: local("Segoe UI"), url(${fonts.SegoeUIBold}) format("truetype");
 
   };
-  
-
 `
-
-
-
-
-
-
 const Layout = ({ children }) => (
   <StaticQuery
     query={graphql`
