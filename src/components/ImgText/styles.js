@@ -14,6 +14,14 @@ export const MainWrapper = styled.div`
     /* box-shadow: 0 2px 2px 0 rgba(255, 0, 0, 0.07); */
 
 `
+export const YellowStripe = styled.div`
+  max-width: 240px;
+  height: 10px;
+  background-color: #FFE600;
+  z-index: 10000;
+  border: 2px solid red;
+`
+
 export const Image = styled.div`
   width: 100%;
   height:140px;
@@ -123,10 +131,13 @@ export const Text = styled.div`
 `
 export const StyledLine = styled.div`
   width: 90px;
-  height: 5px;
-  z-index:999;
-  position: absolute;
-  
-  /* color: #FFE600; */
-  color: #fff;
+  height: 7px;
+  position: relative;
+  left: 1rem;
+  margin-bottom: 1rem;
+  background-color: #FFE600;
+  @media(min-width: 1440px){
+    width: 150px;
+    height: 10px;
+  }
 `
