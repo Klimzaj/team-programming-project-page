@@ -8,6 +8,11 @@ export const MainWrapper = styled.div`
   margin-left: auto;
   margin-right: auto;
   flex-direction: column;
+
+  -webkit-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
+
   @media (min-width: 768px) {
     flex-direction: row;
   }

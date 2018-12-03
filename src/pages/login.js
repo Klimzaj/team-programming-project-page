@@ -48,6 +48,10 @@ const MainImage = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  
+  -webkit-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
 `
 
 const SubmitButton = styled.input`
@@ -75,11 +79,12 @@ const LoginInput = styled(BorderInput)`
 const PasswordInput = styled(BorderInput)`
 `
 const FormP = styled.p`
-  font-weight: 700;
+  /* font-weight: 700; */
   font-size: inherit;
-  line-height: 1.3;
+  /* line-height: 1.3; */
   margin-bottom: 10px;
   margin-top: 10px;
+  /* color: #B1B1B1; */
 `
 const SmallP = styled.p`
   font-size: 13px;
@@ -89,6 +94,14 @@ const SmallDiv = styled.div`
   display: flex;
   margin-top: 5px;
 `
+const RegisterLink = styled(Link) `
+  text-decoration: none;
+  color: #737373;
+  &:hover {
+    text-decoration: underline;
+  }
+`
+
 class Login extends React.Component {
   constructor (props) {
     super(props)
@@ -133,7 +146,7 @@ class Login extends React.Component {
               onChange={this.onChangeInput}
               required
             />
-            <SmallDiv><SmallP>Nie masz konta?</SmallP><Link to='register'>Zarejestruj</Link></SmallDiv>
+            <SmallDiv><SmallP>Nie masz konta?</SmallP><RegisterLink to='register'>Zarejestruj się!</RegisterLink></SmallDiv>
             <SubmitButton
               type='submit'
               value='Login'
