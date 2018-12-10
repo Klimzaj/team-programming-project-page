@@ -3,18 +3,37 @@ import styled from 'styled-components'
 import Layout from '../components/Layout'
 import { Link } from 'gatsby'
 import registerImage from '../images/register.jpeg'
+import axios from 'axios'
+
+
+const registerPath = 'http://localhost:8007/auth/register/';
+
 
 const MainWrapper = styled.div`
+
+  width: 100%;
+  /* height: 500px    ; */
+  background-image: url(${props => props.source});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-position-y: top;
+  -webkit-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
+
   margin-left: auto;
   margin-right: auto;
-  width: 90%;
+  /* width: 90%; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+
+
 
   h2 {
     text-align:center;
+    color: white;
     font-size: 3rem;
     padding: 1rem 1rem 0.1rem 1rem;
     
@@ -40,21 +59,33 @@ const MainWrapper = styled.div`
   } 
 `
 const SubmitButton = styled.input`
+  display: block;
+  margin: 0 auto;
   padding: 13px 29px;
   line-height: 17px;
   font-size: 14px;
   border: none;
   font-family: 'Source Sans Pro', sans-serif;
+  
   background: #ffe600;
+
   border-radius: 20px;
+
+  -webkit-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
+
   &:hover {
     background: linear-gradient(#ffe600, #ffe611);
+    cursor: pointer;
   }
 `
 const Form = styled.form`
 `
 const BorderInput = styled.input`
-  border: 1px solid #000;
+  all: initial;
+  background-color: white;
+  
   border-radius: 20px;
   padding: 5px 5px 5px 15px;
 `
@@ -66,33 +97,31 @@ const PasswordInput = styled(BorderInput)`
 const EmailInput = styled(BorderInput)`
 `
 const FormP = styled.p`
-  font-weight: 700;
-  font-size: inherit;
-  line-height: 1.3;
+  color: white;
   margin-bottom: 10px;
   margin-top: 10px;
+  opacity: .75;
 `
 const SmallP = styled.p`
   font-size: 13px;
+  color: white;
   margin-right: 5px;
 `
 const SmallDiv = styled.div`
   display: flex;
   margin-top: 5px;
 `
-const MainImage = styled.div`
-  width: 100%;
-  height: 435px;
-  background-image: url(${props => props.source});
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  -webkit-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
-  -moz-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
-  box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
-
+const LinkToLogin = styled(Link)`
+  color: 'white'; 
+  font-size: 0.8rem; 
+  text-decoration: none;
+  ${this}:visited{
+    color: white;
+  }
+  ${this}:hover{
+    text-decoration: underline;
+  }
 `
-
 class Register extends React.Component {
   constructor (props) {
     super(props)
@@ -110,15 +139,32 @@ class Register extends React.Component {
   }
 
   handleSubmit = e => {
-
+    axios({
+      method: 'post',
+      url: registerPath,
+      data: {
+        "username": this.state.login,
+        "password": this.state.password,
+        "email": this.state.email,
+      },
+      config: { headers: {'Content-Type': 'application/json' }}
+    }).then(function (response) {
+      //handle success
+      console.log(response);
+      window.location.href = "/login"
+    })
+    .catch(function (response) {
+      //handle error
+      console.log(response);
+    });
   }
 
   render() {
     const {login, password, email, repassword} = this.state
     return (
       <Layout>
-        <MainImage source = {registerImage}/>
-        <MainWrapper>
+        {/* <MainImage source = {registerImage}/> */}
+        <MainWrapper source = {registerImage}>
           <h2>Rejestracja</h2>
           <Form
             onSubmit={this.handleSubmit}
@@ -128,6 +174,7 @@ class Register extends React.Component {
               type='text'
               name='login'
               value={login}
+              placeholder="Login"
               onChange={this.onChangeInput}
               required
             />
@@ -137,6 +184,7 @@ class Register extends React.Component {
               name='email'
               value={email}
               onChange={this.onChangeInput}
+              placeholder="Email"              
               required
             />
             <FormP>Hasło</FormP>
@@ -145,6 +193,7 @@ class Register extends React.Component {
               name='password'
               value={password}
               onChange={this.onChangeInput}
+              placeholder="Password"              
               required
             />
             <FormP>Powtórz hasło</FormP>
@@ -153,11 +202,17 @@ class Register extends React.Component {
               name='repassword'
               value={repassword}
               onChange={this.onChangeInput}
+              placeholder="Password"
               required
             />
-            <SmallDiv><SmallP>Masz już konto</SmallP><Link to='login'>Zaloguj się</Link></SmallDiv>
+            <SmallDiv>
+              <SmallP>Masz już konto?</SmallP>
+              <LinkToLogin to='/login'>Zaloguj się!</LinkToLogin>
+            </SmallDiv>
+
             <SubmitButton
               type='submit'
+              onClick = {this.handleClickRegister}
               value='Zarejestruj'
             />
           </Form>
