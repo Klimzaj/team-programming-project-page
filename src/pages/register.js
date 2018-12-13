@@ -6,13 +6,13 @@ import registerImage from '../images/register.jpeg'
 import axios from 'axios'
 
 
-const registerPath = 'http://localhost:8007/auth/register/';
+const registerPath = '/auth/register/';
 
 
 const MainWrapper = styled.div`
 
   width: 100%;
-  /* height: 500px    ; */
+  height: 100%;
   background-image: url(${props => props.source});
   background-repeat: no-repeat;
   background-size: cover;
@@ -22,9 +22,7 @@ const MainWrapper = styled.div`
   -moz-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
   box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
 
-  margin-left: auto;
-  margin-right: auto;
-  /* width: 90%; */
+  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -65,8 +63,9 @@ const SubmitButton = styled.input`
   line-height: 17px;
   font-size: 14px;
   border: none;
-  font-family: 'Source Sans Pro', sans-serif;
-  
+  /* font-family: 'Source Sans Pro', sans-serif; */
+  cursor: pointer;
+
   background: #ffe600;
 
   border-radius: 20px;
@@ -87,7 +86,7 @@ const BorderInput = styled.input`
   background-color: white;
   
   border-radius: 20px;
-  padding: 5px 5px 5px 15px;
+  padding: 5px 5px 5px 10px;
 `
 
 const LoginInput = styled(BorderInput)`
@@ -113,12 +112,16 @@ const SmallDiv = styled.div`
 `
 const LinkToLogin = styled(Link)`
   color: 'white'; 
+  font-style: italic;
   font-size: 0.8rem; 
   text-decoration: none;
   ${this}:visited{
     color: white;
   }
   ${this}:hover{
+    text-decoration: underline;
+  }
+  ${this}:active{
     text-decoration: underline;
   }
 `
@@ -139,23 +142,22 @@ class Register extends React.Component {
   }
 
   handleSubmit = e => {
-    axios({
-      method: 'post',
-      url: registerPath,
-      data: {
-        "username": this.state.login,
-        "password": this.state.password,
-        "email": this.state.email,
-      },
-      config: { headers: {'Content-Type': 'application/json' }}
-    }).then(function (response) {
-      //handle success
-      console.log(response);
-      window.location.href = "/login"
+    
+    let data = JSON.stringify({
+      password: this.state.password,
+      username: this.state.login,
+      email: this.state.email
     })
-    .catch(function (response) {
-      //handle error
-      console.log(response);
+
+  axios.post(registerPath, data, {
+    headers: {
+      'Content-Type': 'application/json',
+    }}).then(function (response) {
+        //handle success
+        console.log(response);
+    }).catch(function (response) {
+        //handle error
+        console.log(response);
     });
   }
 
@@ -212,7 +214,7 @@ class Register extends React.Component {
 
             <SubmitButton
               type='submit'
-              onClick = {this.handleClickRegister}
+              onClick = {this.handleSubmit}
               value='Zarejestruj'
             />
           </Form>
