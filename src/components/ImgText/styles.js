@@ -34,8 +34,9 @@ export const Image = styled.div`
   background-image: url(${props => props.ImgBg});
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
-  
+  /* background-position: center; */
+  background-position-x: center;
+  background-position-y: bottom;
   @media (min-width: 425px) {
     height: 200px;
     background-position-x: 0px;

@@ -1,5 +1,4 @@
 import React from 'react'
-// import { Link } from 'gatsby'
 import Layout from '../components/Layout'
 import ImgText from '../components/ImgText'
 
@@ -36,6 +35,7 @@ const Text2 = [
     text: 'Dołącz do ludzi, którzy dzielą się swoim doświadczeniem i smakiem!'
   }
 ]
+
 const IndexPage = () => (
   <Layout>
     <ImgText Text={Text1} ImgEl={Img1}/>

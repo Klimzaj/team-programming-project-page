@@ -14,6 +14,10 @@ const Menu = [
     name: 'Search Recipe',
     path: '/search'
   },
+  // {
+  //   name: 'Add a Recipe',
+  //   path: '/addrecipe'
+  // },
   {
     name: 'Contact',
     path: '/contact'
@@ -21,8 +25,13 @@ const Menu = [
   {
     name: 'Login',
     path: '/login'
+  },
+  {
+    name: 'Register',
+    path: '/register '
   }
 ]
+
 
 
 

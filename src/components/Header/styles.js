@@ -5,7 +5,6 @@ export const MainWrapper = styled.div`
   display: flex;
   background: #fff;
   height: auto;
-  /* margin-bottom: 1.45 rem; */
   position: relative;
   @media (min-width: 425px) {
       
@@ -54,7 +53,6 @@ export const LeftDiv = styled.div`
   }
 `
 export const IconDiv = styled.div`
-    /* display: flex; */
   width: 30%;
   margin-left: 15px;
   padding: 15px 0.5%;
@@ -137,7 +135,7 @@ export const DarkLine = styled.div`
   opacity: 0.4;
 `
 export const MenuDiv = styled.div`
-  margin-right: 100px;
+  margin-right: 50px;
 `
 export const StyledUl = styled.ul`
   display: flex;
@@ -200,7 +198,7 @@ export const HoverMenu = styled.div`
   opacity: ${props => props.isVisible ? '1'  : '0'};
   flex-direction: column;
   visibility: ${props => props.isVisible ? 'visible'  : 'hidden'};
-  height: ${props => props.isVisible ? '200px'  : '0px'};
+  height: ${props => props.isVisible ? '240px'  : '0px'};
   transition: height 0.5s ease, visibility 0s;
 `
 export const HoverLink = styled(Link)`

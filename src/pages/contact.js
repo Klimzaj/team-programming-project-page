@@ -1,5 +1,5 @@
 import React from 'react'
-import Recaptcha from 'react-google-recaptcha'
+// import Recaptcha from 'react-google-recaptcha'
 import Layout from '../components/Layout'
 import styled from 'styled-components'
 
@@ -64,9 +64,9 @@ const SubmitButton = styled.input`
     background: linear-gradient(#fff, #000);
   }
 `
-const StyledRecaptcha = styled(Recaptcha)`
-  margin-top: 15px;
-`
+// const StyledRecaptcha = styled(Recaptcha)`
+//   margin-top: 15px;
+// `
 
 class Contact extends React.Component {
   constructor (props) {
