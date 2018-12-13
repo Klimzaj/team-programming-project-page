@@ -40,5 +40,12 @@ module.exports = {
         path: `${__dirname}/src/assets/`
       }
     },
+    
+    
   ],
+  proxy: {
+    prefix: "/auth",
+      url: "http://localhost:8007",
+      
+  }
 } 
