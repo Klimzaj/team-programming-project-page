@@ -5,6 +5,7 @@ import { Link } from 'gatsby'
 import registerImage from '../images/register.jpeg'
 import axios from 'axios'
 
+const windowGlobal = typeof window !== 'undefined' && window
 
 const registerPath = '/auth/register/';
 
@@ -154,7 +155,11 @@ class Register extends React.Component {
       'Content-Type': 'application/json',
     }}).then(function (response) {
         //handle success
+        if(windowGlobal){
+          window.location.replace("http://localhost:8000/login");
+        }
         console.log(response);
+
     }).catch(function (response) {
         //handle error
         console.log(response);
