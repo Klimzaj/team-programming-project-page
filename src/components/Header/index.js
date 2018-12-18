@@ -2,38 +2,10 @@ import React from 'react'
 import * as El from './styles'
 import {Link} from 'gatsby'
 import logoImg from './../../assets/kitchenHelperLogo.svg'
-
+import * as Cookie from '../Cookie/'
 const windowGlobal = typeof window !== 'undefined' && window
 
-const Menu = [
-  {
-    name: 'Home',
-    path: '/'
-  },
-  {
-    name: 'Search Recipe',
-    path: '/search'
-  },
-  // {
-  //   name: 'Add a Recipe',
-  //   path: '/addrecipe'
-  // },
-  {
-    name: 'Contact',
-    path: '/contact'
-  },
-  {
-    name: 'Login',
-    path: '/login'
-  },
-  {
-    name: 'Register',
-    path: '/register '
-  }
-]
-
-
-
+let Menu = [];
 
 // zamykac hover menu przy skalowaniu !!
 // search recipe jesli zalogowany !!
@@ -45,9 +17,66 @@ class Header extends React.Component {
   }
   
   UNSAFE_componentWillMount() {
-    const path =  windowGlobal ? windowGlobal.location.pathname : false
+    const path =  windowGlobal ? windowGlobal.location.pathname : '/'
+//was change in here from false to '/'
     this.setState(prevState => ({ path: path }))
     console.log(path)
+
+    if(windowGlobal){
+      if(Cookie.getCookie('access')){//if logged in
+        Menu = [
+          {
+            name: 'Home',
+            path: '/'
+          },
+          {
+            name: 'Search Recipe',
+            path: '/search'
+          },
+          {
+            name: 'Contact',
+            path: '/contact'
+          },
+          {
+            name: 'Add a Recipe',
+            path: '/addrecipe'
+          },
+          {
+            name: 'My Profile',
+            path: '/myprofile'
+          },
+          {
+            name: 'Logout',
+            path: '/logout'
+          }
+        ]
+      }else{//else(if not logged in)
+        Menu = [
+          {
+            name: 'Home',
+            path: '/'
+          },
+          {
+            name: 'Search Recipe',
+            path: '/search'
+          },
+          {
+            name: 'Contact',
+            path: '/contact'
+          },
+          {
+            name: 'Login',
+            path: '/login'
+          },
+          {
+            name: 'Register',
+            path: 'register'
+          }
+        ]
+      }
+    }
+
+
   }
   handleCollapseMenu = () =>
     this.setState(prevState => ({ collapsed: !prevState.collapsed }))
