@@ -4,10 +4,10 @@ import Layout from '../components/Layout'
 import { Link } from 'gatsby'
 import axios from 'axios'
 import loginImage from '../images/login.jpeg'
-
+import * as Cookie from '../components/Cookie/'
 
 //change to image from gatsby-image!!!
-
+const windowGlobal = typeof window !== 'undefined' && window
 const loginPath = '/auth/token/obtain/'
 
 
@@ -154,8 +154,15 @@ class Login extends React.Component {
         'Content-Type':'application/json',},
       }).then(function (response) {
       //handle success
-        localStorage.setItem('access', response.access)
-          localStorage.setItem('refresh', response.refresh)
+        Cookie.setCookie('access', response.access, 600000)//10minutes
+        // localStorage.setItem('access', response.access)
+        Cookie.setCookie('refresh', response.refresh, 600000)//10minutes
+
+          // localStorage.setItem('refresh', response.refresh)
+          //redirect
+          if(windowGlobal){
+            window.location.replace("http://localhost:8000/myprofile");
+          }
           
       })
       .catch(function (response, error) {
