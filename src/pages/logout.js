@@ -23,8 +23,8 @@ class Logout extends React.Component{
     render(){
         return(
             <Layout>
-            <h1>Logged out.</h1>
-            <p>You may now close our website safely.</p>
+                <h1>Logging out</h1>
+                <p>You will be redirected to the home page.</p>
             </Layout>
         )
     }
