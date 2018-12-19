@@ -1,21 +1,6 @@
 import React from 'react'
 import Layout from '../components/Layout'
 import styled from 'styled-components'
-
-let data = [0];
-
-// const inputIngredient = (name, placeholcer) => {
-//   return(
-//     <InputIngredient 
-//       type = "text" 
-//       name = {this.props.name}
-//       placeholder= {this.props.placeholder}
-//       onChange = {this.onChangeInput}
-//     >
-//     </InputIngredient>
-//   )
-// }
-
 const Wrapper = styled.div`
  
   width: 100%;
