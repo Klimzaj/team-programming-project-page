@@ -6,68 +6,88 @@ import styled from 'styled-components'
 //const RECAPTCHA_KEY = process.env.GATSBY_SITE_RECAPTCHA_KEY
 
 const ContactWrapper = styled.div`
-  margin-left: auto;
-  margin-right: auto;
   color: #737373;
   font-size: 1rem;
-  width: 80%;
-  @media (min-width: 768px) {
-    width: 75%;
+  
+  display: flex;
+  flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  h1{
+    
+    color:#333333;
   }
-  @media (min-width: 1024px) {
-    width: 50%;
-  }
+  
 `
 const Form = styled.form`
-`
-const FormP = styled.p`
-  /* font-weight: 400; */
-  /* font-size: inherit; */
-  /* line-height: 1.3; */
-  margin-bottom: 10px;
-`
-const BorderInput = styled.input`
-  border: 1px solid #000;
-  border-radius: 20px;
-  padding: 5px 5px 5px 15px;
-`
 
-const FirstNameInput = styled(BorderInput)`
-  width: 47%;
-`
-const LastNameInput = styled(BorderInput)`
-  width: 47%;
-`
-const EmailInput = styled(BorderInput)`
-  width: 100%;
-  margin-bottom: 27px;
-`
-const MessageInput = styled.textarea`
-  width: 100%;
-  border: 1px solid #000;
-  border-radius: 20px;
-  height: 160px;
-  padding: 5px 5px 5px 15px;
-`
-const SubmitButton = styled.input`
-  margin-left: auto;
-  margin-right: auto;
-  padding: 13px 29px;
-  /* line-height: 17px; */
-  /* font-size: 14px; */
-  border: none;
-  /* font-family: 'Source Sans Pro', sans-serif; */
-  background: #ffe600;
-  margin-top: 33px;
-  border-radius: 20px;
-  &:hover {
-    background: linear-gradient(#fff, #000);
+  display: flex;
+  flex-direction: column;
+  input{
+    all: initial;
+    /* display: block; */
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid grey;
+    width: 100%;
+    height: 25px;
+    padding-left: 0.5rem;
+    margin: 0.5rem 0;  
+    
+    ${this}::placeholder{
+      color: grey;
+    
+    }    
+  }
+  textarea{
+    all: initial;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid grey;
+    width: 100%;
+    height: 100px;
+    margin: 0.5rem 0;  
+    padding: 0.5rem;
+    overflow: hidden;
+    ${this}::placeholder{
+      color: grey;
+    }    
+  }
+  label{
+    display: block;
+  }
+
+  button{
+    /* margin: auto; */
+    /* flex: 0.5; */
+    /* align-self:center; */
+    /* align: center; */
+    /* align-items: center; */
+    padding: 0 ;
+    all: initial;
+    display: block;
+    width: 100px;
+    height: 50px;
+    margin: 0 auto;
+    margin: 1rem auto;
+    background-color: #ffe600;
+    border-radius: 10px;
+    text-align: center;
+    ${this}:active{
+      text-decoration: none;
+      color: white;
+      background-color: #C6B305;
+      text-decoration: none !important;
+    }
+    ${this}:hover{
+      text-decoration: underline;
+      cursor: pointer;
+      /* color: white; */
+    }
+    
+
   }
 `
-// const StyledRecaptcha = styled(Recaptcha)`
-//   margin-top: 15px;
-// `
-
 class Contact extends React.Component {
   constructor (props) {
     super(props)
@@ -84,72 +104,84 @@ class Contact extends React.Component {
   //       .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
   //       .join("&");
   // }
-  // onChangeInput = e => {
-  //   const { name, value } = e.target
-  //   this.setState(prevState => ({ ...prevState, [name]: value }))
-  // }
-  // handleSubmit = e => {
-  //   if(this.grecaptcha.getResponse() !== 0 && this.grecaptcha.getResponse() !== '' )
-  //   {
-  //     fetch("/", {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-  //       body: this.encode({ "form-name": "contact", ...this.state })
-  //     })
-  //     .then(() => alert("Success!"))
-  //     .catch(error => alert(error))
+  onChangeInput = e => {
+    const { name, value } = e.target
+    this.setState(prevState => ({ ...prevState, [name]: value }))
+  }
+  handleSubmit = e => {
+    // if(this.grecaptcha.getResponse() !== 0 && this.grecaptcha.getResponse() !== '' )
+    // {
+    //   fetch("/", {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    //     body: this.encode({ "form-name": "contact", ...this.state })
+    //   })
+    //   .then(() => alert("Success!"))
+    //   .catch(error => alert(error))
 
-  //     e.preventDefault()
+    //   e.preventDefault()
 
-  //   } else {
-  //     alert("Please complete the recaptcha validation to continue.")
-  //     e.preventDefault()
-  //   }
-  // }
+    // } else {
+    //   alert("Please complete the recaptcha validation to continue.")
+    //   e.preventDefault()
+    // }
+  }
   render() {
     const {firstname, lastname, email, message} = this.state
     return (
       <Layout>
         <ContactWrapper>
-          <h2>Contact</h2>
+          <h1>Contact</h1>
           <Form 
             name="contact"
             method="POST"
-            //onSubmit={this.handleSubmit}
+            onSubmit={this.handleSubmit}
             //data-netlify="true" 
           >
             <input type="hidden" name="form-name" value="contact" />
-            <FormP>Imię</FormP>
-            <FirstNameInput
+            {/* <FormP>Imię</FormP> */}
+            <label htmlFor="firstname">Name: </label>
+            <input
               type='text'
               name='firstname'
+              placeholder="Firstname"
               value={firstname}
-              //onChange={this.onChangeInput}
-              //required
+              onChange={this.onChangeInput}
+              // required
             />
-            <FormP>Nazwisko</FormP>
-            <LastNameInput
+            {/* <FormP>Nazwisko</FormP> */}
+            <label htmlFor = "lastname">Lastname: </label>
+            <input
               type='text'
               name='lastname'
+              placeholder="Lastname"
+
               value={lastname}
-              //onChange={this.onChangeInput}
+              onChange={this.onChangeInput}
               //required
             />
-            <FormP>Email</FormP>
-            <EmailInput
+            {/* <FormP>Email</FormP> */}
+            <label htmlFor="email">E-mail: </label>
+            <input
               type='email'
               name='email'
+              placeholder="E-mail"
+              
               value={email}
-              //onChange={this.onChangeInput}
+              onChange={this.onChangeInput}
               //required
             />
-            <FormP>Wiadomość</FormP>
-            <MessageInput
+            {/* <FormP>Wiadomość</FormP> */
+            }
+            <label htmlFor="message">Message: </label>
+            <textarea
               type='text'
               name='message'
+              placeholder="Message"
+              
               rows="4"   
               value={message}
-              //onChange={this.onChangeInput}
+              onChange={this.onChangeInput}
               //required
             />
             {/* <StyledRecaptcha
@@ -157,10 +189,12 @@ class Contact extends React.Component {
               sitekey={RECAPTCHA_KEY}
               required
             /> */}
-            <SubmitButton
+            <button
               type='submit'
               value='Submit'
-            />
+            >
+            Send 
+            </button>
           </Form>
         </ContactWrapper>
       </Layout>
