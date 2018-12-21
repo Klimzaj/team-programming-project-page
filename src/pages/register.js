@@ -3,12 +3,7 @@ import styled from 'styled-components'
 import Layout from '../components/Layout'
 import { Link } from 'gatsby'
 import registerImage from '../images/register.jpeg'
-import axios from 'axios'
-
-const windowGlobal = typeof window !== 'undefined' && window
-
-const registerPath = '/auth/register/';
-
+import * as AxiosRequests from '../backend-data/Requests/' 
 
 const MainWrapper = styled.div`
 
@@ -23,12 +18,9 @@ const MainWrapper = styled.div`
   -moz-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
   box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
 
-  
   display: flex;
   flex-direction: column;
   align-items: center;
-
-
 
   h2 {
     text-align:center;
@@ -64,7 +56,6 @@ const SubmitButton = styled.input`
   line-height: 17px;
   font-size: 14px;
   border: none;
-  /* font-family: 'Source Sans Pro', sans-serif; */
   cursor: pointer;
 
   background: #ffe600;
@@ -149,21 +140,8 @@ class Register extends React.Component {
       username: this.state.login,
       email: this.state.email
     })
-
-  axios.post(registerPath, data, {
-    headers: {
-      'Content-Type': 'application/json',
-    }}).then(function (response) {
-        //handle success
-        if(windowGlobal){
-          window.location.replace("http://localhost:8000/login");
-        }
-        console.log(response);
-
-    }).catch(function (response) {
-        //handle error
-        console.log(response);
-    });
+    //axios register post request invocation
+    AxiosRequests.registerPostRequest(data)
   }
 
   render() {

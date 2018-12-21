@@ -40,11 +40,17 @@ module.exports = {
         path: `${__dirname}/src/assets/`
       }
     },
-    
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `backend-data`,
+        path: path.join(__dirname, `src`, `backend-data`),
+      },
+    }
     
   ],
   proxy: {
-    prefix: "/auth",
+    prefix: "/api",
       url: "http://localhost:8007",
       
   }

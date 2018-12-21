@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
 import { Link } from 'gatsby'
-import axios from 'axios'
 import loginImage from '../images/login.jpeg'
-import * as Cookie from '../components/Cookie/'
+import * as Cookie from '../backend-data/Cookie/'
+import * as AxiosRequests from '../backend-data/Requests'
 
 //change to image from gatsby-image!!!
 const windowGlobal = typeof window !== 'undefined' && window
@@ -71,7 +71,6 @@ const SubmitButton = styled.input`
   line-height: 17px;
   font-size: 14px;
   border: none;
-  /* font-family: 'Source Sans Pro', sans-serif; */
   background: #ffe600;
   border-radius: 20px;
   
@@ -144,32 +143,34 @@ class Login extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    let mData = JSON.stringify({
+    let data = JSON.stringify({
       password: this.state.password,
       username: this.state.login
     })
-      
-    axios.post(loginPath, mData, {
-      headers: {
-        'Content-Type':'application/json',},
-      }).then(function (response) {
-      //handle success
-        Cookie.setCookie('access', response.access, 600000)//10minutes
-        // localStorage.setItem('access', response.access)
-        Cookie.setCookie('refresh', response.refresh, 600000)//10minutes
 
-          // localStorage.setItem('refresh', response.refresh)
-          //redirect
-          if(windowGlobal){
-            window.location.replace("http://localhost:8000/myprofile");
-          }
-          
-      })
-      .catch(function (response, error) {
-    //handle error
-        console.log(error)
-        console.log('error: ', response);
-      });
+    // let req = AxiosRequests.loginPostRequest
+    // req(data)
+    AxiosRequests.loginPostRequest(data) 
+    // AxiosRequests.loginPostRequest(data)  
+
+    // axios.post(loginPath, mData, {
+    //   headers: {
+    //     'Content-Type':'application/json',},
+    //   }).then(function (response) {
+    //   //handle success
+    //     Cookie.setCookie('access', response.access, 600000)//10minutes
+    //     Cookie.setCookie('refresh', response.refresh, 600000)//10minutes
+
+    //     //redirect
+    //     if(windowGlobal){
+    //       window.location.replace("http://localhost:8000/myprofile");
+    //     }  
+    //   })
+    //   .catch(function (response, error) {
+    // //handle error
+    //     console.log(error)
+    //     console.log('error: ', response);
+    //   });
   }
 
 

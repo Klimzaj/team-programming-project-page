@@ -1,6 +1,12 @@
 import React from 'react'
 import Layout from '../components/Layout'
 import styled from 'styled-components'
+import * as Cookie from '../backend-data/Cookie/'
+
+const windowGlobal = (typeof window !== 'undefined' && window)
+
+
+
 const Wrapper = styled.div`
  
   width: 100%;
@@ -164,7 +170,7 @@ class AddRecipe extends React.Component{
   
   render(){
     
-    return (
+    let content = (
       <Layout>
         <Wrapper>
           <h1>Add a Recipe</h1>
@@ -181,7 +187,7 @@ class AddRecipe extends React.Component{
             <NewIngredientButton 
                 type="button"
                 onClick= {this.newIngredient} 
-              >
+                >
                 +
             </NewIngredientButton>            
 
@@ -194,8 +200,8 @@ class AddRecipe extends React.Component{
                     name = {`Ingredient_${i}`}
                     placeholder= {`Ingredient ${i}`}
                     onChange = {this.onChangeInput}
-                  
-                  >
+                    
+                    >
 
                   </InputIngredient>)
                 })
@@ -209,7 +215,7 @@ class AddRecipe extends React.Component{
               onChange = {this.onChangeInput} 
               placeholder = "Steps to prepare this recipe.." 
               value={this.state.recipe}
-            />
+              />
             
             <SubmitButtonInput type='button'>Add a Recipe</SubmitButtonInput>
 
@@ -218,8 +224,23 @@ class AddRecipe extends React.Component{
         </Wrapper>
       </Layout>
     )
+    if(Cookie.getCookie('access')){
+
+      return (content)
+    }else{//axios request
+
+      if(windowGlobal){
+        // console.log()
+        window.location.replace("http://localhost:8000/");
+      }
+
+    }
+
+
+    } 
+
   }
-}
+// }
 
 
 

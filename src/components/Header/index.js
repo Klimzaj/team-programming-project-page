@@ -2,7 +2,7 @@ import React from 'react'
 import * as El from './styles'
 import {Link} from 'gatsby'
 import logoImg from './../../assets/kitchenHelperLogo.svg'
-import * as Cookie from '../Cookie/'
+import * as Cookie from '../../backend-data/Cookie/'
 const windowGlobal = typeof window !== 'undefined' && window
 
 let Menu = [];
@@ -43,7 +43,9 @@ class Header extends React.Component {
           },
           {
             name: 'My Profile',
-            path: '/myprofile'
+            path: '/myprofile',
+            hoverNames: ['My recipes', 'Favorites', 'Settings'],
+            hoverPaths: ['/myprofile/myrecipes', '/myprofile/favorites','/myprofile/settings']
           },
           {
             name: 'Logout',
@@ -70,7 +72,7 @@ class Header extends React.Component {
           },
           {
             name: 'Register',
-            path: 'register'
+            path: '/register'
           }
         ]
       }
@@ -101,7 +103,7 @@ class Header extends React.Component {
                     if(windowGlobal && '/' + window.location.href.split('/').pop()   === el.path){
                       return(
                         <El.StyledLi key={`menu_element__${i}`}>
-                          <El.StyledLink style = {{fontWeight: 'bold', paddingLeft: '5px', borderBottom: '#FFE600 solid 4px'}} to={el.path} className={this.state.path === `${el.path}` ?'active':''}>
+                          <El.StyledLink style = {{paddingLeft: '5px', borderBottom: '#FFE600 solid 4px'}} to={el.path} className={this.state.path === `${el.path}` ?'active':''}>
                             {el.name}
                           </El.StyledLink>
                         </El.StyledLi>
@@ -136,7 +138,7 @@ class Header extends React.Component {
             Menu.map((el, i) => {
               if(windowGlobal && '/'+window.location.href.split('/').pop()   === el.path){
                 return(
-                  <El.HoverLink style = {{fontWeight: 'bold', paddingLeft: '5px', borderLeft: '#FFE600 solid 4px'}} to={el.path} key={`menu_element__${i}`}>
+                  <El.HoverLink style = {{ paddingLeft: '5px', borderLeft: '#FFE600 solid 4px'}} to={el.path} key={`menu_element__${i}`}>
                         {el.name}
                     </El.HoverLink>
                 )
