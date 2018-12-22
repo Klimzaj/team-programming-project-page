@@ -143,7 +143,7 @@ class Register extends React.Component {
   }
 
   handleSubmit = e => {
-    
+    e.preventDefault();
     let data = JSON.stringify({
       password: this.state.password,
       username: this.state.login,
@@ -155,6 +155,8 @@ class Register extends React.Component {
       'Content-Type': 'application/json',
     }}).then(function (response) {
         //handle success
+
+        console.log('you should be redirected in a moment')
         if(windowGlobal){
           window.location.replace("http://localhost:8000/login");
         }
@@ -219,7 +221,7 @@ class Register extends React.Component {
 
             <SubmitButton
               type='submit'
-              onClick = {this.handleSubmit}
+              // onClick = {this.handleSubmit}
               value='Zarejestruj'
             />
           </Form>
