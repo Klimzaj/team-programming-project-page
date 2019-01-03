@@ -154,9 +154,9 @@ class Login extends React.Component {
         'Content-Type':'application/json',},
       }).then(function (response) {
       //handle success
-        Cookie.setCookie('access', response.access, 600000)//10minutes
+        Cookie.setCookie('access', response.data.access, 600000)//10minutes
         // localStorage.setItem('access', response.access)
-        Cookie.setCookie('refresh', response.refresh, 600000)//10minutes
+        Cookie.setCookie('refresh', response.data.refresh, 600000)//10minutes
 
           // localStorage.setItem('refresh', response.refresh)
           //redirect
