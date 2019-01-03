@@ -13,7 +13,7 @@ export  function getCookie(cname) {
     for(let i=0; i<cArr.length; i++) {
         let c = cArr[i].trim();
         //If the name is the cookie string at position 0, we found the cookie and return the cookie value
-        if (c.indexOf(name) == 0) 
+        if (c.indexOf(name) === 0) 
             return c.substring(name.length, c.length);
     }
      
