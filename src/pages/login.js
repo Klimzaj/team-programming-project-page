@@ -144,7 +144,7 @@ class Login extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    let mData = JSON.stringify({
+    const mData = JSON.stringify({
       password: this.state.password,
       username: this.state.login
     })
