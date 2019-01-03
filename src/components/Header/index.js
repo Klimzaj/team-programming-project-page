@@ -3,25 +3,18 @@ import * as El from './styles'
 import {Link} from 'gatsby'
 import logoImg from './../../assets/kitchenHelperLogo.svg'
 import * as Cookie from '../Cookie/'
+
 const windowGlobal = typeof window !== 'undefined' && window
 
 let Menu = [];
 
-// zamykac hover menu przy skalowaniu !!
-// search recipe jesli zalogowany !!
-// dodać active dla login przy register
 class Header extends React.Component {
   state = {
-    collapsed: false,
-    path: '/'
+
   }
   
   UNSAFE_componentWillMount() {
-    const path =  windowGlobal ? windowGlobal.location.pathname : '/'
 //was change in here from false to '/'
-    this.setState(prevState => ({ path: path }))
-    console.log(path)
-
     if(windowGlobal){
       if(Cookie.getCookie('access')){//if logged in
         Menu = [
@@ -98,23 +91,23 @@ class Header extends React.Component {
               <El.StyledUl>
                 {
                   Menu.map((el, i) => {
-                    if(windowGlobal && '/' + window.location.href.split('/').pop()   === el.path){
+                    // if(windowGlobal && '/' + window.location.href.split('/').pop()   === el.path){
                       return(
                         <El.StyledLi key={`menu_element__${i}`}>
-                          <El.StyledLink style = {{fontWeight: 'bold', paddingLeft: '5px', borderBottom: '#FFE600 solid 4px'}} to={el.path} className={this.state.path === `${el.path}` ?'active':''}>
+                          <El.StyledLink activeStyle = {{fontWeight: 'bold', paddingLeft: '5px', borderBottom: '#FFE600 solid 4px'}} to={el.path} className={this.state.path === `${el.path}` ?'active':''}>
                             {el.name}
                           </El.StyledLink>
                         </El.StyledLi>
                       )
-                    } else {
-                      return(
-                        <El.StyledLi key={`menu_element__${i}`}>
-                          <El.StyledLink to={el.path} className={this.state.path === `${el.path}` ?'active':''}>
-                            {el.name}
-                          </El.StyledLink>
-                        </El.StyledLi>
-                      )
-                    }
+                    // } else {
+                    //   return(
+                    //     <El.StyledLi key={`menu_element__${i}`}>
+                    //       <El.StyledLink to={el.path} className={this.state.path === `${el.path}` ?'active':''}>
+                    //         {el.name}
+                    //       </El.StyledLink>
+                    //     </El.StyledLi>
+                    //   )
+                    // }
                   }
                   )
                 }
@@ -134,19 +127,19 @@ class Header extends React.Component {
         <El.HoverMenu isVisible={collapsed} >
           {
             Menu.map((el, i) => {
-              if(windowGlobal && '/'+window.location.href.split('/').pop()   === el.path){
+              // if(windowGlobal && '/'+window.location.href.split('/').pop()   === el.path){
                 return(
-                  <El.HoverLink style = {{fontWeight: 'bold', paddingLeft: '5px', borderLeft: '#FFE600 solid 4px'}} to={el.path} key={`menu_element__${i}`}>
+                  <El.HoverLink activeStyle = {{fontWeight: 'bold', paddingLeft: '5px', borderLeft: '#FFE600 solid 4px'}} to={el.path} key={`menu_element__${i}`}>
                         {el.name}
                     </El.HoverLink>
                 )
-              }else{
-                return(
-                  <El.HoverLink to={el.path} key={`menu_element__${i}`}>
-                    {el.name}
-                  </El.HoverLink>
-                )
-              } 
+              // }else{
+              //   return(
+              //     <El.HoverLink to={el.path} key={`menu_element__${i}`}>
+              //       {el.name}
+              //     </El.HoverLink>
+              //   )
+              // } 
             }
             )
           }
