@@ -73,6 +73,7 @@ export const RecipesWrapper = styled.div`
     width: 100%;
 `
 export const Magnifier = styled.div`
+    
     background-image: url(${props => props.src});
     background-repeat: no-repeat;
     width: 25px;
