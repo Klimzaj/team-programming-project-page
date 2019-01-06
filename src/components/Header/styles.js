@@ -6,50 +6,15 @@ export const MainWrapper = styled.div`
   background: #fff;
   height: auto;
   position: relative;
-  @media (min-width: 425px) {
-      
-  }
-  @media (min-width: 500px) {
-    
-  }
-  @media (min-width: 768px) {
-    position: initial;
-  
-  }
-  @media (min-width: 1024px) {
-  
-  }
-  @media (min-width: 1200px) {
-    
-  }
-  
-  @media (min-width: 1400px) {
-    
-  }
-
 `
 export const LeftDiv = styled.div`
   position: relative;
   display: none;
   background-color: #fff;
-  @media (min-width: 425px) {
-      
-  }
-  @media (min-width: 500px) {
-    
-  }
+
   @media (min-width: 768px) {
     display: initial;
     width: 10%;  
-  }
-  @media (min-width: 1024px) {
-  
-  }
-  @media (min-width: 1200px) {
-    
-  }
-  
-  @media (min-width: 1400px) {
   }
 `
 export const IconDiv = styled.div`
@@ -105,26 +70,6 @@ export const RightDiv = styled.div`
 export const Logo = styled.img`
   margin: 0;
   padding: 0;
-  /* width: 50%;
-  height: 50%; */
-  @media (min-width: 425px) {
-      
-  }
-  @media (min-width: 500px) {
-    
-  }
-  @media (min-width: 768px) {
-    
-  }
-  @media (min-width: 1024px) {
-  
-  }
-  @media (min-width: 1200px) {
-    
-  }
-  @media (min-width: 1400px) {
- 
-  }
 `
 export const DarkLine = styled.div`
   position: absolute;
@@ -139,25 +84,47 @@ export const MenuDiv = styled.div`
 `
 export const StyledUl = styled.ul`
   display: flex;
-  /* justify-content: flex-end; */
 `
 export const StyledLi = styled.li`
   list-style-type: none;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #483E37;
+  
   .active {
     padding-bottom: 12px;
     border-bottom: 5px solid #ffe600;
   }
+
+  ${this}:hover{
+    background-color: #846f5f;
+    color: white;
+
+  }  
+    transition: color 0.5s ease-in;
+    transition: background-color 0.5s ease-in-out;
+  
 `
 export const StyledLink = styled(Link)`
   text-decoration: none;
-  color: #483E37;
-  margin: 10px;
+  color: inherit;
+  /* color: #483E37; */
+  margin-right: 5px;
+  margin-left: 5px;
   @media (min-width: 768px) {
-    font-size: 20px;
+    font-size: 0.8rem;
+  }
+  @media (min-width: 799px) {
+    font-size: 1rem;
   }
   @media (min-width: 1024px) {
-    font-size: 25px;
+    font-size: 1.25em;
   }  
+  @media(min-width: 1440px) {
+    font-size: 1.5rem;
+  }
 `
 export const HamburgerMenu = styled.div`
   position: absolute;
@@ -195,15 +162,18 @@ export const HamburgerMenu = styled.div`
 export const HoverMenu = styled.div`
   width: 100%;
   display: flex;
+  /* display: ${props => props.isVisible ? 'flex':'none'}; */
   opacity: ${props => props.isVisible ? '1'  : '0'};
   flex-direction: column;
   visibility: ${props => props.isVisible ? 'visible'  : 'hidden'};
-  height: ${props => props.isVisible ? '280px'  : '0px'};
-  transition: height 0.5s ease, visibility 0s;
+  height: ${props => props.isVisible?'280px':'0'};
+  /* height: ${props => props.menuItems > 5 ? '280px'  : '250px'}; */
+  transition: height 0.5s ease, visibility 1s;
+
 `
 export const HoverLink = styled(Link)`
   font-size: 23px;
-  width: 50%;
+  width: 100%;
   padding: 10px;
   color: #483E37;
   margin-left: 10px;
@@ -211,5 +181,11 @@ export const HoverLink = styled(Link)`
   &:before {
     content: '';
   }
-  
+
+  ${this}:hover{
+    background-color: #846f5f;
+    color: white;
+  transition: color 0.5s ease-in;
+  transition: background-color 0.5s ease-in-out;
+  }  
 `
