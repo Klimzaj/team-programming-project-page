@@ -9,12 +9,14 @@ const windowGlobal = typeof window !== 'undefined' && window
 let Menu = [];
 
 class Header extends React.Component {
-  state = {
-
+  constructor(props){
+    super(props)
+    this.state = {
+      collapsed: false
+    }
   }
   
   UNSAFE_componentWillMount() {
-//was change in here from false to '/'
     if(windowGlobal){
       if(Cookie.getCookie('access')){//if logged in
         Menu = [
@@ -68,11 +70,9 @@ class Header extends React.Component {
         ]
       }
     }
-
-
   }
-  handleCollapseMenu = () =>
-    this.setState(prevState => ({ collapsed: !prevState.collapsed }))
+
+  handleCollapseMenu = () => this.setState(prevState => ({ collapsed: !prevState.collapsed }))
 
   render () {
     const { collapsed } = this.state
@@ -91,23 +91,13 @@ class Header extends React.Component {
               <El.StyledUl>
                 {
                   Menu.map((el, i) => {
-                    // if(windowGlobal && '/' + window.location.href.split('/').pop()   === el.path){
-                      return(
+                    return(
                         <El.StyledLi key={`menu_element__${i}`}>
-                          <El.StyledLink activeStyle = {{fontWeight: 'bold', paddingLeft: '5px', borderBottom: '#FFE600 solid 4px'}} to={el.path} className={this.state.path === `${el.path}` ?'active':''}>
+                          <El.StyledLink  activeStyle = {{fontWeight: 'bold', paddingLeft: '5px', borderBottom: '#FFE600 solid 4px'}} to={el.path} className={this.state.path === `${el.path}` ?'active':''}>
                             {el.name}
                           </El.StyledLink>
                         </El.StyledLi>
                       )
-                    // } else {
-                    //   return(
-                    //     <El.StyledLi key={`menu_element__${i}`}>
-                    //       <El.StyledLink to={el.path} className={this.state.path === `${el.path}` ?'active':''}>
-                    //         {el.name}
-                    //       </El.StyledLink>
-                    //     </El.StyledLi>
-                    //   )
-                    // }
                   }
                   )
                 }
@@ -124,22 +114,16 @@ class Header extends React.Component {
             <div />
           </El.HamburgerMenu>
         </El.MainWrapper>
-        <El.HoverMenu isVisible={collapsed} >
+        {/* {console.log('length of menu: ', Menu.length)} */}
+        <El.HoverMenu isVisible={collapsed} menuItems = {Menu.length}>
           {
             Menu.map((el, i) => {
-              // if(windowGlobal && '/'+window.location.href.split('/').pop()   === el.path){
+                if(collapsed)
                 return(
                   <El.HoverLink activeStyle = {{fontWeight: 'bold', paddingLeft: '5px', borderLeft: '#FFE600 solid 4px'}} to={el.path} key={`menu_element__${i}`}>
                         {el.name}
                     </El.HoverLink>
                 )
-              // }else{
-              //   return(
-              //     <El.HoverLink to={el.path} key={`menu_element__${i}`}>
-              //       {el.name}
-              //     </El.HoverLink>
-              //   )
-              // } 
             }
             )
           }
