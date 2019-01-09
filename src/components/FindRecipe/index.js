@@ -3,6 +3,8 @@ import * as El from './style'
 import MainImage from '../../images/findRecipeImage.jpg'
 import magnifier from '../../images/magnifier.png'
 import axios from 'axios'
+// import Cookies from 'universal-cookie'
+
 
 const searchRecipePath = '/api/recipes/'
 
@@ -12,24 +14,57 @@ class FindRecipe extends Component{
         super(props)
         this.state = {
             searchInput: '',
+            searchInputFieldActive: false,
         }
     }
 
     onChangeInput = e => {
         const { name, value } = e.target
         this.setState(prevState => ({ ...prevState, [name]: value }))
-
+      
+        this.activateField(e)
+        e.preventDefault()
     }
+
+    activateField = e => {
+        if(e.target.name === 'searchInput'){
+          this.setState({
+            searchInputFieldActive: true
+          })
+        }
+      }
+    
+      disableFocus = e => {
+        if(e.target.name === 'searchInput'){
+          if (e.target.value === '') {
+            this.setState({
+                searchInputFieldActive: false
+            })
+          }
+        }  
+      }
 
     handleSubmit = e => {
         e.preventDefault()
-        console.log(' searchInput clicked! searching for: ', this.state.searchInput);
+        // const cookies = new Cookies()
 
-        axios.get('http://localhost:8007'+searchRecipePath+this.state.searchInput, {'headers':  {'Content-Type':'application/json'}})
-        .then(function(response){
-            console.log(response.data); // ex.: { user: 'Your User'}
-            console.log(response.status); // ex.: 200
-        });        
+        console.log(' searchInput clicked! searching for: ', this.state.searchInput);
+        // +this.state.searchInput
+        axios.get('http://127.0.0.1:8007'+searchRecipePath, 
+        {
+            'headers':  
+            {
+                'Content-Type':'application/json',
+                'Authorization': 'Bearer' + localStorage.getItem('access'),
+            },
+        })
+        .then((response) => {
+            console.log('response: ',response); // ex.: { user: 'Your User'}
+            console.log('response.data: ',response.data); // ex.: { user: 'Your User'}
+            console.log('response.status',response.status); // ex.: 200
+        }).then((err)=>{
+            console.log('error: ', err)
+        })        
     }
 
     render(){
@@ -40,20 +75,31 @@ class FindRecipe extends Component{
                         Znajdź pomysł na obiad!
                     </El.MainText> 
                     
-                    <form onSubmit={this.handleSubmit}>
-                        <El.Magnifier 
-                            src = {magnifier} 
-                            onClick = {this.handleSubmit}
-                        /> 
+                    <El.Form onSubmit={this.handleSubmit}>
                         
-                        <El.SearchInput 
+                        <label htmlFor='searchInput' className={this.state.searchInputFieldActive?'field-active':''}>Recipe name</label>
+                        <input
                             type = 'text' 
                             name = 'searchInput' 
-                            placeholder = 'Recipe Name' 
+                            placeholder = 'Recipe name' 
                             onChange = {this.onChangeInput}
+                            onFocus={this.activateField}
+                            onBlur={this.disableFocus} 
                             required 
                         />
-                    </form>
+
+                        <button
+                            type='submit'
+                            name='submitButton'
+                            value='Submit'
+                            src = {magnifier} 
+                        >
+                            <img 
+                                src= {magnifier}
+                                alt="search button image"
+                            />
+                        </button> 
+                    </El.Form>
                 
                 </El.Image>
             </El.Wrapper>
