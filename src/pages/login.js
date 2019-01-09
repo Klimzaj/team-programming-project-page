@@ -3,10 +3,7 @@ import Layout from '../components/Layout'
 import axios from 'axios'
 import loginImage from '../images/login.jpeg'
 import * as El from '../components/Login/style'
-import * as Cookie from '../components/Cookie/'
-import * as Cookies from 'universal-cookie'
 
-//consts do not delte those
 const windowGlobal = typeof window !== 'undefined' && window
 const loginPath = '/auth/token/obtain/'
 
@@ -37,71 +34,59 @@ class Login extends React.Component {
       this.setState({
         loginFieldActive: true
       })
-    }else if(e.target.name = 'password'){
+    }else if(e.target.name === 'password'){
       this.setState({
           passwordFieldActive: true
       })
     }
   }
 
-disableFocus = e => {
-  if(e.target.name === 'login'){
-    if (e.target.value === '') {
-      this.setState({
-          loginFieldActive: false
-      })
-    }
-  }else if(e.target.name = 'password'){
-    if (e.target.value === '') {
-      this.setState({
-          passwordFieldActive: false
-      })
-    }
-  } 
-}
+  disableFocus = e => {
+    if(e.target.name === 'login'){
+      if (e.target.value === '') {
+        this.setState({
+            loginFieldActive: false
+        })
+      }
+    }else if(e.target.name === 'password'){
+      if (e.target.value === '') {
+        this.setState({
+            passwordFieldActive: false
+        })
+      }
+    } 
+  }
 
 
 
   handleSubmit = e => {
-    e.preventDefault();
+    e.preventDefault()
     const mData = JSON.stringify({
       password: this.state.password,
       username: this.state.login
     })
-      
-    axios.post(loginPath, mData, {
-      headers: {
-        'Content-Type':'application/json',},
-      }).then(function (response) {
-      //handle success
-        console.log('success!')
+    
+    if(windowGlobal){
+      axios.post(loginPath, mData, {
+        headers: {
+          'Content-Type':'application/json',},
+        }).then(function (response) {
+          //handle success
+          console.log('success: ', response)
+  
+          localStorage.setItem('access', response.data.access)
+          localStorage.setItem('refresh', response.data.refresh)
+          console.log('get access: ', localStorage.getItem('access'))
+          console.log('get refresh: ', localStorage.getItem('refresh'))
         
-        // cookies.set('myCat', 'Pacman', { path: '/' });
-        // console.log(c  ookies.get('myCat')); // Pacman
-        // const cookies = new Cookies();  
-        
-        //date of token to live to
-        let date = new Date(); //Create an date object
-        let exdays = 60;
-        date.setTime(date.getTime() + (exdays*1000*60*60*24));
-
-        //access token
-        Cookie.setCookie('access', response.data.access, date)
-        //refresh token
-        Cookie.setCookie('refresh', response.data.refresh, date)//10minutes
-        // Cookies.getCookie('access')
-        // console.log('moje ciasteczke: ', Cookies.getAll())
-      
-          //redirect
-          if(windowGlobal){
-            window.location.replace("http://localhost:8000/myprofile");
-          }
-          
-      })
-      .catch(function (response, error) {
-    //handle error
-        console.log('An error has occured: ', error);
-      });
+          //redirect    
+          window.location.replace("http://localhost:8000/myprofile")
+            
+        })
+        .catch((error) => {
+          console.log(error)
+        });
+    }
   }
 
 

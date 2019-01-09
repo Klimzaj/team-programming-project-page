@@ -92,7 +92,7 @@ class Register extends React.Component {
     }}).then(function (response) {
         //handle success
 
-        console.log('You will be redirected in few seconds.')
+        // console.log('You will be redirected in few seconds.')
         if(windowGlobal){
           window.location.replace("http://localhost:8000/login");
         }

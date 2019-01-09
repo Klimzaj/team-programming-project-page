@@ -1,113 +1,86 @@
 import React from 'react'
-// import Recaptcha from 'react-google-recaptcha'
+import Recaptcha from 'react-google-recaptcha'
 import Layout from '../components/Layout'
-import styled from 'styled-components'
+import * as El from './../components/Contact/style'
 
 //const RECAPTCHA_KEY = process.env.GATSBY_SITE_RECAPTCHA_KEY
 
-const ContactWrapper = styled.div`
-  color: #737373;
-  font-size: 1rem;
-  
-  display: flex;
-  flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  h1{
-    
-    color:#333333;
-  }
-  
-`
-const Form = styled.form`
-
-  display: flex;
-  flex-direction: column;
-  input{
-    all: initial;
-    /* display: block; */
-    background-color: white;
-    border-radius: 10px;
-    border: 1px solid grey;
-    width: 100%;
-    height: 25px;
-    padding-left: 0.5rem;
-    margin: 0.5rem 0;  
-    
-    ${this}::placeholder{
-      color: grey;
-    
-    }    
-  }
-  textarea{
-    all: initial;
-    background-color: white;
-    border-radius: 10px;
-    border: 1px solid grey;
-    width: 100%;
-    height: 100px;
-    margin: 0.5rem 0;  
-    padding: 0.5rem;
-    overflow: hidden;
-    ${this}::placeholder{
-      color: grey;
-    }    
-  }
-  label{
-    display: block;
-  }
-
-  button{
-    /* margin: auto; */
-    /* flex: 0.5; */
-    /* align-self:center; */
-    /* align: center; */
-    /* align-items: center; */
-    padding: 0 ;
-    all: initial;
-    display: block;
-    width: 100px;
-    height: 50px;
-    margin: 0 auto;
-    margin: 1rem auto;
-    background-color: #ffe600;
-    border-radius: 10px;
-    text-align: center;
-    ${this}:active{
-      text-decoration: none;
-      color: white;
-      background-color: #C6B305;
-      text-decoration: none !important;
-    }
-    ${this}:hover{
-      text-decoration: underline;
-      cursor: pointer;
-      /* color: white; */
-    }
-    
-
-  }
-`
 class Contact extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
       firstname: '',
+      firstNameFieldActive: false,
       lastname: '',
+      lastNameFieldActive: false,
       email: '',
-      message: ''
+      emailFieldActive: false,
+      message: '',
+      messageFieldActive: false,
     }
   }
   
-  // encode = (data) => {
-  //   return Object.keys(data)
-  //       .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-  //       .join("&");
-  // }
   onChangeInput = e => {
     const { name, value } = e.target
     this.setState(prevState => ({ ...prevState, [name]: value }))
+    
+    this.activateField(e)
+    e.preventDefault()
   }
+
+
+  activateField = e => {
+    if(e.target.name === 'firstname'){
+      this.setState({
+        firstNameFieldActive: true
+      })
+    }else if(e.target.name === 'lastname'){
+      this.setState({
+          lastNameFieldActive: true
+      })
+    }else if(e.target.name === 'email'){
+      this.setState({
+          emailFieldActive: true
+      })
+    }else if(e.target.name === 'message'){
+      this.setState({
+          messageFieldActive: true
+      })
+    }
+  }
+
+  disableFocus = e => {
+    if(e.target.name === 'firstname'){
+      if (e.target.value === '') {
+        this.setState({
+            firstNameFieldActive: false
+        })
+      }
+    }else if(e.target.name === 'lastname'){
+      if (e.target.value === '') {
+        this.setState({
+            lastNameFieldActive: false
+        })
+      }
+    }else if(e.target.name === 'email'){
+      if (e.target.value === '') {
+        this.setState({
+            emailFieldActive: false
+        })
+      }
+    }else if(e.target.name === 'message'){
+      if (e.target.value === '') {
+        this.setState({
+            messageFieldActive: false
+        })
+      }
+    }   
+
+  }
+
+
+  
+
   handleSubmit = e => {
     // if(this.grecaptcha.getResponse() !== 0 && this.grecaptcha.getResponse() !== '' )
     // {
@@ -127,62 +100,70 @@ class Contact extends React.Component {
     // }
   }
   render() {
-    const {firstname, lastname, email, message} = this.state
+    // const {firstname, lastname, email, message} = this.state
     return (
       <Layout>
-        <ContactWrapper>
+        <El.ContactWrapper>
           <h1>Contact</h1>
-          <Form 
+          <El.Form 
             name="contact"
             method="POST"
             onSubmit={this.handleSubmit}
             //data-netlify="true" 
           >
             <input type="hidden" name="form-name" value="contact" />
-            {/* <FormP>Imię</FormP> */}
-            <label htmlFor="firstname">Name: </label>
+
+            <label htmlFor="firstname" className={this.state.firstNameFieldActive ? "field-active" : ""} >Name: </label>
             <input
               type='text'
               name='firstname'
+              value={this.state.firstname}
               placeholder="Firstname"
-              value={firstname}
+
               onChange={this.onChangeInput}
-              // required
+              onFocus={this.activateField}
+              onBlur={this.disableFocus} 
+              required
             />
-            {/* <FormP>Nazwisko</FormP> */}
-            <label htmlFor = "lastname">Lastname: </label>
+
+            <label htmlFor = "lastname" className={this.state.lastNameFieldActive ? "field-active" : ""}>Lastname: </label>
             <input
               type='text'
               name='lastname'
+              value={this.state.lastname}
               placeholder="Lastname"
 
-              value={lastname}
               onChange={this.onChangeInput}
-              //required
+              onFocus={this.activateField}
+              onBlur={this.disableFocus} 
+              required
             />
-            {/* <FormP>Email</FormP> */}
-            <label htmlFor="email">E-mail: </label>
+
+            <label htmlFor="email" className={this.state.emailFieldActive ? "field-active" : ""}>E-mail: </label>
             <input
               type='email'
               name='email'
+              value={this.state.email}
               placeholder="E-mail"
               
-              value={email}
               onChange={this.onChangeInput}
-              //required
+              onFocus={this.activateField}
+              onBlur={this.disableFocus} 
+              required
             />
-            {/* <FormP>Wiadomość</FormP> */
-            }
-            <label htmlFor="message">Message: </label>
+
+            <label htmlFor="message" className={this.state.messageFieldActive ? "field-active" : ""}>Message: </label>
             <textarea
               type='text'
               name='message'
-              placeholder="Message"
+              value={this.state.message}
+              placeholder="Your message"
               
               rows="4"   
-              value={message}
               onChange={this.onChangeInput}
-              //required
+              onFocus={this.activateField}
+              onBlur={this.disableFocus} 
+              required
             />
             {/* <StyledRecaptcha
               ref="recaptcha"
@@ -195,8 +176,8 @@ class Contact extends React.Component {
             >
             Send 
             </button>
-          </Form>
-        </ContactWrapper>
+          </El.Form>
+        </El.ContactWrapper>
       </Layout>
     )
   }

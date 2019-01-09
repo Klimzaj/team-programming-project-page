@@ -1,221 +1,246 @@
 import React from 'react'
 import Layout from '../components/Layout'
-import styled from 'styled-components'
-const Wrapper = styled.div`
- 
-  width: 100%;
-  height: auto;
-  margin: auto;
-  padding: 0 1rem 0 1rem;
+// import styled from 'styled-components'
+import * as El from './../components/AddRecipe/style'
+// import * as Cookies from './../components/Cookie/'
+import Cookies from 'universal-cookie'
+import axios from 'axios'
+import IngredientInput from '../components/IngredientInput.js'
 
 
-  display: flex;
-  flex-direction: column;
-  form{
-    margin: auto;
-    @media(max-width: 320px){
-        max-width: 250px;
-        
-    }
-    @media(max-width: 768px){
-      max-width: 384px;
-    }
-    @media(max-width: 1024px){
-      max-width: 512px;
-    }
-    
-  }
-  h1 {
-    text-align: center;
-  }
-  input {
-    all: initial;
-    display: block;
-    background-color: white;
-    
-    height: 30px;
-    width: 100%; 
-    
-    border: 1px solid grey;
-    border-radius: 30px;
-    margin: 0.5rem 0 0.5rem 0; 
-    padding-left: 0.5rem;
-    
-  } 
-  textarea{ 
-    all: initial;
-    display: block;
-    background-color: white;
-    margin: 0.5rem 0 0.5rem 0; 
-    padding: 0.5rem;
-
-    border: 1px solid grey;
-    width: 100%;
-    height: 200px;
-    border-radius: 10px;
-    ${this}::placeholder{
-      /* padding: 0.5rem; */
-    }
-    
-    /* background-color: red; */
-  }
-
-  label{
-    display: block;
-  } 
-` 
-  const InputIngredient = styled.input`
-    display: block;
-  `
-  
-  const NewIngredientButton = styled.button`
-    all: initial;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    width: 20px;
-    height: 20px;
-    background-color: #FFE600;
-    position: relative;
-    top: -20px;
-    float: right;
-    ${this}:hover{
-      cursor: pointer;
-    }
-    ${this}:active{
-      background-color: #C6B305;
-      color: white;
-    }
-
-  `
-
-  const TitleInput = styled.input`
-
-  `
-  const DescriptionInput = styled.input`
-    
-  `
-  const RecipeInput = styled.textarea`
-
-  ` 
-  const SubmitButtonInput = styled.button`
-    all: initial;
-    background-color: #ffe600;
-    border-radius: 10px;
-    display: block;
-    width: 100px;
-    height: 25px;
-    text-align: center;
-
-  padding: 13px 29px;
-    
-    margin: 1rem auto;
-    ${this}:active{
-      background-color: #C6B305;
-      color: white;
-      text-decoration: none !important;
-    }
-    ${this}:hover{
-      cursor: pointer;
-      text-decoration: underline;
-    }
-  `
+const addRecipePath ='/api/recipes/'
+const windowGlobal = typeof window !== 'undefined' && window
 
 class AddRecipe extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      title: '',
+      
+      name: '',
+      nameFieldActive: false,
+      image: 'http://placehold.it/150x150?text=foodporn',
       description: '',
+      descriptionFieldActive: false,
+      votes: 10,
+      recipes_ingredients: [
+        {
+          quantity: "ingredient's quantity",
+          ingredient: {
+            image: "http://placehold.it/150x150?text=foodporn",
+            name: "ingredient's name",
+            description: "ingredient's description",
+            price: 1,
+            unit_price: 1,
+            unit_quantity: "150G"
+          }
+        }
+      ],
       ingredientsList: [
         {
-          name: 'Ingredient_0',
-          value: '',
-        },{
+          // ingredientFieldActive: false,
+          image: 'http://placehold.it/150x150text=foodporn',
           name: 'Ingredient_1',
-          value: '',
+          // value: '',
+          unit_price: 1,
+          price: 1,
+          unit_quantity: "150G",
+          description: 'sample ingredient description'
         },
       ],
-      recipe: ''
+      recipe: '',
+      recipeFieldActive: false,
+      
     }
   }
-
+  
+  UNSAFE_componentWillMount = () => {
+    // if(windowGlobal && !localStorage.getItem('access'))
+    //   window.location.replace("http://localhost:8000/login");
+    
+  }
+  
   onChangeInput = e => {
     const { name, value } = e.target
     this.setState(prevState => ({ ...prevState, [name]: value }))
+
+    this.activateField(e)
+    e.preventDefault()
   }
 
+
+  activateField = (e) => {
+    if(e.target.name === 'name'){
+      this.setState({
+        nameFieldActive: true
+      })
+    }else if(e.target.name === 'description'){
+      this.setState({
+          descriptionFieldActive: true
+      })
+    }else if(e.target.name === 'recipe'){ 
+      this.setState({
+          recipeFieldActive: true
+      })
+    }
+  }
+
+  disableFocus = e => {
+    if(e.target.name === 'name'){
+      if (e.target.value === '') {
+        this.setState({
+            nameFieldActive: false
+        })
+      }
+    }else if(e.target.name === 'description'){
+      if (e.target.value === '') {
+        this.setState({
+            descriptionFieldActive: false
+        })
+      }
+    }else if(e.target.name === 'recipe'){
+      if (e.target.value === '') {
+        this.setState({
+            recipeFieldActive: false
+        })
+      }
+    } 
+  }
+
+  handleSubmit = e => {
+    e.preventDefault()
+
+    let mData = JSON.stringify({
+      image: 'http://placehold.it/150x150?text=foodporn',
+      name: 'Sample recipe',
+      description: 'sample recipe description',
+      votes: 10,
+      recipes_ingredients: [...this.state.recipes_ingredients]
+
+    })
+    console.log(mData)
+
+    if(windowGlobal)
+      axios.post(addRecipePath,  mData, {
+        headers: {
+          'Content-Type':'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('access'),
+        },
+        }).then((response) => {
+        //handle success
+          console.log('success response: ', response)
+          //redirect
+            // if(windowGlobal){
+            //   window.location.replace("http://localhost:8000/myprofile");
+            // }
+            
+        })
+        .catch(( error) => {//handle error
+          console.log(error)
+        });
+
+  }
   newIngredient  = e => {
-    
+
     let newName = `Ingredient_${(this.state.ingredientsList.length).toString()}`
-    // console.log("newName: ", newName)
-    // console.log(...this.state.ingredientsList)
-    // console.log(typeof newStateData)
-    // console.log(newStateData)
-    // console.log("newName typeof: ", typeof newName)
     let newStateData = [...this.state.ingredientsList]
     newStateData.push({name: newName, value: ''})
 
     this.setState(() => {
       return {ingredientsList: newStateData};
     });
+
   }
   
   render(){
-    
-    return (
+    return(
       <Layout>
-        <Wrapper>
+        <El.Wrapper>
           <h1>Add a Recipe</h1>
-          <form onSubmit={this.handleSubmit}>
-            <label htmlFor="title">Title</label>
-            <TitleInput type = 'text' name = 'title' placeholder = 'Title' onChange={this.onChangeInput} value={this.state.title}/>
+
+          <El.Form name='add_recipe' onSubmit={this.handleSubmit}>
+
+            <label htmlFor="name" className={this.state.nameFieldActive ? "field-active" : ""}>Recipe name</label>
+            <input 
+              type = 'text' 
+              name = 'name' 
+              value={this.state.name}
+              placeholder = 'Recipe name' 
+              onChange={this.onChangeInput}
+              onFocus={this.activateField}
+              onBlur={this.disableFocus}  
+              required
+              
+              />
             
-            <label htmlFor="title">Short description.</label>
-            <DescriptionInput type='text' name = 'description' placeholder = 'Description' onChange = {this.onChangeInput} value={this.state.description}/>
-            
-            <label htmlFor ='component'>Lista składników: </label>
-
-
-            <NewIngredientButton 
-                type="button"
-                onClick= {this.newIngredient} 
-              >
-                +
-            </NewIngredientButton>            
-
-            <ul style={{margin: '0', padding: '0'}}>
-              {
-                this.state.ingredientsList.map((item, i)=>{
-                  return(<InputIngredient
-                    key = {`Ingredient_${i}`} 
-                    type = "text" 
-                    name = {`Ingredient_${i}`}
-                    placeholder= {`Ingredient ${i}`}
-                    onChange = {this.onChangeInput}
-                  
-                  >
-
-                  </InputIngredient>)
-                })
-              }
-            </ul>
-      
-            <label htmlFor = 'recipe'>Sposób przygotowania: </label>
-            <RecipeInput 
-              name = 'recipe' 
-              type='text'
+            <label htmlFor="description" className={this.state.descriptionFieldActive ? "field-active" : ""}>Short description</label>
+            <input 
+              type='text' 
+              name = 'description'
+              value={this.state.description}
+              placeholder = 'Description' 
               onChange = {this.onChangeInput} 
-              placeholder = "Steps to prepare this recipe.." 
-              value={this.state.recipe}
-            />
+              onFocus={this.activateField}
+              onBlur={this.disableFocus} 
+              required
+              />
             
-            <SubmitButtonInput type='button'>Add a Recipe</SubmitButtonInput>
 
-          </form>
+            <div style={{display: 'flex',}}>
+              <p style={{ color: 'black'}} htmlFor ='component'>Ingredients list: </p>
+              
+              <El.NewIngredientButton
+                  type="button"
+                  onClick= {this.newIngredient} 
+                  />
+            </div>
+            {
+              this.state.ingredientsList.map((item, i)=>{
+                return(
+                  <div key={`div_ingredient_${i}`}>
+                      <label
+                        key = {`label_ingredient_${i}`} 
+                        htmlFor = {`ingredient_${i}}`}
+                        className = {item.ingredientFieldActive ? 'field-active': ''}
+                        >
+                        
+                      </label>
+                      <input
+                        key = {`Ingredient_${i}`} 
+                        type = "text" 
+                        name = {`ingredient_${i}`}
+                        placeholder= {`New ingredient`}
+                        onChange = {this.onChangeInput}
+                        onFocus={this.activateField}
+                        onBlur={this.disableFocus} 
+                        />
+                    </div>
+                )})
+              }
 
-        </Wrapper>
+            <label htmlFor = 'recipe' className={this.state.recipeFieldActive ? "field-active" : ""}>Recipe's steps </label>
+            <textarea
+              type='text'
+              name = 'recipe' 
+              value={this.state.recipe}
+              rows = "4"
+              placeholder = "Recipe's steps" 
+              onChange = {this.onChangeInput} 
+              onFocus={this.activateField}
+              onBlur={this.disableFocus} 
+              required
+              
+              />
+            
+            <El.SubmitButtonInput 
+              type='submit'
+              >
+              Add a Recipe
+            </El.SubmitButtonInput>
+
+          </El.Form>
+          {/* <IngredientInput></IngredientInput> */}
+
+        </El.Wrapper>
       </Layout>
     )
   }
