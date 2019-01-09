@@ -4,8 +4,13 @@ import { Link } from 'gatsby'
 export const MainWrapper = styled.div`
   display: flex;
   background: #fff;
-  height: auto;
+  height: ${props => props.heightExpand ? '210px':'150px'}; 
+  /* height: auto; */
+  max-height: 300px;
   position: relative;
+  /* transition: all 0.5s ease; */
+  transition: all 0.2s ease-in-out; 
+
 `
 export const LeftDiv = styled.div`
   position: relative;
@@ -126,8 +131,55 @@ export const StyledLink = styled(Link)`
     font-size: 1.5rem;
   }
 `
+export const SubMenuLink = styled(Link)`
+  text-decoration: none;
+  color: white;
+  
+  margin-right: 5px;
+  margin-left: 5px;
+
+  @media (min-width: 768px) {
+    font-size: 0.8rem;
+  }
+  @media (min-width: 799px) {
+    font-size: 1rem;
+  }
+  @media (min-width: 1024px) {
+    font-size: 1.25em;
+  }  
+  @media(min-width: 1440px) {
+    font-size: 1.5rem;
+  }
+  padding-left: 5px;
+  &:hover{
+    /* background-color: red; */
+    border-bottom: 4px solid #FFE600;
+    transition: all 0.15s ease-in-out;
+  }
+`
+export const SpecialP = styled.span`
+  text-decoration: none;
+  color: white;
+  
+  /* margin-right: 5px;
+  margin-left: 5px; */
+
+  @media (min-width: 768px) {
+    font-size: 0.8rem;
+  }
+  @media (min-width: 790px) {
+    font-size: 1rem;
+  }
+  @media (min-width: 1024px) {
+    font-size: 1.25em;
+  }  
+  @media(min-width: 1440px) {
+    font-size: 1.5rem;
+  }
+`
 export const HamburgerMenu = styled.div`
   position: absolute;
+  cursor: pointer;
   top: 53px;
   right: 40px;
   & > div {
