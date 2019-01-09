@@ -4,102 +4,108 @@ import styled from 'styled-components'
 
 export const Wrapper = styled.div`
  
+  z-index: 0;
+  background-color: khaki;
   width: 100%;
   height: auto;
   margin: auto;
   padding: 0 1rem 0 1rem;
 
-
   display: flex;
   flex-direction: column;
-  form{
-    margin: auto;
-    @media(max-width: 320px){
-        max-width: 250px;
-        
-    }
-    @media(max-width: 768px){
-      max-width: 384px;
-    }
-    @media(max-width: 1024px){
-      max-width: 512px;
-    }
-    
-  }
+  align-items: center;
   h1 {
     text-align: center;
   }
-  input {
-    all: initial;
-    display: block;
-    background-color: white;
-    
-    height: 30px;
-    width: 100%; 
-    
-    border: 1px solid grey;
-    border-radius: 30px;
-    margin: 0.5rem 0 0.5rem 0; 
-    padding-left: 0.5rem;
-    
-  } 
-  textarea{ 
-    all: initial;
-    display: block;
-    background-color: white;
-    margin: 0.5rem 0 0.5rem 0; 
-    padding: 0.5rem;
-
-    border: 1px solid grey;
-    width: 100%;
-    height: 200px;
-    border-radius: 10px;
-    ${this}::placeholder{
-      /* padding: 0.5rem; */
-    }
-    
-    /* background-color: red; */
-  }
-
-  label{
-    display: block;
-  } 
 ` 
-  export const InputIngredient = styled.input`
-    display: block;
-  `
-  
+
   export const NewIngredientButton = styled.button`
     all: initial;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; 
     border-radius: 10px;
     width: 20px;
     height: 20px;
     background-color: #FFE600;
+    &::before{
+      content: '+';
+    }
     position: relative;
-    top: -20px;
-    float: right;
+    top: 3px;
+    left: 10px;
+        
     ${this}:hover{
       cursor: pointer;
     }
     ${this}:active{
       background-color: #C6B305;
       color: white;
+      transition: all 0.25s ease;
+    }
+  `
+  export const Form = styled.form`
+    display: flex;
+    flex-direction: column;
+    
+    /* change max-width if you need widther inputs */
+    /* max-width: 300px; */
+    @media(min-width: 320px){
+      width: 300px;
+    }
+    @media(min-width: 500px){
+      width: 400px;
+    }
+    @media(min-width: 768px){
+      width: 500px;
+    }
+
+
+    textarea[type='text'],input[type='text'],input[type='password'],input[type='email'] {
+        all: initial;
+        background-color: white;
+        padding: 0.3rem 0.2rem;
+        border-radius: 3px;
+
+        z-index: 2;
+
+        outline: none;
+        border-bottom: 2px solid #ffe600;
+        &::-webkit-input-placeholder {
+            color: grey;
+        }
+    }
+
+    label {
+        z-index: 1;
+        display: inline-block;
+        position:relative;
+        left: 2px;
+        bottom: -29px;
+        transition: all 150ms ease-in;
+        color: #ffffff;
+        color: black;
+        cursor: default;
+    }
+    label.field-active {
+        transform: translateY(-30px);
+        font-size: .8rem;
+    }
+    .floating-label {
+        -webkit-appearance: none !important;
+    }
+
+    input[type="text"]:focus::-webkit-input-placeholder{
+        opacity: 0;
+        transition: opacity 0.5s ease; 
+    }
+
+    input[type="text"]:not(:focus)::-webkit-input-placeholder{
+        opacity: 1;
+        transition: opacity 0.5s ease; 
     }
 
   `
-
-  export const NameInput = styled.input`
-
-  `
- export  const DescriptionInput = styled.input`
-    
-  `
-  export const RecipeInput = styled.textarea`
-
-  ` 
   export const SubmitButtonInput = styled.button`
     all: initial;
     background-color: #ffe600;
@@ -109,7 +115,7 @@ export const Wrapper = styled.div`
     height: 25px;
     text-align: center;
 
-  padding: 13px 29px;
+    padding: 13px 29px;
     
     margin: 1rem auto;
     ${this}:active{

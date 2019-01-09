@@ -2,52 +2,26 @@ import styled from 'styled-components'
 
 export const Wrapper = styled.div`
     width: 100%;
-    background-color: lightblue;
+    /* background-color: lightblue; */
 `
 export const MainElement = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
+    z-index:-1;
 
 `
 
 export const Image = styled.div`
     width: 100%;
     height: 435px;
+    z-index: 0;
     background-image: url(${props => props.source});
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     @media(min-width: 1024px){
         height: 600px;
-    }
-`
-
-export const SearchInput = styled.input`
-    all: initial;
-
-    background-color: white;
-    width: 400px;
-    height: 50px;
-
-    position: relative;
-    top: 100px;
-    
-    border-radius: 40px;
-
-    padding-left: 20px;
-    margin-left: 20px;
-
-    @media(max-width: 320px){
-        width: 200px;
-    }
-
-    @media(max-width: 500px){
-        width: 200px;
-    }
-
-    @media(min-width: 1024){
-        top: 200px;
     }
 `
 
@@ -58,33 +32,106 @@ export const MainText = styled.h2 `
     font-size: 2rem;
     margin-left: 20px;
     display: flex;
-     @media(max-width: 320px){
-        font-size: 1.5rem;
-    }
-
-    @media(max-width: 500px){
-         width: 200px;
-        font-size: 1.5rem;
-    }
 `
+export const Form = styled.form`
+    display: flex;
+    flex-direction: column;
 
+    position: relative;
+    top: 75px;
+    margin-left: 20px;
+    justify-content: center;
+    align-items: flex-start;
+    textarea, label, input {
+        width: 300px;
+    }
+    textarea[type="text"]:focus::-webkit-input-placeholder,input[type="text"]:focus::-webkit-input-placeholder,input[type="email"]:focus::-webkit-input-placeholder{
+        opacity: 0;
+        transition: opacity 0.5s 0.5s ease; 
+        
+    }
+
+    textarea[type="text"]:not(:focus)::-webkit-input-placeholder,input[type="text"]:not(:focus)::-webkit-input-placeholder, input[type="email"]:focus::-webkit-input-placeholder{
+        opacity: 1;
+        transition: opacity 0.5s 0.5s ease; 
+    }
+
+    textarea[type='text'], input[type='text'],input[type='password'],input[type='email'] {
+        all: initial;
+        background-color: white;
+        padding: 0.3rem 0.2rem;
+        border-radius: 3px;
+
+        z-index: 2;
+        /* opacity: 0.8; */
+        /* color: white; */
+        outline: none;
+        border-bottom: 2px solid #ffe600;
+        &::-webkit-input-placeholder {
+            color: grey;
+        }
+    }
+
+    label {
+        z-index: 1;
+        display: inline-block;
+        display: block;
+        position:relative;
+        left: 2px;
+        bottom: -29px;
+        transition: all 150ms ease-in;
+        color: #ffffff;
+        cursor: default;
+    }
+    label.field-active {
+        transform: translateY(-30px);
+        font-size: .8rem;
+    }
+    .floating-label {
+        -webkit-appearance: none !important;
+    }
+
+    textarea[type="text"]:focus::-webkit-input-placeholder, input[type="text"]:focus::-webkit-input-placeholder{
+        opacity: 0;
+        transition: opacity 0.5s ease; 
+    }
+
+    textarea[type="text"]:not(:focus)::-webkit-input-placeholder, input[type="text"]:not(:focus)::-webkit-input-placeholder{
+        opacity: 1;
+        transition: opacity 0.5s ease; 
+    }
+
+    button{
+        all:initial;
+        display: block;
+        cursor: pointer;
+        outline: none;
+        background-image: url(${props => props.src});
+        width: 20px;
+        height: 20px;
+        position: relative;
+        top: -26px;
+        left:145px;
+        z-index: 5;
+    }
+
+`
 export const RecipesWrapper = styled.div`
     height: auto;
     width: 100%;
 `
-export const Magnifier = styled.div`
-    
+export const Magnifier = styled.button`
+    all: initial;
     background-image: url(${props => props.src});
     background-repeat: no-repeat;
     width: 25px;
     height: 25px;
-    z-index: 999;
-    /* background-color: red; */
-    /* float: right; */
+    z-index: 5;
+
     position: relative;
     left: 380px;
     top: 137px;
-    @media(max-width: 500px){
+    /* @media(max-width: 500px){
         left: 190px;
-    }
+    } */
 `
