@@ -1,30 +1,37 @@
 import React from 'react'
 import Layout from '../components/Layout'
-import * as Cookie from '../components/Cookie/'
 
 const windowGlobal = typeof window !== 'undefined' && window
 
-
 class Logout extends React.Component{
-    UNSAFE_componentWillMount() {
+    
+    UNSAFE_componentWillMount = () => {
         if(windowGlobal){
-            Cookie.deleteCookie('access')
-            Cookie.deleteCookie('refresh')
-            // localStorage.removeItem('access')
-            // localStorage.removeItem('refresh')
-            // if(windowGlobal){
-                window.location.replace("http://localhost:8000/");
-            // }
+            console.log('get access: ', localStorage.getItem('access'))
+            console.log('get refresh: ', localStorage.getItem('refresh'))
+            
+    
+            console.log('removing items from localStorage')
+            localStorage.removeItem('access')
+            localStorage.removeItem('refresh')
+    
+    
+            console.log('get access: ', localStorage.getItem('access'))
+            console.log('get refresh: ', localStorage.getItem('refresh'))
+    
+            //redirect
+            setTimeout(window.location.replace("http://localhost:8000/"), 500)
+
         }
-    }
-    UNSAFE_componentDidMount(){
     }
 
     render(){
         return(
-            <Layout>
-                <h1>Logging out</h1>
-                <p>You will be redirected to the home page.</p>
+            <Layout>  
+                <div style={{height: '800px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center'}}>
+                    <h1>Logged out</h1>
+                    <p>You will be redirected to the main page.</p>
+                </div>
             </Layout>
         )
     }
