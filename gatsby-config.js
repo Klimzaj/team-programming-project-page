@@ -45,6 +45,6 @@ module.exports = {
   ],
   proxy: {
     prefix: "/",
-      url: "https://cukierpuder.pythonanywhere.com"   
+      url: "https://cukierpuder.pythonanywhere.com/"   
   }
 } 
