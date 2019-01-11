@@ -65,9 +65,9 @@ class Login extends React.Component {
       password: this.state.password,
       username: this.state.login
     })
-    console.log('windowGlobal: ', windowGlobal)
+    // console.log('windowGlobal: ', windowGlobal)
     if(windowGlobal){
-      axios.post(paths.loginPath, mData, {
+      axios.post(paths.domainName + paths.loginPath, mData, {
         headers: {
           'Content-Type':'application/json',},
         }).then(function (response) {
@@ -81,7 +81,7 @@ class Login extends React.Component {
         
           //redirect    
           if(windowGlobal)
-            window.location.replace("http://localhost:8000/myprofile")
+            window.location.replace("https://kitchenhelper.netlify.com/myprofile")
             
         })
         .catch((error) => {
