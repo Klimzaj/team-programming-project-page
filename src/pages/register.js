@@ -1,167 +1,180 @@
 import React from 'react'
-import styled from 'styled-components'
 import Layout from '../components/Layout'
-import { Link } from 'gatsby'
 import registerImage from '../images/register.jpeg'
+import axios from 'axios'
+import * as El from './../components/Register/style'
+import * as path from './../data/ApiPaths'
 
-const MainWrapper = styled.div`
-  margin-left: auto;
-  margin-right: auto;
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  
 
-  h2 {
-    text-align:center;
-    font-size: 3rem;
-    padding: 1rem 1rem 0.1rem 1rem;
-    
-    @media (min-width: 425px) {
-      
-    }
-    @media (min-width: 500px) {
-      
-    }
-    @media (min-width: 768px) {
-      font-size: 48px;
-      padding: 10px;
-    
-    }
-    @media (min-width: 1024px) {
-      font-size: 54px;
-    }
-    @media (min-width: 1200px) {
-    }
-    @media (min-width: 1400px) {
-      font-size: 74px;
-    }
-  } 
-`
-const SubmitButton = styled.input`
-  padding: 13px 29px;
-  line-height: 17px;
-  font-size: 14px;
-  border: none;
-  font-family: 'Source Sans Pro', sans-serif;
-  background: #ffe600;
-  border-radius: 20px;
-  &:hover {
-    background: linear-gradient(#ffe600, #ffe611);
-  }
-`
-const Form = styled.form`
-`
-const BorderInput = styled.input`
-  border: 1px solid #000;
-  border-radius: 20px;
-  padding: 5px 5px 5px 15px;
-`
 
-const LoginInput = styled(BorderInput)`
-`
-const PasswordInput = styled(BorderInput)`
-`
-const EmailInput = styled(BorderInput)`
-`
-const FormP = styled.p`
-  font-weight: 700;
-  font-size: inherit;
-  line-height: 1.3;
-  margin-bottom: 10px;
-  margin-top: 10px;
-`
-const SmallP = styled.p`
-  font-size: 13px;
-  margin-right: 5px;
-`
-const SmallDiv = styled.div`
-  display: flex;
-  margin-top: 5px;
-`
-const MainImage = styled.div`
-  width: 100%;
-  height: 435px;
-  background-image: url(${props => props.source});
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  -webkit-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
-  -moz-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
-  box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
-
-`
+const windowGlobal = typeof window !== 'undefined' && window
+// const registerPath = '/auth/register/';
 
 class Register extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
       login: '',
+      loginFieldActive: false,
       email: '',
+      emailFieldActive: false,
       password: '',
-      repassword: ''
+      passwordFieldActive: false,
+      repassword: '',
+      repasswordFieldActive: false,
     }
   }
   
   onChangeInput = e => {
     const { name, value } = e.target
     this.setState(prevState => ({ ...prevState, [name]: value }))
+
+    this.activateField(e);
+    e.preventDefault();
+  }
+
+  activateField = e => {
+    if(e.target.name === 'login'){
+      this.setState({
+        loginFieldActive: true
+      })
+    }else if(e.target.name === 'password'){
+      this.setState({
+          passwordFieldActive: true
+      })
+    }else if(e.target.name === 'email'){
+      this.setState({
+          emailFieldActive: true
+      }) 
+    } else if(e.target.name === 'repassword'){
+      this.setState({
+          repasswordFieldActive: true
+      })  
+    }
+  }
+
+  disableField = e => {
+    if(e.target.name === 'login'){
+      if (e.target.value === '') {
+        this.setState({
+            loginFieldActive: false
+        })
+      }
+    }else if(e.target.name === 'password'){
+      if (e.target.value === '') {
+        this.setState({
+            passwordFieldActive: false
+        })
+      }
+    } else if(e.target.name === 'email'){
+      if (e.target.value === '') {
+        this.setState({
+            emailFieldActive: false
+        })
+      }
+    } else if(e.target.name === 'repassword'){
+      if (e.target.value === '') {
+        this.setState({
+            repasswordFieldActive: false
+        })
+      }
+    } 
   }
 
   handleSubmit = e => {
+    e.preventDefault();
+    let data = JSON.stringify({
+      password: this.state.password,
+      username: this.state.login,
+      email: this.state.email
+    })
 
+  axios.post(path.registerPath, data, {
+    headers: {
+      'Content-Type': 'application/json',
+    }}).then(function (response) {
+        //handle success
+
+        // console.log('You will be redirected in few seconds.')
+        // if(windowGlobal){
+        //   window.location.replace("http://localhost:8000/login");
+        // }
+        console.log(response);
+
+    }).catch(function (response) {
+        //handle error
+        console.log(response);
+    });
   }
 
   render() {
-    const {login, password, email, repassword} = this.state
     return (
       <Layout>
-        <MainImage source = {registerImage}/>
-        <MainWrapper>
+        <El.MainWrapper source = {registerImage}>
           <h2>Rejestracja</h2>
-          <Form
+          <El.Form
             onSubmit={this.handleSubmit}
           >
-            <FormP>Login</FormP>
-            <LoginInput
+  
+            <label htmlFor='login' className={this.state.loginFieldActive ? "field-active" : ""}>Login</label>    
+            <input
               type='text'
               name='login'
-              value={login}
+              value={this.state.login}
+              placeholder="Login"
               onChange={this.onChangeInput}
+              onBlur={this.disableField}   
+              onFocus={this.activateField}
               required
             />
-            <FormP>Email</FormP>
-            <EmailInput
+
+            <label htmlFor='email' className={this.state.emailFieldActive ? "field-active" : ""}>E-mail</label>      
+            <input
               type='email'
               name='email'
-              value={email}
+              value={this.state.email}
+              placeholder="E-mail"              
               onChange={this.onChangeInput}
+              onBlur={this.disableField}   
+              onFocus={this.activateField}
               required
             />
-            <FormP>Hasło</FormP>
-            <PasswordInput
+
+            <label htmlFor='password' className={this.state.passwordFieldActive ? "field-active" : ""}>Password</label>
+            <input
               type='password'
               name='password'
-              value={password}
+              value={this.state.password}
+              placeholder="Password"              
               onChange={this.onChangeInput}
+              onBlur={this.disableField}   
+              onFocus={this.activateField}
               required
             />
-            <FormP>Powtórz hasło</FormP>
-            <PasswordInput
+
+            <label htmlFor='repassword' className={this.state.repasswordFieldActive ? "field-active" : ""}>Repeat password</label>  
+            <input
               type='password'
               name='repassword'
-              value={repassword}
+              value={this.state.repassword}
+              placeholder="Repeat password"
               onChange={this.onChangeInput}
+              onBlur={this.disableField}   
+              onFocus={this.activateField}
               required
             />
-            <SmallDiv><SmallP>Masz już konto</SmallP><Link to='login'>Zaloguj się</Link></SmallDiv>
-            <SubmitButton
+
+            <El.SmallDiv>
+              <El.SmallP>Masz już konto?</El.SmallP>
+              <El.LinkToLogin to='/login'>Zaloguj się!</El.LinkToLogin>
+            </El.SmallDiv>
+
+            <El.SubmitButton
               type='submit'
-              value='Zarejestruj'
+              value='Create Account'
             />
-          </Form>
-        </MainWrapper>
+          </El.Form>
+        </El.MainWrapper>
       </Layout>    
     )
   }

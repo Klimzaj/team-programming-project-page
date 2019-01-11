@@ -6,6 +6,11 @@ import Recipe from '../components/Recipe/'
 
 import tempImg from '../images/lachs.png'
 
+//http://127.0.0.1:8007/api/ingredients/
+
+
+
+
 const RecipesWrapper = styled.div`
   width: 100%;
   height: auto;

@@ -1,158 +1,141 @@
 import React from 'react'
-import styled from 'styled-components'
 import Layout from '../components/Layout'
-import { Link } from 'gatsby'
-
+import axios from 'axios'
 import loginImage from '../images/login.jpeg'
+import * as El from '../components/Login/style'
+import * as paths from './../data/ApiPaths'
+const windowGlobal = typeof window !== 'undefined' && window
 
-const MainWrapper = styled.div`
-  margin-left: auto;
-  margin-right: auto;
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 
-  h2 {
-    text-align:center;
-    font-size: 3rem;
-    padding: 1rem 1rem 0.1rem 1rem;
-    
-    @media (min-width: 425px) {
-      
-    }
-    @media (min-width: 500px) {
-      
-    }
-    @media (min-width: 768px) {
-      font-size: 48px;  
-      padding: 10px;
-    
-    }
-    @media (min-width: 1024px) {
-      font-size: 54px;
-    }
-    @media (min-width: 1200px) {
-      
-    }
-    @media (min-width: 1400px) {
-      font-size: 74px;
-    }
-  } 
-`
 
-const MainImage = styled.div`
-  width: 100%;
-  height: 435px;
-  background-image: url(${props => props.source});
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  
-  -webkit-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
-  -moz-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
-  box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
-`
 
-const SubmitButton = styled.input`
-  padding: 13px 29px;
-  line-height: 17px;
-  font-size: 14px;
-  border: none;
-  font-family: 'Source Sans Pro', sans-serif;
-  background: #ffe600;
-  border-radius: 20px;
-  &:hover {
-    background: linear-gradient(#ffe600, #ffe611);
-  }
-`
-const Form = styled.form`
-`
-const BorderInput = styled.input`
-  border: 1px solid #000;
-  border-radius: 20px;
-  padding: 5px 5px 5px 15px;
-`
-
-const LoginInput = styled(BorderInput)`
-`
-const PasswordInput = styled(BorderInput)`
-`
-const FormP = styled.p`
-  /* font-weight: 700; */
-  font-size: inherit;
-  /* line-height: 1.3; */
-  margin-bottom: 10px;
-  margin-top: 10px;
-  /* color: #B1B1B1; */
-`
-const SmallP = styled.p`
-  font-size: 13px;
-  margin-right: 5px;
-`
-const SmallDiv = styled.div`
-  display: flex;
-  margin-top: 5px;
-`
-const RegisterLink = styled(Link) `
-  text-decoration: none;
-  color: #737373;
-  &:hover {
-    text-decoration: underline;
-  }
-`
 
 class Login extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
       login: '',
-      password: ''
+      loginFieldActive: false,
+      password: '',
+      passwordFieldActive: false,
     }
   }
   
   onChangeInput = e => {
     const { name, value } = e.target
     this.setState(prevState => ({ ...prevState, [name]: value }))
+
+    this.activateField(e);
+    e.preventDefault();
   }
+
+  activateField = (e) => {
+    if(e.target.name === 'login'){
+      this.setState({
+        loginFieldActive: true
+      })
+    }else if(e.target.name === 'password'){
+      this.setState({
+          passwordFieldActive: true
+      })
+    }
+  }
+
+  disableFocus = e => {
+    if(e.target.name === 'login'){
+      if (e.target.value === '') {
+        this.setState({
+            loginFieldActive: false
+        })
+      }
+    }else if(e.target.name === 'password'){
+      if (e.target.value === '') {
+        this.setState({
+            passwordFieldActive: false
+        })
+      }
+    } 
+  }
+
+
 
   handleSubmit = e => {
-
+    e.preventDefault()
+    const mData = JSON.stringify({
+      password: this.state.password,
+      username: this.state.login
+    })
+    console.log('windowGlobal: ', windowGlobal)
+    if(windowGlobal){
+      axios.post(paths.loginPath, mData, {
+        headers: {
+          'Content-Type':'application/json',},
+        }).then(function (response) {
+          //handle success
+          console.log('success: ', response)
+  
+          localStorage.setItem('access', response.data.access)
+          localStorage.setItem('refresh', response.data.refresh)
+          console.log('get access: ', localStorage.getItem('access'))
+          console.log('get refresh: ', localStorage.getItem('refresh'))
+        
+          //redirect    
+          if(windowGlobal)
+            window.location.replace("http://localhost:8000/myprofile")
+            
+        })
+        .catch((error) => {
+          console.log(error)
+        });
+    }
   }
 
+
   render() {
-    const {login, password} = this.state
     return (
       <Layout>
-        <MainImage source = {loginImage}/>
-        <MainWrapper>
+        <El.MainWrapper source = {loginImage}>
           <h2>Logowanie</h2>
-          <Form
+          <El.Form
             onSubmit={this.handleSubmit}
           >
-            <FormP>Login</FormP>
-            <LoginInput
+
+            <label htmlFor='login' className={this.state.loginFieldActive ? "field-active" : ""}>Login</label>
+            <input
               type='text'
               name='login'
-              value={login}
+              value={this.state.login}
+              placeholder='E-mail'
+              onFocus={this.activateField}
+              onBlur={this.disableFocus}   
               onChange={this.onChangeInput}
               required
             />
-            <FormP>Hasło</FormP>
-            <PasswordInput
+
+            <label htmlFor='password' className={this.state.passwordFieldActive ? "field-active" : ""}>Password</label>
+            <input
               type='password'
               name='password'
-              value={password}
+              value={this.state.password}
+              placeholder='Password'
+              value={this.state.password}
+              onFocus={this.activateField}
+              onBlur={this.disableFocus}   
               onChange={this.onChangeInput}
               required
             />
-            <SmallDiv><SmallP>Nie masz konta?</SmallP><RegisterLink to='register'>Zarejestruj się!</RegisterLink></SmallDiv>
-            <SubmitButton
+
+            <El.SmallDiv>
+              <El.SmallP>Nie masz konta?</El.SmallP>
+              <El.RegisterLink to='/register'>Zarejestruj się!</El.RegisterLink>
+            </El.SmallDiv>
+
+            <El.SubmitButton
               type='submit'
               value='Login'
             />
-          </Form>
-        </MainWrapper>
+          </El.Form>
+        </El.MainWrapper>
       </Layout>    
     )
   }

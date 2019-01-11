@@ -32,8 +32,8 @@ export const FeatureWrapper = styled.div`
         max-width: 1000px;
         text-indent: 50px;
         /* word-wrap: break-word; */
-        text-align: justify;
-        font-size: 1.5rem; 
+        /* text-align: justify; */
+        font-size: 1.2rem; 
         line-height: 1.5rem;
         padding: 0px 1rem 0px 1rem;
     }
