@@ -5,7 +5,7 @@ import * as El from './../components/AddRecipe/style'
 // import * as Cookies from './../components/Cookie/'
 import Cookies from 'universal-cookie'
 import axios from 'axios'
-import IngredientInput from '../components/IngredientInput.js'
+// import IngredientInput from '../components/IngredientInput.js'
 
 
 const addRecipePath ='/api/recipes/'
