@@ -89,16 +89,16 @@ class Register extends React.Component {
       email: this.state.email
     })
 
-  axios.post(path.registerPath, data, {
+  axios.post(path.domainName + path.registerPath, data, {
     headers: {
       'Content-Type': 'application/json',
     }}).then(function (response) {
         //handle success
 
         // console.log('You will be redirected in few seconds.')
-        // if(windowGlobal){
-        //   window.location.replace("http://localhost:8000/login");
-        // }
+        if(windowGlobal){
+          window.location.replace("https://kitchenhelper.netlify.com/login");
+        }
         console.log(response);
 
     }).catch(function (response) {
