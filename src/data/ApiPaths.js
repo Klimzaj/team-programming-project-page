@@ -1,5 +1,5 @@
-export const domainName = 'http://cukierpuder.pythonanywhere.com/' 
+export const domainName = 'https://cukierpuder.pythonanywhere.com/' 
 
-export const registerPath = 'http://cukierpuder.pythonanywhere.com/auth/register'
+export const registerPath = 'https://cukierpuder.pythonanywhere.com/auth/register'
 
-export const loginPath = 'http://cukierpuder.pythonanywhere.com/auth/token/obtain/'
+export const loginPath = 'https://cukierpuder.pythonanywhere.com/auth/token/obtain/'
