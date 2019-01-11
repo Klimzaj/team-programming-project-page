@@ -1,7 +1,7 @@
 import React from 'react'
 import * as El from './styles'
 
-import {Link} from 'gatsby'
+import { Link } from 'gatsby'
 
 const Partner = () => (
     <El.MainWrapper>
@@ -13,8 +13,8 @@ const Partner = () => (
             Razem stworzymy idealne miejsce dla kulinarnych miłośników.
         </El.MainText>
         
-        <Link to='/Login' style={{textDecoration: 'none',}}>
-            <El.Button >Dodaj własny przepis</El.Button>
+        <Link to='/login' style={{textDecoration: 'none'}}>
+            <El.Button>Dodaj własny przepis</El.Button>
         </Link>
     </El.MainWrapper>
   )

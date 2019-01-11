@@ -16,7 +16,7 @@ module.exports = {
       options: {
         name: 'gatsby-starter-default',
         short_name: 'starter',
-        start_url: '/',
+        start_url: '',
         background_color: '#663399',
         theme_color: '#663399',
         display: 'minimal-ui',
@@ -39,6 +39,12 @@ module.exports = {
         name: `assets`,
         path: `${__dirname}/src/assets/`
       }
-    }
+    },
+    
+    
   ],
+  // proxy: {
+  //   prefix: "/auth",
+  //     url: "http://localhost:8007"   
+  // }
 } 

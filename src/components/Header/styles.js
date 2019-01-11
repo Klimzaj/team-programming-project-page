@@ -4,57 +4,25 @@ import { Link } from 'gatsby'
 export const MainWrapper = styled.div`
   display: flex;
   background: #fff;
-  height: auto;
-  /* margin-bottom: 1.45 rem; */
+  height: ${props => props.heightExpand ? '210px':'150px'}; 
+  /* height: auto; */
+  max-height: 300px;
   position: relative;
-  @media (min-width: 425px) {
-      
-  }
-  @media (min-width: 500px) {
-    
-  }
-  @media (min-width: 768px) {
-    position: initial;
-  
-  }
-  @media (min-width: 1024px) {
-  
-  }
-  @media (min-width: 1200px) {
-    
-  }
-  
-  @media (min-width: 1400px) {
-    
-  }
+  /* transition: all 0.5s ease; */
+  transition: all 0.2s ease-in-out; 
 
 `
 export const LeftDiv = styled.div`
   position: relative;
   display: none;
   background-color: #fff;
-  @media (min-width: 425px) {
-      
-  }
-  @media (min-width: 500px) {
-    
-  }
+
   @media (min-width: 768px) {
     display: initial;
     width: 10%;  
   }
-  @media (min-width: 1024px) {
-  
-  }
-  @media (min-width: 1200px) {
-    
-  }
-  
-  @media (min-width: 1400px) {
-  }
 `
 export const IconDiv = styled.div`
-    /* display: flex; */
   width: 30%;
   margin-left: 15px;
   padding: 15px 0.5%;
@@ -107,26 +75,6 @@ export const RightDiv = styled.div`
 export const Logo = styled.img`
   margin: 0;
   padding: 0;
-  /* width: 50%;
-  height: 50%; */
-  @media (min-width: 425px) {
-      
-  }
-  @media (min-width: 500px) {
-    
-  }
-  @media (min-width: 768px) {
-    
-  }
-  @media (min-width: 1024px) {
-  
-  }
-  @media (min-width: 1200px) {
-    
-  }
-  @media (min-width: 1400px) {
- 
-  }
 `
 export const DarkLine = styled.div`
   position: absolute;
@@ -137,32 +85,101 @@ export const DarkLine = styled.div`
   opacity: 0.4;
 `
 export const MenuDiv = styled.div`
-  margin-right: 100px;
+  margin-right: 50px;
 `
 export const StyledUl = styled.ul`
   display: flex;
-  /* justify-content: flex-end; */
 `
 export const StyledLi = styled.li`
   list-style-type: none;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #483E37;
+  
   .active {
     padding-bottom: 12px;
     border-bottom: 5px solid #ffe600;
   }
+
+  ${this}:hover{
+    background-color: #846f5f;
+    color: white;
+
+  }  
+    transition: color 0.5s ease-in;
+    transition: background-color 0.5s ease-in-out;
+  
 `
 export const StyledLink = styled(Link)`
   text-decoration: none;
-  color: #483E37;
-  margin: 10px;
+  color: inherit;
+  /* color: #483E37; */
+  margin-right: 5px;
+  margin-left: 5px;
   @media (min-width: 768px) {
-    font-size: 20px;
+    font-size: 0.8rem;
+  }
+  @media (min-width: 799px) {
+    font-size: 1rem;
   }
   @media (min-width: 1024px) {
-    font-size: 25px;
+    font-size: 1.25em;
   }  
+  @media(min-width: 1440px) {
+    font-size: 1.5rem;
+  }
+`
+export const SubMenuLink = styled(Link)`
+  text-decoration: none;
+  color: white;
+  
+  margin-right: 5px;
+  margin-left: 5px;
+
+  @media (min-width: 768px) {
+    font-size: 0.8rem;
+  }
+  @media (min-width: 799px) {
+    font-size: 1rem;
+  }
+  @media (min-width: 1024px) {
+    font-size: 1.25em;
+  }  
+  @media(min-width: 1440px) {
+    font-size: 1.5rem;
+  }
+  padding-left: 5px;
+  &:hover{
+    /* background-color: red; */
+    border-bottom: 4px solid #FFE600;
+    transition: all 0.15s ease-in-out;
+  }
+`
+export const SpecialP = styled.span`
+  text-decoration: none;
+  color: white;
+  
+  /* margin-right: 5px;
+  margin-left: 5px; */
+
+  @media (min-width: 768px) {
+    font-size: 0.8rem;
+  }
+  @media (min-width: 790px) {
+    font-size: 1rem;
+  }
+  @media (min-width: 1024px) {
+    font-size: 1.25em;
+  }  
+  @media(min-width: 1440px) {
+    font-size: 1.5rem;
+  }
 `
 export const HamburgerMenu = styled.div`
   position: absolute;
+  cursor: pointer;
   top: 53px;
   right: 40px;
   & > div {
@@ -197,15 +214,18 @@ export const HamburgerMenu = styled.div`
 export const HoverMenu = styled.div`
   width: 100%;
   display: flex;
+  /* display: ${props => props.isVisible ? 'flex':'none'}; */
   opacity: ${props => props.isVisible ? '1'  : '0'};
   flex-direction: column;
   visibility: ${props => props.isVisible ? 'visible'  : 'hidden'};
-  height: ${props => props.isVisible ? '200px'  : '0px'};
-  transition: height 0.5s ease, visibility 0s;
+  height: ${props => props.isVisible?'280px':'0'};
+  /* height: ${props => props.menuItems > 5 ? '280px'  : '250px'}; */
+  transition: height 0.5s ease, visibility 1s;
+
 `
 export const HoverLink = styled(Link)`
   font-size: 23px;
-  width: 50%;
+  width: 100%;
   padding: 10px;
   color: #483E37;
   margin-left: 10px;
@@ -213,5 +233,11 @@ export const HoverLink = styled(Link)`
   &:before {
     content: '';
   }
-  
+
+  ${this}:hover{
+    background-color: #846f5f;
+    color: white;
+  transition: color 0.5s ease-in;
+  transition: background-color 0.5s ease-in-out;
+  }  
 `

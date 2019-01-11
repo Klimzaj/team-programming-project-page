@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import {Link} from 'gatsby'
 
 export const MainWrapper = styled.div`
     max-width: 1920px;  
@@ -56,11 +55,10 @@ export const MainText = styled.div`
     
 `
 
-export const Button = styled(Link)`
+export const Button = styled.div`
     height: 100px;
     
     width: 500px;
-
 
     background-color: #FFE600;
 
@@ -91,4 +89,8 @@ export const Button = styled(Link)`
         line-height: 1.2rem;
 
     } 
+    ${this}:active,
+    ${this}:focus {
+        
+    }
 `

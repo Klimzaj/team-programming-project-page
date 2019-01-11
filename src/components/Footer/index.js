@@ -11,7 +11,7 @@ const firstContent = [
     path: '/search'
   },
   {
-    name: 'Content',
+    name: 'Contact',
     path: '/contact'
   }
 ]

@@ -1,5 +1,4 @@
 import React from 'react'
-// import { Link } from 'gatsby'
 import Layout from '../components/Layout'
 import ImgText from '../components/ImgText'
 
@@ -11,7 +10,7 @@ import Img2 from '../images/adult-casual-chef-1418355.jpg'
 
 import clock from '../assets/clock.svg'
 import money from '../assets/money.svg'
-
+import Test from './../components/test'
 const Item = [
   {
     img: clock,
@@ -36,14 +35,13 @@ const Text2 = [
     text: 'Dołącz do ludzi, którzy dzielą się swoim doświadczeniem i smakiem!'
   }
 ]
+
 const IndexPage = () => (
   <Layout>
     <ImgText Text={Text1} ImgEl={Img1}/>
-    {/* <ImgText Text={Text1}/> */}
     <Features item={Item} />
     <ImgText TextOrder={'-1'} Text={Text2} ImgEl={Img2} />
     <Partner/>
-    {/* <ImgText TextOrder={'-1'} Text={Text2} /> */}
   </Layout>
 )
 
