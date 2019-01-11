@@ -1,9 +1,6 @@
 import React from 'react'
 import Layout from '../components/Layout'
-// import styled from 'styled-components'
 import * as El from './../components/AddRecipe/style'
-// import * as Cookies from './../components/Cookie/'
-import Cookies from 'universal-cookie'
 import axios from 'axios'
 // import IngredientInput from '../components/IngredientInput.js'
 
