@@ -43,8 +43,8 @@ module.exports = {
     
     
   ],
-  proxy: {
-    prefix: "/auth",
-      url: "http://localhost:8007"   
-  }
+  // proxy: {
+  //   prefix: "/auth",
+  //     url: "http://localhost:8007"   
+  // }
 } 

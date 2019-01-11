@@ -3,9 +3,9 @@ import Layout from '../components/Layout'
 import axios from 'axios'
 import loginImage from '../images/login.jpeg'
 import * as El from '../components/Login/style'
-
+import * as paths from './../data/ApiPaths'
 const windowGlobal = typeof window !== 'undefined' && window
-const loginPath = '/auth/token/obtain/'
+
 
 
 
@@ -65,9 +65,9 @@ class Login extends React.Component {
       password: this.state.password,
       username: this.state.login
     })
-    
+    console.log('windowGlobal: ', windowGlobal)
     if(windowGlobal){
-      axios.post(loginPath, mData, {
+      axios.post(paths.loginPath, mData, {
         headers: {
           'Content-Type':'application/json',},
         }).then(function (response) {
@@ -80,7 +80,8 @@ class Login extends React.Component {
           console.log('get refresh: ', localStorage.getItem('refresh'))
         
           //redirect    
-          window.location.replace("http://localhost:8000/myprofile")
+          if(windowGlobal)
+            window.location.replace("http://localhost:8000/myprofile")
             
         })
         .catch((error) => {
