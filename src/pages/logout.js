@@ -21,7 +21,7 @@ class Logout extends React.Component{
             console.log('get refresh: ', localStorage.getItem('refresh'))
     
             //redirect
-            setTimeout(window.location.replace(paths.domainName), 500)
+            setTimeout(window.location.replace('https://kitchenhelper.netlify.com'), 500)
 
         }
     }
