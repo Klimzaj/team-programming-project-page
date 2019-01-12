@@ -40,9 +40,9 @@ const data =
 const someData = [data, data, data, data]
 
 
-const Search = (data) => (
+const Search = ({data}) => (
   <Layout>
-    <FindRecipe dataImage={data}/>
+    <FindRecipe dataImage={data.image0.childImageSharp.fluid}/>
 
     <RecipesWrapper>
       {someData.map((item, i)=>(
