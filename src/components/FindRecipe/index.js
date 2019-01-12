@@ -17,6 +17,7 @@ class FindRecipe extends Component{
         this.state = {
             searchInput: '',
             searchInputFieldActive: false,
+            recipes: null,
         }
     }
 
@@ -63,6 +64,7 @@ class FindRecipe extends Component{
         .then((response) => {
             console.log('response: ',response); // ex.: { user: 'Your User'}
             console.log('response.data: ',response.data); // ex.: { user: 'Your User'}
+            this.setState({recipes: response.data})
             console.log('response.status',response.status); // ex.: 200
         }).then((err)=>{
             console.log('error: ', err)
@@ -72,7 +74,7 @@ class FindRecipe extends Component{
     render(){
         return(
             <El.Wrapper>
-                <Img fluid={data.data.data.image0.childImageSharp.fluid}/>
+                <Img fluid={this.props.dataImage.data.file.fluid}/>
                 <El.Image source = {MainImage}>
                     <El.MainText>
                         Znajdź pomysł na obiad!
@@ -102,6 +104,18 @@ class FindRecipe extends Component{
                                 alt="search button image"
                             />
                         </button> 
+
+
+                        {/* printing recipes if fetched succesfully */}
+                        {this.state.recipes?(
+                            <div style={{display: 'block', height: '500px', backgroundColor: 'red'}}>
+                                {this.state.recipes}
+                            </div>
+                        ):(
+                            <div style={{display: 'block', height: '500px', backgroundColor: 'red'}}>
+                                nothing fetched
+                            </div>
+                        )}
                     </El.Form>
                 
                 </El.Image>
