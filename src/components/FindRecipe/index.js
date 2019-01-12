@@ -4,7 +4,7 @@ import MainImage from '../../images/findRecipeImage.jpg'
 import magnifier from '../../images/magnifier.png'
 import axios from 'axios'
 import Img from 'gatsby-image'
-
+import * as paths from '../../data/ApiPaths'
 // import Cookies from 'universal-cookie'
 
 
@@ -53,7 +53,7 @@ class FindRecipe extends Component{
 
         console.log(' searchInput clicked! searching for: ', this.state.searchInput);
         // +this.state.searchInput
-        axios.get('http://127.0.0.1:8007'+searchRecipePath, 
+        axios.get(paths.domainName+searchRecipePath, 
         {
             'headers':  
             {
@@ -74,7 +74,8 @@ class FindRecipe extends Component{
     render(){
         return(
             <El.Wrapper>
-                <Img fluid={this.props.dataImage.data.file.fluid}/>
+                {console.log(this.props.dataImage)}
+                <Img fluid={this.props.dataImage}/>
                 <El.Image source = {MainImage}>
                     <El.MainText>
                         Znajdź pomysł na obiad!
