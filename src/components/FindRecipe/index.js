@@ -3,6 +3,8 @@ import * as El from './style'
 import MainImage from '../../images/findRecipeImage.jpg'
 import magnifier from '../../images/magnifier.png'
 import axios from 'axios'
+import Img from 'gatsby-image'
+
 // import Cookies from 'universal-cookie'
 
 
@@ -70,6 +72,7 @@ class FindRecipe extends Component{
     render(){
         return(
             <El.Wrapper>
+                <Img fluid={data.data.data.image0.childImageSharp.fluid}/>
                 <El.Image source = {MainImage}>
                     <El.MainText>
                         Znajdź pomysł na obiad!
