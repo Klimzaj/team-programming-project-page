@@ -24,8 +24,8 @@ module.exports = {
       },
     },
     'gatsby-plugin-offline',
-    // 'gatsby-plugin-sharp',
-    // 'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -40,7 +40,13 @@ module.exports = {
         path: `${__dirname}/src/assets/`
       }
     },
-    
+    {
+      resolve: 'gatsby-plugin-replace-path',
+      options: {
+        pattern: /(e)/g,
+        replacement: ( _, match ) => match.toUpperCase(),
+      },
+    },
     
   ],
   proxy: {
