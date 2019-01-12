@@ -1,4 +1,5 @@
 import React from 'react'
+import {graphql} from 'gatsby'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
 import FindRecipe from '../components/FindRecipe/'
@@ -39,9 +40,9 @@ const data =
 const someData = [data, data, data, data]
 
 
-const Search = () => (
+const Search = ({data}) => (
   <Layout>
-    <FindRecipe/>
+    <FindRecipe dataImage={data.image0.childImageSharp.fluid}/>
 
     <RecipesWrapper>
       {someData.map((item, i)=>(
@@ -63,3 +64,19 @@ const Search = () => (
 )
 
 export default Search
+
+
+export const indexQuery = graphql`
+query SearchQuery {
+  
+  image0: file(relativePath: { eq: "findRecipeImage.jpg" }) {
+    childImageSharp {
+      fluid(maxWidth: 500) {
+        ...GatsbyImageSharpFluid
+      }
+    }
+  }
+}
+`
+
+

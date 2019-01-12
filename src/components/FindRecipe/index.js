@@ -3,6 +3,8 @@ import * as El from './style'
 import MainImage from '../../images/findRecipeImage.jpg'
 import magnifier from '../../images/magnifier.png'
 import axios from 'axios'
+import Img from 'gatsby-image'
+import * as paths from '../../data/ApiPaths'
 // import Cookies from 'universal-cookie'
 
 
@@ -15,6 +17,7 @@ class FindRecipe extends Component{
         this.state = {
             searchInput: '',
             searchInputFieldActive: false,
+            recipes: null,
         }
     }
 
@@ -50,7 +53,7 @@ class FindRecipe extends Component{
 
         console.log(' searchInput clicked! searching for: ', this.state.searchInput);
         // +this.state.searchInput
-        axios.get('http://127.0.0.1:8007'+searchRecipePath, 
+        axios.get(paths.domainName+searchRecipePath, 
         {
             'headers':  
             {
@@ -61,6 +64,7 @@ class FindRecipe extends Component{
         .then((response) => {
             console.log('response: ',response); // ex.: { user: 'Your User'}
             console.log('response.data: ',response.data); // ex.: { user: 'Your User'}
+            this.setState({recipes: response.data})
             console.log('response.status',response.status); // ex.: 200
         }).then((err)=>{
             console.log('error: ', err)
@@ -70,6 +74,8 @@ class FindRecipe extends Component{
     render(){
         return(
             <El.Wrapper>
+                {console.log(this.props.dataImage)}
+                <Img fluid={this.props.dataImage}/>
                 <El.Image source = {MainImage}>
                     <El.MainText>
                         Znajdź pomysł na obiad!
@@ -99,6 +105,18 @@ class FindRecipe extends Component{
                                 alt="search button image"
                             />
                         </button> 
+
+
+                        {/* printing recipes if fetched succesfully */}
+                        {this.state.recipes?(
+                            <div style={{display: 'block', height: '500px', backgroundColor: 'red'}}>
+                                {this.state.recipes}
+                            </div>
+                        ):(
+                            <div style={{display: 'block', height: '500px', backgroundColor: 'red'}}>
+                                nothing fetched
+                            </div>
+                        )}
                     </El.Form>
                 
                 </El.Image>

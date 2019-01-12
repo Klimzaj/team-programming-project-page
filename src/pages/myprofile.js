@@ -6,8 +6,12 @@ const windowGlobal = typeof window !== 'undefined' && window
 class MyProfile  extends React.Component{
 
     UNSAFE_componentWillMount = () => {
-        if(windowGlobal && localStorage.getItem('access'))
-          window.location.replace(paths.dommainName + '/login')      
+
+        // console.log('access: ', localStorage.getItem('access'))
+        if(windowGlobal && localStorage.getItem('access') !== 'undefined'){
+            window.location.replace(paths.domainName + '/login')      
+        }
+
     }
 
     render(){
