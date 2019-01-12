@@ -1,5 +1,6 @@
 import React from 'react'
 import Layout from '../components/Layout'
+import * as paths from '../data/ApiPaths.js'
 
 const windowGlobal = typeof window !== 'undefined' && window
 
@@ -20,7 +21,7 @@ class Logout extends React.Component{
             console.log('get refresh: ', localStorage.getItem('refresh'))
     
             //redirect
-            setTimeout(window.location.replace("http://localhost:8000/"), 500)
+            setTimeout(window.location.replace(paths.domainName), 500)
 
         }
     }
