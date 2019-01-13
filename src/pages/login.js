@@ -80,9 +80,9 @@ class Login extends React.Component {
           console.log('get refresh: ', localStorage.getItem('refresh'))
         
           //redirect    
-          //if(windowGlobal)
-            //window.location.replace("https://kitchenhelper.netlify.com/myprofile")
-          props.history.push('/myprofile')
+          if(windowGlobal)
+            window.location.replace("https://kitchenhelper.netlify.com/myprofile")
+          //props.history.push('/myprofile')
         })
         .catch((error) => {
           console.log(error)
