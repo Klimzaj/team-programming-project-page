@@ -11,6 +11,7 @@ import Img2 from '../images/adult-casual-chef-1418355.jpg'
 import clock from '../assets/clock.svg'
 import money from '../assets/money.svg'
 // import Test from './../components/test'
+
 const Item = [
   {
     img: clock,

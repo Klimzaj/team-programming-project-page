@@ -1,5 +1,5 @@
 import React from 'react'
-import {graphql} from 'gatsby'
+// import {graphql} from 'gatsby'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
 import FindRecipe from '../components/FindRecipe/'
@@ -39,10 +39,11 @@ const data =
 
 const someData = [data, data, data, data]
 
-
+// const Search = () => (
 const Search = ({data}) => (
   <Layout>
     <FindRecipe dataImage={data.image0.childImageSharp.fluid}/>
+    {/* <FindRecipe dataImage={tempImg}/> */}
 
     <RecipesWrapper>
       {someData.map((item, i)=>(
