@@ -7,6 +7,7 @@ import Img from 'gatsby-image'
 import * as paths from '../../data/ApiPaths'
 // import Cookies from 'universal-cookie'
 
+const windowGlobal = typeof window !== 'undefined' && window
 
 
 
