@@ -2,7 +2,14 @@ import React from 'react'
 
 import * as El from './style'
 
-const Recipe = ({image, title, description, price, quantity, components, recipe}) => (
+// key = {`recipe_id_${i}`}
+// author = {item.author}
+// description = {item.description}
+// image = {item.img}
+// votes = {item.votes}
+// url = {item.url}
+
+const Recipe = ({author, description, image, votes, url}) => (
     <El.Wrapper>
         <El.AddintionalWrapper>
             <El.Top>
@@ -11,18 +18,20 @@ const Recipe = ({image, title, description, price, quantity, components, recipe}
                 </El.Left>
                 <El.Right>
                     <h3>
-                        {title}
+                        Title
+                        {/* {title} */}
                     </h3>
                     <p>
+
                         {description}
                     </p>
                     <p>
-                        <b>Kwota: </b>
-                        {price}
+                        <b>Price: </b>
+                        {/* {price} */}
                     </p>
                     <p>
-                        <b> Ilość porcji: </b>
-                        {quantity}
+                        <b> Number of portions: </b>
+                        {/* {quantity} */}
                     </p>
                 </El.Right>
 
@@ -31,24 +40,24 @@ const Recipe = ({image, title, description, price, quantity, components, recipe}
             <El.Components>
                 <p>
                     <b>
-                        Składniki:
+                        Components:
                     </b>
 
                     
-                    {components.map((item, i)=>{
+                    {/* {components.map((item, i)=>{
                         return(
                             (item[i+1])?<span key={`recipe_component_${i}`}>{`${item}, `}</span>:<span >{`${item}`}</span>
                             )
-                        })}
+                        })} */}
                 </p>
 
             </El.Components>
             <El.ToDo>
                 <p>
                     <b>
-                        Sposób przygotowania:
+                        Steps to reproduce:
                     </b>
-                        {recipe}
+                        {description}
                 </p>
             </El.ToDo>
         </El.AddintionalWrapper>

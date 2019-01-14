@@ -1,8 +1,7 @@
 import styled from 'styled-components'
 
-export const Wrapper = styled.div`
+export const AddintionalWrapper = styled.div`
     width: 100%;
-    /* background-color: lightblue; */
 `
 export const MainElement = styled.div`
     width: 100%;
@@ -116,10 +115,6 @@ export const Form = styled.form`
     }
 
 `
-export const RecipesWrapper = styled.div`
-    height: auto;
-    width: 100%;
-`
 export const Magnifier = styled.button`
     all: initial;
     background-image: url(${props => props.src});
@@ -135,3 +130,12 @@ export const Magnifier = styled.button`
         left: 190px;
     } */
 `
+
+
+export const RecipesWrapper = styled.div`
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+`
+
