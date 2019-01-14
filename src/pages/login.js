@@ -81,8 +81,11 @@ class Login extends React.Component {
         
           //redirect    
           if(windowGlobal)
+     
+
             window.location.replace("https://kitchenhelper.netlify.com/myprofile")
           //props.history.push('/myprofile')
+
         })
         .catch((error) => {
           console.log(error)
