@@ -1,68 +1,113 @@
-import React from 'react'
+import React, { Component } from 'react'
 // import {graphql} from 'gatsby'
-import styled from 'styled-components'
 import Layout from '../components/Layout'
-import FindRecipe from '../components/FindRecipe/'
-import Recipe from '../components/Recipe/'
-
+// import FindRecipe from '../components/FindRecipe/'
 import tempImg from '../images/lachs.png'
+import axios from 'axios'
+import * as paths from './../data/ApiPaths'
+import * as El from './../components/Search/style'
+// import Recipe from './../components/Recipe/'
+import Recipe from './../components/Recipe/'
+import magnifier from '../images/magnifier.png'
+import MainImage from '../images/findRecipeImage.jpg'
 
-//http://127.0.0.1:8007/api/ingredients/
+
+const windowGlobal = typeof window !== 'undefined' && window
 
 
+class Search extends Component{ 
+  constructor(props){
+    super(props)
+    this.state = {
+        searchInput: '',
+        searchInputFieldActive: false,
+        recipes: [],
+    }
 
-
-const RecipesWrapper = styled.div`
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-`
-const data = 
-  {
-    img: tempImg,
-    title: 'Łosoś w sosie Harrisa',
-    description: 'Pyszny łosoś w paście wytwarzanej z papryki chili, czosnku oraz kmninku.',
-    price: '30 zł',
-    quantity: 2,
-    components: [
-      '400g łososia',
-      '2 łyżeczki czerownej pasty harrisa',
-      '4 łyżki jogurtu greckiego',
-      '1 łyżeczka oliwy extra vergine',
-      '1 łyżeczka syropu klonowego',
-      '125g pomidorków koktajlowych' 
-  ],
-  steps: 'Odciąć skórkę z łososia, wymieszać pastę harissa z połową jogurtu greckiego (2 łyżki), oliwą, syropem klonowym, solą i pieprzem. Odłożyć łyżkę marynaty i wymieszać ją z pozostałymi 2 łyżkami jogurtu - w ten sposób otrzymamy sos do polania łososia.  Resztą marynaty natrzeć łososia i odłożyć na godzinę do lodówki (można na dłużej jeśli mamy czas). Piekarnik nagrzać do 230 stopni C. W piekarniku nagrzewać też żaroodporną blaszkę. Gdy blaszka i piekarnik będą gorące, włożyć łososia, wsypać pokrojone na połówki pomidorki koktajlowe i piec przez ok. 5 minut, przewrócić na drugą stronę i powtórzyć pieczenie przez ok. 5 minut.',
   }
 
+  handleSubmit = e => {
+    e.preventDefault()
+    if(windowGlobal)
+        axios.get(paths.domainName+paths.searchRecipePath, 
+        {
+            'headers':  
+            {
+                'Content-Type':'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('access'),
+            },
+        }).then((response) => {
+            // console.log('response.data: ',response.data);
+            this.setState({recipes: response.data})
+        }).then((err)=>{
+            console.log('error: ', err)
+        })        
+  } 
 
-const someSampleData = [data, data, data, data]
 
-// const Search = () => (
-const Search = ({data}) => (
-  <Layout>
-    {/* <FindRecipe dataImage={data.image0.childImageSharp.fluid}/> */}
-    <FindRecipe dataImage={tempImg}/>
+  render(){
+    return(
 
-    <RecipesWrapper>
-      {someSampleData.map((item, i)=>(
-          <Recipe 
-            key = {`recipe_id_${i}`}
-            image = {item.img}
-            title = {item.title}
-            description = {item.description}
-            price = {item.price}
-            quantity = {item.quantity}
-            components = {item.components}
-            recipe = {item.steps}
-          />          
-        )
-      )}
-    </RecipesWrapper>
-    
-  </Layout>
-)
+      <Layout>
+        <El.Image source = {MainImage}>
+          <El.MainText>
+              Find idea for a dinner!
+          </El.MainText> 
+          
+          <El.Form onSubmit={this.handleSubmit}>
+              
+              <label htmlFor='searchInput' className={this.state.searchInputFieldActive?'field-active':''}>Recipe name</label>
+              <input
+                  type = 'text' 
+                  name = 'searchInput' 
+                  placeholder = 'Recipe name' 
+                  onChange = {this.onChangeInput}
+                  onFocus={this.activateField}
+                  onBlur={this.disableFocus} 
+                  required 
+              />
+
+              <button
+                  type='submit'
+                  name='submitButton'
+                  value='Submit'
+                  src = {magnifier} 
+              >
+                  <img 
+                      src= {magnifier}
+                      alt="search button image"
+                  />
+              </button> 
+            </El.Form>
+                
+        </El.Image>
+
+
+        <El.RecipesWrapper>
+
+          {this.state.recipes ?  (this.state.recipes.map((item, i)=>(
+              <Recipe 
+                key = {`recipe_id_${i}`}
+                author = {item.author}
+                description = {item.description}
+                image = {item.img}
+                votes = {item.votes}
+                url = {item.url}
+              />          
+            ))
+          ):(
+            <div>
+              <p> 
+                Something went wrong. 
+              </p>
+            </div>
+            )
+          }
+        </El.RecipesWrapper>
+        
+      </Layout>
+    )}
+}
 
 export default Search
 

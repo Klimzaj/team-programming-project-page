@@ -1,11 +1,11 @@
-import React from 'react'
+import React, {Component} from 'react'
 import Recaptcha from 'react-google-recaptcha'
 import Layout from '../components/Layout'
 import * as El from './../components/Contact/style'
 
 //const RECAPTCHA_KEY = process.env.GATSBY_SITE_RECAPTCHA_KEY
 
-class Contact extends React.Component {
+class Contact extends Component {
   constructor (props) {
     super(props)
     this.state = {

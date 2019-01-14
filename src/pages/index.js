@@ -5,8 +5,8 @@ import ImgText from '../components/ImgText'
 import Partner from '../components/Partner'
 import Features from '../components/Features'
 
-import Img1 from '../images/baking-bread-cooking-1070880.jpg'
-import Img2 from '../images/adult-casual-chef-1418355.jpg'
+import Img1 from '../images/bakingbread.jpg'
+import Img2 from '../images/adults.jpg'
 
 import clock from '../assets/clock.svg'
 import money from '../assets/money.svg'
