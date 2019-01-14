@@ -40,14 +40,6 @@ module.exports = {
         path: `${__dirname}/src/assets/`
       }
     },
-    {
-      resolve: 'gatsby-plugin-replace-path',
-      options: {
-        pattern: /(e)/g,
-        replacement: ( _, match ) => match.toUpperCase(),
-      },
-    },
-    
   ],
   proxy: {
     prefix: "/",

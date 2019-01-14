@@ -34,7 +34,6 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "gatsby-plugin-replace-path": "^1.0.0",
     "prettier": "^1.14.2"
   },
   "repository": {
