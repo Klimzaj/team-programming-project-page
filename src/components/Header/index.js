@@ -108,7 +108,7 @@ class Header extends React.Component {
               <El.StyledUl>
                 {
                   Menu.map((el, i) => {
-                    const subMenu = [{name: 'Favorite'}, {name: 'My recipes'}, {name: 'Settings'}]
+                    const subMenu = [{name: 'Favorite', path:'/favorite'}, {name: 'My recipes', path:'/myrecipes'}, {name: 'Settings', path:'/settings'}]
                     if(el.name === 'My Profile'){
                       return(
                         
@@ -117,13 +117,17 @@ class Header extends React.Component {
                               <ul style={{width: 'inherit',margin: '0', padding: '0', fontSize: '0.8rem',listStyle: 'none'}}>
                                 {subMenu.map((item, i)=>{return(
 
-                                  <li><El.SubMenuLink>{item.name}</El.SubMenuLink></li>
+                                  <li key={`li_sub_menu_${i}`}>
+                                    <El.SubMenuLink key = {`link_sub_menu_${i}`} to = {item.path}>
+                                      {item.name}
+                                    </El.SubMenuLink>
+                                  </li>
                                 )
                                 })}
                               </ul>):( 
                                 <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                                 {/* to={el.path} */}
-                                  <El.StyledLink  activeStyle = {{fontWeight: 'bold', paddingLeft: '5px', borderBottom: '#FFE600 solid 4px'}}  className={this.state.path === `${el.path}` ?'active':''}>
+                                  <El.StyledLink  activeStyle = {{fontWeight: 'bold', paddingLeft: '5px', borderBottom: '#FFE600 solid 4px'}}  to = {el.path} className={this.state.path === `${el.path}` ?'active':''}>
                                      {el.name}
                                   </El.StyledLink>
                                   <img src={triangleDown} alt='' width='25px' height = '25px'/>

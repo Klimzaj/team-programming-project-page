@@ -21,7 +21,6 @@ export const Form = styled.form`
   flex-direction: column;
 
     textarea, input {
-        /* width: 300px; */
         border: 1px solid grey !important;
     }
 
