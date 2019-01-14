@@ -59,7 +59,7 @@ class FindRecipe extends Component{
             'headers':  
             {
                 'Content-Type':'application/json',
-                'Authorization': 'Bearer' + localStorage.getItem('access'),
+                // 'Authorization': 'Bearer' + localStorage.getItem('access'),
             },
         })
         .then((response) => {
