@@ -37,16 +37,16 @@ const data =
   }
 
 
-const someData = [data, data, data, data]
+const someSampleData = [data, data, data, data]
 
 // const Search = () => (
 const Search = ({data}) => (
   <Layout>
-    <FindRecipe dataImage={data.image0.childImageSharp.fluid}/>
-    {/* <FindRecipe dataImage={tempImg}/> */}
+    {/* <FindRecipe dataImage={data.image0.childImageSharp.fluid}/> */}
+    <FindRecipe dataImage={tempImg}/>
 
     <RecipesWrapper>
-      {someData.map((item, i)=>(
+      {someSampleData.map((item, i)=>(
           <Recipe 
             key = {`recipe_id_${i}`}
             image = {item.img}
@@ -72,7 +72,7 @@ query SearchQuery {
   
   image0: file(relativePath: { eq: "findRecipeImage.jpg" }) {
     childImageSharp {
-      fluid(maxWidth: 500) {
+      fluid(maxWidth: 4096) {
         ...GatsbyImageSharpFluid
       }
     }
