@@ -52,6 +52,7 @@ class FindRecipe extends Component{
         // const cookies = new Cookies()
 
         console.log(' searchInput clicked! searching for: ', this.state.searchInput);
+        console.log('reqest will be send onto: ', paths.domainName + searchRecipePath)
         // +this.state.searchInput
         axios.get(paths.domainName+searchRecipePath, 
         {
