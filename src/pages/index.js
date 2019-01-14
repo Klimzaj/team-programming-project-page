@@ -5,7 +5,7 @@ import ImgText from '../components/ImgText'
 import Partner from '../components/Partner'
 import Features from '../components/Features'
 
-import Img1 from '../images/bakingbread.jpg'
+import Img1 from '../images/bakingBread.jpg'
 import Img2 from '../images/adults.jpg'
 
 import clock from '../assets/clock.svg'
