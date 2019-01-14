@@ -1,6 +1,7 @@
 import React from 'react'
 import * as El from './styles'
 
+
 const ImgText = ({TextOrder, Text, ImgEl}) => (
   <El.MainWrapper>
     <El.Image ImgBg={ImgEl} />
