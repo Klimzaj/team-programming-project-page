@@ -54,22 +54,22 @@ class FindRecipe extends Component{
         console.log(' searchInput clicked! searching for: ', this.state.searchInput);
         console.log('reqest will be send onto: ', paths.domainName + paths.searchRecipePath)
         // +this.state.searchInput
-        axios.get(paths.domainName+paths.searchRecipePath, 
-        {
-            'headers':  
+        if(windowGlobal)
+            axios.get(paths.domainName+paths.searchRecipePath, 
             {
-                'Content-Type':'application/json',
-                // 'Authorization': 'Bearer' + localStorage.getItem('access'),
-            },
-        })
-        .then((response) => {
-            console.log('response: ',response); // ex.: { user: 'Your User'}
-            console.log('response.data: ',response.data); // ex.: { user: 'Your User'}
-            this.setState({recipes: response.data})
-            console.log('response.status',response.status); // ex.: 200
-        }).then((err)=>{
-            console.log('error: ', err)
-        })        
+                'headers':  
+                {
+                    'Content-Type':'application/json',
+                    // 'Authorization': 'Bearer' + localStorage.getItem('access'),
+                },
+            }).then((response) => {
+                console.log('response: ',response); // ex.: { user: 'Your User'}
+                console.log('response.data: ',response.data); // ex.: { user: 'Your User'}
+                this.setState({recipes: response.data})
+                console.log('response.status',response.status); // ex.: 200
+            }).then((err)=>{
+                console.log('error: ', err)
+            })        
     }
 
     render(){
