@@ -8,7 +8,7 @@ import * as paths from '../../data/ApiPaths'
 // import Cookies from 'universal-cookie'
 
 
-const searchRecipePath = '/api/recipes/'
+
 
 class FindRecipe extends Component{
 
@@ -52,9 +52,9 @@ class FindRecipe extends Component{
         // const cookies = new Cookies()
 
         console.log(' searchInput clicked! searching for: ', this.state.searchInput);
-        console.log('reqest will be send onto: ', paths.domainName + searchRecipePath)
+        console.log('reqest will be send onto: ', paths.domainName + paths.searchRecipePath)
         // +this.state.searchInput
-        axios.get(paths.domainName+searchRecipePath, 
+        axios.get(paths.domainName+paths.searchRecipePath, 
         {
             'headers':  
             {
@@ -75,9 +75,10 @@ class FindRecipe extends Component{
     render(){
         return(
             <El.Wrapper>
-                {console.log(this.props.dataImage)}
-                <Img fluid={this.props.dataImage}/>
-                <El.Image source = {MainImage}>
+                    {/* {console.log(this.props.dataImage)} */}
+                    {/* <Img fluid={this.props.dataImage}/> */}
+                    <El.Image source = {MainImage}>
+
                     <El.MainText>
                         Znajdź pomysł na obiad!
                     </El.MainText> 

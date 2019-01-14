@@ -3,9 +3,8 @@ import Layout from '../components/Layout'
 import * as El from './../components/AddRecipe/style'
 import axios from 'axios'
 // import IngredientInput from '../components/IngredientInput.js'
+import * as paths from './../data/ApiPaths'
 
-
-const addRecipePath ='/api/recipes/'
 const windowGlobal = typeof window !== 'undefined' && window
 
 class AddRecipe extends React.Component{
@@ -117,7 +116,7 @@ class AddRecipe extends React.Component{
     console.log(mData)
 
     if(windowGlobal)
-      axios.post(addRecipePath,  mData, {
+      axios.post(paths.domainName + paths.addRecipePath,  mData, {
         headers: {
           'Content-Type':'application/json',
           'Authorization': 'Bearer ' + localStorage.getItem('access'),
