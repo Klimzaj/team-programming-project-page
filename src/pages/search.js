@@ -82,7 +82,7 @@ class Search extends Component{
 
         <El.RecipesWrapper>
 
-          {this.state.recipes ?  (this.state.recipes.map((item, i)=>(
+          {this.state.recipes ?  (this.state.recipes.reverse().map((item, i)=>(
               <Recipe 
                 key = {`recipe_id_${i}`}
                 author = {item.author}
