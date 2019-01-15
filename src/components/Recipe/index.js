@@ -14,15 +14,14 @@ const Recipe = ({name, author, description, image, votes, url}) => (
         <El.AddintionalWrapper>
             <El.Top>
                 <El.Left>
+                    <img src={image} width='100px' height='100px'/>
                     <El.Image image = {image}/>
                 </El.Left>
                 <El.Right>
                     <h3>
-                        Title
                         {name}
                     </h3>
                     <p>
-
                         {description}
                     </p>
                     <p>
