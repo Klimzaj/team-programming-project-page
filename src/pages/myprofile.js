@@ -1,6 +1,5 @@
 import React from 'react'
 import Layout from '../components/Layout'
-import * as paths from '../data/ApiPaths'
 const windowGlobal = typeof window !== 'undefined' && window
 
 class MyProfile  extends React.Component{
@@ -9,7 +8,7 @@ class MyProfile  extends React.Component{
 
         // console.log('access: ', localStorage.getItem('access'))
         if(windowGlobal && localStorage.getItem('access') !== 'undefined'){
-            window.location.replace(paths.domainName + '/login')      
+            window.location.replace('https://kitchenhelper.netlify.com/login')      
         }
 
     }

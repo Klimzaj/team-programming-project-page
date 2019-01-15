@@ -9,6 +9,7 @@ class Contact extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      messageSended: false,//for animation if message was sended
       firstname: '',
       firstNameFieldActive: false,
       lastname: '',
