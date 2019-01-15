@@ -12,11 +12,13 @@ class AddRecipe extends React.Component{
     super(props)
     this.state = {
       
-      name: '',
       nameFieldActive: false,
-      image: 'http://placehold.it/150x150?text=foodporn',
-      description: '',
       descriptionFieldActive: false,
+      imageFieldActive: false,
+      
+      name: '',
+      image: '',
+      description: '',
       votes: 10,
       recipes_ingredients: [
         {
@@ -77,6 +79,10 @@ class AddRecipe extends React.Component{
       this.setState({
           recipeFieldActive: true
       })
+    }else if(e.target.name === 'image'){ 
+      this.setState({
+          imageFieldActive: true
+      })
     }
   }
 
@@ -99,6 +105,12 @@ class AddRecipe extends React.Component{
             recipeFieldActive: false
         })
       }
+    }else if(e.target.name === 'image'){
+      if (e.target.value === '') {
+        this.setState({
+            imageFieldActive: false
+        })
+      }
     } 
   }
 
@@ -106,14 +118,13 @@ class AddRecipe extends React.Component{
     e.preventDefault()
 
     let mData = JSON.stringify({
-      image: 'http://placehold.it/150x150?text=foodporn',
-      name: 'Sample recipe',
-      description: 'sample recipe description',
-      votes: 10,
+      image: this.state.image,
+      name: this.state.name,
+      description: this.state.recipe,
+      votes: this.state.votes,
       recipes_ingredients: [...this.state.recipes_ingredients]
 
     })
-    console.log(mData)
 
     if(windowGlobal)
       axios.post(paths.domainName + paths.addRecipePath,  mData, {
@@ -212,6 +223,18 @@ class AddRecipe extends React.Component{
                     </div>
                 )})
               }
+            <label htmlFor = 'image' className={this.state.imageFieldActive ? "field-active" : ""}>Image's URL</label>
+            <input
+              type = "text" 
+              name = 'image'
+              value = {this.state.image}
+              placeholder= 'URL path to image'
+              onChange = {this.onChangeInput}
+              onFocus={this.activateField}
+              onBlur={this.disableFocus} 
+              />
+            
+
 
             <label htmlFor = 'recipe' className={this.state.recipeFieldActive ? "field-active" : ""}>Recipe's steps </label>
             <textarea
