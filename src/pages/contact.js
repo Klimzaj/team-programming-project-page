@@ -3,13 +3,14 @@ import Recaptcha from 'react-google-recaptcha'
 import Layout from '../components/Layout'
 import * as El from './../components/Contact/style'
 
-//const RECAPTCHA_KEY = process.env.GATSBY_SITE_RECAPTCHA_KEY
+const RECAPTCHA_KEY = process.env.GATSBY_SITE_RECAPTCHA_KEY
 
 class Contact extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      messageSended: false,//for animation if message was sended
+      messageWasSent: null,//for animation if message was sended
+      submitMessage: '',
       firstname: '',
       firstNameFieldActive: false,
       lastname: '',
@@ -83,34 +84,63 @@ class Contact extends Component {
   
 
   handleSubmit = e => {
-    // if(this.grecaptcha.getResponse() !== 0 && this.grecaptcha.getResponse() !== '' )
-    // {
-    //   fetch("/", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    //     body: this.encode({ "form-name": "contact", ...this.state })
-    //   })
-    //   .then(() => alert("Success!"))
-    //   .catch(error => alert(error))
+    if(this.grecaptcha.getResponse() !== 0 && this.grecaptcha.getResponse() !== '' )
+    {
 
-    //   e.preventDefault()
+      const myPayload = {
+        firstname: this.state.firstname,
+        lastname: this.state.lastname,
+        email: this.state.email,
+        message: this.state.message,
+      }
 
-    // } else {
-    //   alert("Please complete the recaptcha validation to continue.")
-    //   e.preventDefault()
-    // }
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: this.encode({ "form-name": "contact", ...myPayload })
+      })
+      .then(
+        this.setState({
+          messageWasSent: true,
+          submitMessage: 'Message was succesfully sent.',
+          firstname: '',
+          lastname: '',
+          email: '',
+          message: '',
+        })
+      )
+      .catch(error => console.log(error))
+
+      e.preventDefault()
+
+    } else {
+      e.preventDefault()
+      this.setState({
+        messageWasSent: false,
+        submitMessage: 'Please complete the recaptcha validation to continue.'
+      })
+    }
   }
+
+
+
   render() {
-    // const {firstname, lastname, email, message} = this.state
     return (
       <Layout>
         <El.ContactWrapper>
+          <div id='formSubmitMessage' style = {{display: 'flex', jusitfyContent: 'center'}} className={this.state.messageWasSent !== null?'showSubmitMessage':'hideSubmitMessage'}>
+            <p>
+              {this.state.submitMessage}
+              {setTimeout(this.setState({messageWasSent: null}), 5000)}
+            </p>
+          </div>
           <h1>Contact</h1>
           <El.Form 
             name="contact"
             method="POST"
             onSubmit={this.handleSubmit}
-            //data-netlify="true" 
+            data-netlify="true" 
+
           >
             <input type="hidden" name="form-name" value="contact" />
 
@@ -166,11 +196,11 @@ class Contact extends Component {
               onBlur={this.disableFocus} 
               required
             />
-            {/* <StyledRecaptcha
+            <Recaptcha
               ref="recaptcha"
               sitekey={RECAPTCHA_KEY}
               required
-            /> */}
+            />
             <button
               type='submit'
               value='Submit'

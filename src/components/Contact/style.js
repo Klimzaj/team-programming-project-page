@@ -13,12 +13,41 @@ export const ContactWrapper = styled.div`
   h1{
     color:#333333;
   }
+
+  #formSubmitMessage{
+      display: block;
+      height: 0px;
+      width: 100%;
+  }
+
+  .showoSubmitMessage{
+    height: 30px;
+    color: lightblue;
+    transition: height 0.5s ease;
+  }
+  .hideSubmitMessage{
+    height: 0px;
+    transition: height 0.5s ease;
+
+  }
   
 `
 export const Form = styled.form`
 
   display: flex;
   flex-direction: column;
+
+  @media(min-width: 320px){
+      width: 300px;
+    }
+    @media(min-width: 500px){
+      width: 400px;
+    }
+    @media(min-width: 768px){
+      width: 500px;
+    }
+
+
 
     textarea, input {
         border: 1px solid grey !important;
