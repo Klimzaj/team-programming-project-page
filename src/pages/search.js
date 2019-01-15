@@ -86,6 +86,7 @@ class Search extends Component{
               <Recipe 
                 key = {`recipe_id_${i}`}
                 author = {item.author}
+                name = {item.name}
                 description = {item.description}
                 image = {item.img}
                 votes = {item.votes}
