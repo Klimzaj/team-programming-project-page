@@ -14,6 +14,7 @@ const Partner = () => (
             Załóż konto w naszym serwisie i pochwal się przepisami.
             Razem stworzymy idealne miejsce dla kulinarnych miłośników.
         </El.MainText>
+        
         {windowGlobal && localStorage.getItem('access') !== 'undefined'?(
             <Link to='/addrecipe' style={{textDecoration: 'none'}}>
                 <El.Button>Dodaj własny przepis</El.Button>

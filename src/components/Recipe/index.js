@@ -9,7 +9,7 @@ import * as El from './style'
 // votes = {item.votes}
 // url = {item.url}
 
-const Recipe = ({author, description, image, votes, url}) => (
+const Recipe = ({name, author, description, image, votes, url}) => (
     <El.Wrapper>
         <El.AddintionalWrapper>
             <El.Top>
@@ -19,7 +19,7 @@ const Recipe = ({author, description, image, votes, url}) => (
                 <El.Right>
                     <h3>
                         Title
-                        {/* {title} */}
+                        {name}
                     </h3>
                     <p>
 
