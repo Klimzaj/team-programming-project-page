@@ -84,6 +84,7 @@ class Contact extends Component {
   
 
   handleSubmit = e => {
+    e.preventDefault()
     if(this.grecaptcha.getResponse() !== 0 && this.grecaptcha.getResponse() !== '' )
     {
 
