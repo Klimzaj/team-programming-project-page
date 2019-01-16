@@ -7,6 +7,7 @@ export const MainWrapper = styled.div`
   height: ${props => props.heightExpand ? '210px':'150px'}; 
   /* height: auto; */
   max-height: 300px;
+  margin-bottom: 22px;
   position: relative;
   /* transition: all 0.5s ease; */
   transition: all 0.2s ease-in-out; 
