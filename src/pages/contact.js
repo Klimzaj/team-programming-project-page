@@ -99,7 +99,7 @@ class Contact extends Component {
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: this.encode({ "form-name": "contact", ...myPayload })
       })
-      .then(
+      .then(()=>{
         this.setState({
           messageWasSent: true,
           submitMessage: 'Message was succesfully sent.',
@@ -108,6 +108,7 @@ class Contact extends Component {
           email: '',
           message: '',
         })
+      }
       )
       .catch(error => console.log(error))
 
