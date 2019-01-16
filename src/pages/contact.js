@@ -132,7 +132,7 @@ class Contact extends Component {
           <div id='formSubmitMessage' style = {{display: 'flex', jusitfyContent: 'center'}} className={this.state.messageWasSent !== null?'showSubmitMessage':'hideSubmitMessage'}>
             <p>
               {this.state.submitMessage}
-              {setTimeout(()=>{this.setState({messageWasSent: null})}, 5000)}
+              {/* {setTimeout(()=>{this.setState({messageWasSent: null})}, 5000)} */}
               
             </p>
           </div>
