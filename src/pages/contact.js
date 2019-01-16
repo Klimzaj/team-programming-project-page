@@ -87,10 +87,8 @@ class Contact extends Component {
         .join("&");
   }
 
-  handleSubmit = e => {
-    e.preventDefault()
-    
-    if(this.grecaptcha.getResponse() !== 0 && this.grecaptcha.getResponse() !== '' )
+  handleSubmit = e => {   
+    if(grecaptcha.getResponse() !== 0 && grecaptcha.getResponse() !== '' )
     {
 
       const myPayload = {
