@@ -9,7 +9,7 @@ class Contact extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      messageWasSent: null,//for animation if message was sended
+      messageWasSent: false,//for animation if message was sended
       submitMessage: '',
       firstname: '',
       firstNameFieldActive: false,
@@ -18,7 +18,7 @@ class Contact extends Component {
       email: '',
       emailFieldActive: false,
       message: '',
-      messageFieldActive: false,
+      messageFieldActive: false,  
     }
   }
   
@@ -85,6 +85,16 @@ class Contact extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
+    
+    // this.setState({
+    //   messageWasSent: true,
+    //   submitMessage: 'Message was succesfully sent.',
+    //   firstname: '',
+    //   lastname: '',
+    //   email: '',
+    //   message: '',
+    // })
+
     if(this.grecaptcha.getResponse() !== 0 && this.grecaptcha.getResponse() !== '' )
     {
 
@@ -113,10 +123,10 @@ class Contact extends Component {
       )
       .catch(error => console.log(error))
 
-      e.preventDefault()
+      // e.preventDefault()
 
     } else {
-      e.preventDefault()
+      // e.preventDefault()
       this.setState({
         messageWasSent: false,
         submitMessage: 'Please complete the recaptcha validation to continue.'
@@ -130,11 +140,10 @@ class Contact extends Component {
     return (
       <Layout>
         <El.ContactWrapper>
-          <div id='formSubmitMessage' style = {{display: 'flex', jusitfyContent: 'center'}} className={this.state.messageWasSent !== null?'showSubmitMessage':'hideSubmitMessage'}>
+          <div className={this.state.messageWasSent === true?'formSubmitMessage showSubmitMessage':'formSubmitMessage hideSubmitMessage'}>
             <p>
-              {this.state.submitMessage}
-              {/* {setTimeout(()=>{this.setState({messageWasSent: null})}, 5000)} */}
-              
+            {console.log(this.state.messageWasSent)}
+              {this.state.submitMessage}   
             </p>
           </div>
           <h1>Contact</h1>

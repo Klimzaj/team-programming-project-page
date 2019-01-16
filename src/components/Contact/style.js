@@ -3,33 +3,37 @@ import Link from 'gatsby-link'
 
 
 export const ContactWrapper = styled.div`
-  color: #737373;
-  font-size: 1rem;
-  z-index: 0;
-  display: flex;
-  flex-direction: column;
+    color: #737373;
+    font-size: 1rem;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-  h1{
-    color:#333333;
-  }
+    h1{
+        color:#333333;
+    }
 
-  #formSubmitMessage{
-      display: block;
-      height: 0px;
-      width: 100%;
-  }
+    .formSubmitMessage{
+            /* display: block; */
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            height: 0px;
+            width: 100%;
+            background-color: lightblue;
+    }
+    .showSubmitMessage{
+        display: block;
+        height: 40px;
+        transition: height 0.5s ease;
+    }
+    .hideSubmitMessage{
+        height: 0px;
+        transition: height 0.5s ease;
 
-  .showoSubmitMessage{
-    height: 30px;
-    color: lightblue;
-    transition: height 0.5s ease;
-  }
-  .hideSubmitMessage{
-    height: 0px;
-    transition: height 0.5s ease;
+    }
 
-  }
   
 `
 export const Form = styled.form`
