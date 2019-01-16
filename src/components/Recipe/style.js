@@ -42,7 +42,7 @@ export const Image = styled.div`
     max-width: 500px;
     height: 235px;
 
-    background-image: url(${props => props.image});
+    background-image: url(${props => props.src});
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
