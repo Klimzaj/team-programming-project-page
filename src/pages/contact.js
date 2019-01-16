@@ -81,20 +81,15 @@ class Contact extends Component {
   }
 
 
-  
+  encode = (data) => {
+    return Object.keys(data)
+        .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+        .join("&");
+  }
 
   handleSubmit = e => {
     e.preventDefault()
     
-    // this.setState({
-    //   messageWasSent: true,
-    //   submitMessage: 'Message was succesfully sent.',
-    //   firstname: '',
-    //   lastname: '',
-    //   email: '',
-    //   message: '',
-    // })
-
     if(this.grecaptcha.getResponse() !== 0 && this.grecaptcha.getResponse() !== '' )
     {
 
@@ -137,6 +132,7 @@ class Contact extends Component {
 
 
   render() {
+    const {firstname, lastname, email, message} = this.state
     return (
       <Layout>
         <El.ContactWrapper>
@@ -152,7 +148,6 @@ class Contact extends Component {
             method="POST"
             onSubmit={this.handleSubmit}
             data-netlify="true" 
-
           >
             <input type="hidden" name="form-name" value="contact" />
 
@@ -160,7 +155,7 @@ class Contact extends Component {
             <input
               type='text'
               name='firstname'
-              value={this.state.firstname}
+              value={firstname}
               placeholder="Firstname"
 
               onChange={this.onChangeInput}
@@ -173,7 +168,7 @@ class Contact extends Component {
             <input
               type='text'
               name='lastname'
-              value={this.state.lastname}
+              value={lastname}
               placeholder="Lastname"
 
               onChange={this.onChangeInput}
@@ -186,7 +181,7 @@ class Contact extends Component {
             <input
               type='email'
               name='email'
-              value={this.state.email}
+              value={email}
               placeholder="E-mail"
               
               onChange={this.onChangeInput}
@@ -199,7 +194,7 @@ class Contact extends Component {
             <textarea
               type='text'
               name='message'
-              value={this.state.message}
+              value={message}
               placeholder="Your message"
               
               rows="4"   
