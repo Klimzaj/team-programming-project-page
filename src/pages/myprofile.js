@@ -5,14 +5,9 @@ const windowGlobal = typeof window !== 'undefined' && window
 class MyProfile  extends React.Component{
 
     UNSAFE_componentWillMount = () => {
-        // && localStorage.getItem('access') !== 'undefined'
-        // console.log('access: ', localStorage.getItem('access'))
-        if(windowGlobal){
-            // window.location.replace('https://kitchenhelper.netlify.com/')      
-            console.log('get access: ', localStorage.getItem('access'))
+        if(windowGlobal && localStorage.getItem('access') === null){
+            window.location.replace('https://kitchenhelper.netlify.com/login')      
         }
-
-
     }
 
     render(){
