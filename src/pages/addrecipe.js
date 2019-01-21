@@ -136,13 +136,14 @@ class AddRecipe extends React.Component{
         //handle success
           console.log('success response: ', response)
           //redirect
-            // if(windowGlobal){
-            //   window.location.replace("http://localhost:8000/myprofile");
-            // }
+            if(windowGlobal){
+              window.location.replace("http://localhost:8000/myprofile");
+            }
             
         })
-        .catch(( error) => {//handle error
-          console.log(error)
+        .catch((response, error) => {//handle error
+          console.log('just error: ', error)
+          console.log('response error: ', response.status)
         });
 
   }
