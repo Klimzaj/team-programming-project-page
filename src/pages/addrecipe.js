@@ -52,9 +52,9 @@ class AddRecipe extends React.Component{
   }
   
   UNSAFE_componentWillMount = () => {
-    // if(windowGlobal && !localStorage.getItem('access'))
-    //   window.location.replace("http://localhost:8000/login");
-    
+    if(windowGlobal && localStorage.getItem('access') === null){
+      window.location.replace('https://kitchenhelper.netlify.com/login')      
+    }
   }
   
   onChangeInput = e => {
