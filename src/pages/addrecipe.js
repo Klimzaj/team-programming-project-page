@@ -137,7 +137,7 @@ class AddRecipe extends React.Component{
           console.log('success response: ', response)
           //redirect
             if(windowGlobal){
-              window.location.replace("http://localhost:8000/myprofile");
+              window.location.replace("https://kitchenhelper.netlify.com/myprofile");
             }
             
         })
