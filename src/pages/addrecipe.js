@@ -52,9 +52,9 @@ class AddRecipe extends React.Component{
   }
   
   UNSAFE_componentWillMount = () => {
-    // if(windowGlobal && !localStorage.getItem('access'))
-    //   window.location.replace("http://localhost:8000/login");
-    
+    if(windowGlobal && localStorage.getItem('access') === null){
+      window.location.replace('https://kitchenhelper.netlify.com/login')      
+    }
   }
   
   onChangeInput = e => {
@@ -136,13 +136,14 @@ class AddRecipe extends React.Component{
         //handle success
           console.log('success response: ', response)
           //redirect
-            // if(windowGlobal){
-            //   window.location.replace("http://localhost:8000/myprofile");
-            // }
+            if(windowGlobal){
+              window.location.replace("http://localhost:8000/myprofile");
+            }
             
         })
-        .catch(( error) => {//handle error
-          console.log(error)
+        .catch((response, error) => {//handle error
+          console.log('just error: ', error)
+          console.log('response error: ', response.status)
         });
 
   }
