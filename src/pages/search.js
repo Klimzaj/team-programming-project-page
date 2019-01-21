@@ -34,7 +34,7 @@ class Search extends Component{
 
         }).then((response) => {
 
-            // console.log('response.data: ',response.data);
+            console.log('response.data: ',response.data);
             this.setState({recipes: response.data})
         }).then((err)=>{
             console.log('error: ', err)
