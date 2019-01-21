@@ -23,15 +23,17 @@ class Search extends Component{
 
   }
   UNSAFE_componentDidMount = () => {
+    console.log(this.state)
     if(windowGlobal)
         axios.get(paths.domainName+paths.searchRecipePath, 
         {
             'headers':  
             {
                 'Content-Type':'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem('access'),
             },
+
         }).then((response) => {
+
             // console.log('response.data: ',response.data);
             this.setState({recipes: response.data})
         }).then((err)=>{
@@ -78,9 +80,17 @@ class Search extends Component{
                   <img 
                       src= {magnifier}
                       alt="search button image"
+                      onClick = {this.handleSubmit}
                   />
               </button> 
+
+                
             </El.Form>
+            
+            <button>
+              show all
+            </button>
+
                 
         </El.Image>
 
