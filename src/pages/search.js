@@ -23,7 +23,14 @@ class Search extends Component{
 
   }
   UNSAFE_componentDidMount = () => {
-    console.log(this.state)
+    
+  }
+
+
+  handleSubmit = e => {
+    e.preventDefault()
+    //here request for a specific recipe
+    console.log("that's my state tough: ", this.state)
     if(windowGlobal)
         axios.get(paths.domainName+paths.searchRecipePath, 
         {
@@ -38,14 +45,7 @@ class Search extends Component{
             this.setState({recipes: response.data})
         }).then((err)=>{
             console.log('error: ', err)
-        })   
-  }
-
-
-  handleSubmit = e => {
-    e.preventDefault()
-    //here request for a specific recipe
-           
+        })          
   } 
 
 
