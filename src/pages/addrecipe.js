@@ -142,8 +142,9 @@ class AddRecipe extends React.Component{
             
         })
         .catch((response, error) => {//handle error
-          console.log('just error: ', error)
-          console.log('response error: ', response.status)
+
+          console.log('just error data: ', error.response.data)
+          console.log('response error status: ', response.response.status)
         });
 
   }
