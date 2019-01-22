@@ -5,7 +5,7 @@ import styled from 'styled-components'
 export const Wrapper = styled.div`
  
   z-index: 0;
-  background-color: khaki;
+  /* background-color: khaki; */
   width: 100%;
   height: auto;
   margin: auto;
