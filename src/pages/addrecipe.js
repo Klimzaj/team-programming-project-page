@@ -4,7 +4,7 @@ import * as El from './../components/AddRecipe/style'
 import axios from 'axios'
 // import IngredientInput from '../components/IngredientInput.js'
 import * as paths from './../data/ApiPaths'
-import IngredientInput from './../components/IngredientInput'
+
 
 const windowGlobal = typeof window !== 'undefined' && window
 
@@ -271,10 +271,6 @@ class AddRecipe extends React.Component{
                                 </option>
                               )
                             })):(<option> test </option>)}
-                            {/* <option value="eggs">eggs</option>
-                            <option value="ketchup">ketchup</option>
-                            <option value="honey">honey</option>
-                            <option value="chicken">chicken</option> */}
                         </select>
                     </div>
                 )})
@@ -284,12 +280,12 @@ class AddRecipe extends React.Component{
               type = "text" 
               name = 'image'
               value = {this.state.image}
-              placeholder= 'URL path to image'
+              placeholder= 'https://www.somename.com'
               onChange = {this.onChangeInput}
               onFocus={this.activateField}
               onBlur={this.disableFocus} 
               />
-            
+            {this.state.image.includes('.jpg')?(<img src={this.state.image} width='50px' height='50px'></img>):('')}
 
 
             <label htmlFor = 'recipe' className={this.state.recipeFieldActive ? "field-active" : ""}>Recipe's steps </label>
@@ -313,7 +309,6 @@ class AddRecipe extends React.Component{
             </El.SubmitButtonInput>
 
           </El.Form>
-          {/* <IngredientInput></IngredientInput> */}
 
         </El.Wrapper>
       </Layout>

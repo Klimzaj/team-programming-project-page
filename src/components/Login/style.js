@@ -3,6 +3,7 @@ import Link from 'gatsby-link'
 
 export const MainWrapper = styled.div`
     z-index: 0;
+    height: 611px;
     width: 100%;
 
     background-image: url(${props => props.source});

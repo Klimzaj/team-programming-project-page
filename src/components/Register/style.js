@@ -3,9 +3,9 @@ import Link from 'gatsby-link'
 
 export const MainWrapper = styled.div`
     z-index: 0;
-
+    
     width: 100%;
-    height: 100%;
+    height: 611px;
 
     background-image: url(${props => props.source});
     background-repeat: no-repeat;

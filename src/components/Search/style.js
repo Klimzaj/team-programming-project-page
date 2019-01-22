@@ -11,6 +11,35 @@ export const MainElement = styled.div`
 
 `
 
+export const ShowNewRecipesButton = styled.button`
+    all: initial;
+    background-color: #ffe600;
+    border-radius: 10px;
+    display: block;
+    width: 100px;
+    height: 25px;
+    text-align: center;
+
+    padding: 13px 29px;
+    
+    position: relative;
+    top: -10px;
+    left: 200px;
+
+    ${this}:active{
+      background-color: #C6B305;
+      color: white;
+      text-decoration: none !important;
+      transition: all 0.5s ease;
+    }
+    ${this}:hover{
+      cursor: pointer;
+      text-decoration: underline;
+      transition: all 0.5s ease;
+    }
+`
+
+
 export const Image = styled.div`
     width: 100%;
     height: 435px;
@@ -112,6 +141,11 @@ export const Form = styled.form`
         top: -26px;
         left:145px;
         z-index: 5;
+    }
+
+    img{
+        position: relative;
+        right: 10px;
     }
 
 `
