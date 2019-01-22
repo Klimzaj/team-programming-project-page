@@ -12,6 +12,8 @@ import MainImage from '../images/findRecipeImage.jpg'
 const windowGlobal = typeof window !== 'undefined' && window
 
 
+
+
 class Search extends Component{ 
   constructor(props){
     super(props)
@@ -88,9 +90,9 @@ class Search extends Component{
                 
             </El.Form>
             
-            <button>
+            <El.ShowNewRecipesButton>
               show all
-            </button>
+            </El.ShowNewRecipesButton>
 
                 
         </El.Image>

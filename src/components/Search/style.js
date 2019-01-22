@@ -11,6 +11,13 @@ export const MainElement = styled.div`
 
 `
 
+export const ShowNewRecipesButton = styled.button`
+    position: relative;
+    left: 200px;
+    top: -4px;
+`
+
+
 export const Image = styled.div`
     width: 100%;
     height: 435px;
