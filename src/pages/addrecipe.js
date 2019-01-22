@@ -120,7 +120,7 @@ class AddRecipe extends React.Component{
       console.log('my value: ', e.target.value)
 
       let mData = JSON.stringify({
-        query: e.target.value,
+        query: e.target.value
       })
 
 
