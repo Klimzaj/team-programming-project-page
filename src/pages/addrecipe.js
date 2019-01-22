@@ -284,12 +284,12 @@ class AddRecipe extends React.Component{
               type = "text" 
               name = 'image'
               value = {this.state.image}
-              placeholder= 'URL path to image'
+              placeholder= 'https://www.somename.com'
               onChange = {this.onChangeInput}
               onFocus={this.activateField}
               onBlur={this.disableFocus} 
               />
-            
+            {this.state.image.includes('.jpg')?(<img src={this.state.image} width='50px' height='50px'></img>):('')}
 
 
             <label htmlFor = 'recipe' className={this.state.recipeFieldActive ? "field-active" : ""}>Recipe's steps </label>
