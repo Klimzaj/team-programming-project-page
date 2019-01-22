@@ -6,8 +6,8 @@ export const Wrapper = styled.div`
  
   z-index: 0;
   /* background-color: khaki; */
+  height: 611px;
   width: 100%;
-  height: auto;
   margin: auto;
   padding: 0 1rem 0 1rem;
 
@@ -63,7 +63,7 @@ export const Wrapper = styled.div`
 
     textarea[type='text'],input[type='text'],input[type='password'],input[type='email'] {
         all: initial;
-        background-color: white;
+        background-color: #fffcef;
         padding: 0.3rem 0.2rem;
         border-radius: 3px;
 
@@ -75,7 +75,9 @@ export const Wrapper = styled.div`
             color: grey;
         }
     }
-
+    select{
+      margin-left: 1rem;
+    }
     label {
         z-index: 1;
         display: inline-block;
