@@ -134,7 +134,7 @@ class AddRecipe extends React.Component{
         axios.post(paths.domainName+paths.getProductPath, mData, {
         headers: {
             'Content-Type':'application/json',
-            // 'Authorization': 'Bearer ' + localStorage.getItem('access')
+            'Authorization': 'Bearer ' + localStorage.getItem('access'),
         }
         }).then(function (response) {
         //handle success
