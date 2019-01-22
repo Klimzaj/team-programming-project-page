@@ -114,7 +114,7 @@ class AddRecipe extends React.Component{
             imageFieldActive: false
         })
       }
-    }else if(e.target.name.includes('ingredient')){
+    }else if(e.target.name.includes('ingredient')){//ingredient field disableFocus
       console.log('hello from input ingredient field onBlur!')
 
       console.log('my value: ', e.target.value)
@@ -124,8 +124,11 @@ class AddRecipe extends React.Component{
       })
 
 
+      
+
 
       if(windowGlobal){
+        console.log('thats my acces token: ', localStorage.getItem('access'))
         axios.post(paths.domainName+paths.getProductPath, mData, {
         headers: {
             'Content-Type':'application/json',
@@ -143,11 +146,6 @@ class AddRecipe extends React.Component{
         });
       }
     }
-
-
-
-
-
   }
 
   handleSubmit = e => {
