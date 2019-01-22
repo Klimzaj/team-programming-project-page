@@ -28,6 +28,24 @@ class Search extends Component{
     
   }
 
+  showNewest = (e) => {
+    e.preventDefault();
+    console.log('tutaj!')
+    // if(windowGlobal)
+    // axios.get(paths.domainName+paths.searchRecipePath, 
+    // {
+    //     'headers':  
+    //     {
+    //         'Content-Type':'application/json',
+    //     },
+    // }).then((response) => {
+    //   console.log('response.data: ',response.data);
+    //   this.setState({recipes: response.data})
+    // }).then((err)=>{
+    //   console.log('error: ', err)
+    // })          
+
+  }
   
 
   handleSubmit = e => {
@@ -90,8 +108,10 @@ class Search extends Component{
                 
             </El.Form>
             
-            <El.ShowNewRecipesButton>
-              show all
+            <El.ShowNewRecipesButton
+              onClick = {this.showNewest}
+            >
+              show newest
             </El.ShowNewRecipesButton>
 
                 
