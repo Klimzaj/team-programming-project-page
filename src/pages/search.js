@@ -30,24 +30,24 @@ class Search extends Component{
   handleSubmit = e => {
     e.preventDefault()
     //here request for a specific recipe
-    console.log("that's my state tough: ", this.state)
-    if(windowGlobal)
-        axios.get(paths.domainName+paths.searchRecipePath, 
+  if(windowGlobal)
+    axios.get(paths.domainName+paths.searchRecipePath, 
+    {
+        'headers':  
         {
-            'headers':  
-            {
-                'Content-Type':'application/json',
-            },
+            'Content-Type':'application/json',
+        },
+    }).then((response) => {
+      console.log('response.data: ',response.data);
+      this.setState({recipes: response.data})
+    }).then((err)=>{
+      console.log('error: ', err)
+    })          
 
-        }).then((response) => {
-
-            console.log('response.data: ',response.data);
-            this.setState({recipes: response.data})
-        }).then((err)=>{
-            console.log('error: ', err)
-        })          
-  } 
-
+  console.log("that's my state to ugh: ", this.state)
+  
+} 
+        
 
   render(){
     return(
@@ -103,7 +103,7 @@ class Search extends Component{
                 author = {item.author}
                 name = {item.name}
                 description = {item.description}
-                image = {item.img}
+                image = {item.image}
                 votes = {item.votes}
                 url = {item.url}
               />          
