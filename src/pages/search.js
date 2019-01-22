@@ -30,20 +30,20 @@ class Search extends Component{
 
   showNewest = (e) => {
     e.preventDefault();
-    console.log('tutaj!')
-    // if(windowGlobal)
-    // axios.get(paths.domainName+paths.searchRecipePath, 
-    // {
-    //     'headers':  
-    //     {
-    //         'Content-Type':'application/json',
-    //     },
-    // }).then((response) => {
-    //   console.log('response.data: ',response.data);
-    //   this.setState({recipes: response.data})
-    // }).then((err)=>{
-    //   console.log('error: ', err)
-    // })          
+    console.log('test msg show newest button: ')
+    if(windowGlobal)
+    axios.get(paths.domainName+paths.searchRecipePath, 
+    {
+        'headers':  
+        {
+            'Content-Type':'application/json',
+        },
+    }).then((response) => {
+      console.log('response.data: ',response.data);
+      this.setState({recipes: response.data})
+    }).then((err)=>{
+      console.log('error: ', err)
+    })          
 
   }
   
