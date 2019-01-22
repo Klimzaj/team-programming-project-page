@@ -26,6 +26,7 @@ class Search extends Component{
     
   }
 
+  
 
   handleSubmit = e => {
     e.preventDefault()

@@ -4,6 +4,7 @@ import * as El from './../components/AddRecipe/style'
 import axios from 'axios'
 // import IngredientInput from '../components/IngredientInput.js'
 import * as paths from './../data/ApiPaths'
+import IngredientInput from './../components/IngredientInput'
 
 const windowGlobal = typeof window !== 'undefined' && window
 
@@ -16,6 +17,8 @@ class AddRecipe extends React.Component{
       descriptionFieldActive: false,
       imageFieldActive: false,
       
+      optionItems: [{name: 'asd1'}, {name: 'asd2'}],
+
       name: '',
       image: '',
       description: '',
@@ -111,7 +114,40 @@ class AddRecipe extends React.Component{
             imageFieldActive: false
         })
       }
-    } 
+    }else if(e.target.name.includes('ingredient')){
+      console.log('hello from input ingredient field onBlur!')
+
+      console.log('my value: ', e.target.value)
+
+      let mData = JSON.stringify({
+        query: e.target.value,
+      })
+
+
+
+      if(windowGlobal){
+        axios.post(paths.domainName+paths.getProductPath, mData, {
+        headers: {
+            'Content-Type':'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('access'),
+        }
+        }).then(function (response) {
+        //handle success
+            console.log('response from input ingredient post: '+response.data)
+            //redirect
+              
+        })
+        .catch(function (error) {
+      //handle error
+          console.log('error: ', error);
+        });
+      }
+    }
+
+
+
+
+
   }
 
   handleSubmit = e => {
@@ -222,6 +258,24 @@ class AddRecipe extends React.Component{
                         onFocus={this.activateField}
                         onBlur={this.disableFocus} 
                         />
+
+                        <select name = {`selectInput_${i}`} onChange={this.handleOnChange}>
+                            {this.state.optionItems?(this.state.optionItems.map((item, i)=>{
+                              return(
+                                <option
+                                  value={item.name?(item.name):'test'}
+                                  name={`option_${i}`}
+                                  key={`option_${i}`}
+                                >
+                                  {item.name}
+                                </option>
+                              )
+                            })):(<option> test </option>)}
+                            {/* <option value="eggs">eggs</option>
+                            <option value="ketchup">ketchup</option>
+                            <option value="honey">honey</option>
+                            <option value="chicken">chicken</option> */}
+                        </select>
                     </div>
                 )})
               }
