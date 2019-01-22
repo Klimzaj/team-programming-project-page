@@ -94,15 +94,17 @@ class IngredientInput extends Component {
             <Wrapper>
                 <form onSubmit={this.handleSubmit}>
                     <label>
-                    Pick your favorite flavor:
-                    <select name = "selectInput" onChange={this.handleOnChange}>
-                        <option value="eggs">eggs</option>
-                        <option value="ketchup">ketchup</option>
-                        <option value="honey">honey</option>
-                        <option value="chicken">chicken</option>
-                    </select>
+                        Pick your favorite flavor:
+                        <select name = "selectInput" onChange={this.handleOnChange}>
+                            <option value="eggs">eggs</option>
+                            <option value="ketchup">ketchup</option>
+                            <option value="honey">honey</option>
+                            <option value="chicken">chicken</option>
+                        </select>
                     </label>
+                    
                     <input type="submit" value="Submit" />
+
                 </form>
             </Wrapper>
         );
