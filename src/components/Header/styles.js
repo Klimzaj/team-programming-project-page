@@ -101,6 +101,7 @@ export const StyledLi = styled.li`
   .active {
     padding-bottom: 12px;
     border-bottom: 5px solid #ffe600;
+    /* #ffe600 */
   }
 
   ${this}:hover{

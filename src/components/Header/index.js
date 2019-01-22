@@ -98,7 +98,7 @@ class Header extends React.Component {
       <div>
         <El.MainWrapper heightExpand={this.state.expandHeader}>
           <El.LeftDiv >
-            <El.DarkLine />
+            {/* <El.DarkLine /> */}
           </El.LeftDiv>
           <El.IconDiv>
             <Link to='/'><El.Logo src={logoImg} /></Link>
@@ -149,7 +149,7 @@ class Header extends React.Component {
                 }
               </El.StyledUl>
             </El.MenuDiv>
-            <El.DarkLine />
+            {/* <El.DarkLine /> */}
           </El.RightDiv>
           <El.HamburgerMenu
             className={collapsed ? 'isOpen' : ''}
