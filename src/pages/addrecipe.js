@@ -120,7 +120,7 @@ class AddRecipe extends React.Component{
       console.log('my value: ', e.target.value)
 
       let mData = JSON.stringify({
-        query: e.target.value,
+        query: e.target.value
       })
 
 
@@ -129,10 +129,12 @@ class AddRecipe extends React.Component{
 
       if(windowGlobal){
         console.log('thats my acces token: ', localStorage.getItem('access'))
+      
+        // axios.post('http://localhost:8000/tesco-api/grocery-search/', mData, {      
         axios.post(paths.domainName+paths.getProductPath, mData, {
         headers: {
             'Content-Type':'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem('access'),
+            'Authorization': 'Bearer ' + localStorage.getItem('access')
         }
         }).then(function (response) {
         //handle success
