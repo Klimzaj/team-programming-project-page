@@ -1,7 +1,7 @@
 import React from 'react'
 import * as El from './styles'
 import {Link} from 'gatsby'
-import logoImg from './../../assets/kitchenHelperLogo.svg'
+import logoImg from './../../images/kh-favicon.jpg'
 import triangleDown from './../../images/triangle_down.png'
 const windowGlobal = typeof window !== 'undefined' && window
 
