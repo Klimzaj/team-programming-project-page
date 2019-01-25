@@ -116,18 +116,18 @@ class AddRecipe extends React.Component{
             imageFieldActive: false
         })
       }
-    }else if(e.target.name.includes('ingredient')){//ingredient field disableFocus
+    }else if(e.target.name.includes('ingredient')){
+//ingredient field disableFocus
+// should be recognizing from which input is it coming from, eg. ingredient1,ingredient2,..3,..4
+      
       console.log('hello from input ingredient field onBlur!')
-
       console.log('my value: ', e.target.value)
 
       let mData = JSON.stringify({
         query: e.target.value
       })
 
-
-      
-
+//axios post method
 
       if(windowGlobal){
         console.log('thats my acces token: ', localStorage.getItem('access'))
@@ -146,8 +146,10 @@ class AddRecipe extends React.Component{
             console.log('first element of response array name:  '+response.data[0].name)
             console.log('after dot operator (...response.data): ', ...response.data)
             this.setState({
-              optionItems: [...response.data]
+              optionItems: response.data
             });
+
+            console.log('and this is my state: ', this.state.optionItems)
         })
         .catch(function (error) {
       //handle error
@@ -265,15 +267,16 @@ class AddRecipe extends React.Component{
                         onFocus={this.activateField}
                         onBlur={this.disableFocus} 
                         />
-
+{/* select component */}
                         <select name = {`selectInput_${i}`} onChange={this.handleOnChange}>
                             {this.state.optionItems?(this.state.optionItems.map((item, i)=>{
                               return(
                                 <option
-                                  value={item.name?(item.name):'test'}
+                                  value={item.name?(item.name):'__mError'}
                                   name={`option_${i}`}
                                   key={`option_${i}`}
                                 >
+                                  lol
                                   {item.name}
                                 </option>
                               )
