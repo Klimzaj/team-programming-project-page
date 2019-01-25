@@ -138,8 +138,8 @@ class AddRecipe extends React.Component{
         }
         }).then(function (response) {
         //handle success
-            console.log('response from input ingredient post: '+response.data)
-            //redirect
+            console.log('the whole response from input ingredient post: '+response.data)
+            console.log('first element of response array:  '+response.data[0])
               
         })
         .catch(function (error) {
