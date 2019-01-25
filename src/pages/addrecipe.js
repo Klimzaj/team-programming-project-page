@@ -144,7 +144,6 @@ class AddRecipe extends React.Component{
             console.log('the whole response from input ingredient post: '+response.data)
             console.log('first element of response array:  '+response.data[0])
             console.log('first element of response array name:  '+response.data[0].name)
-            this.setState
             this.setState( () => {return {optionItems: [...response.data]}})
         })
         .catch(function (error) {
