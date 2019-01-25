@@ -145,7 +145,7 @@ class AddRecipe extends React.Component{
             console.log('first element of response array:  '+response.data[0])
             console.log('first element of response array name:  '+response.data[0].name)
 
-            this.setState({optionItems: [...response.data]})
+            this.setState({optionItems: response.data})
         })
         .catch(function (error) {
       //handle error
