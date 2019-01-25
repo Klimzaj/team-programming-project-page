@@ -17,6 +17,7 @@ class Header extends React.Component {
     }
   }
   
+  
   UNSAFE_componentWillMount() {
     if(windowGlobal){
       if(localStorage.getItem('access'))
