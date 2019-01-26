@@ -74,7 +74,11 @@ class AddRecipe extends React.Component{
     this.activateField(e)
     e.preventDefault()
   }
-
+  ingredientsToState = (data) => {
+    this.setState({
+      optionItems: [...data]
+    });
+  }
 
   activateField = (e) => {
     if(e.target.name === 'name'){
@@ -158,11 +162,13 @@ class AddRecipe extends React.Component{
             console.log('first element of response array name:  '+response.data[0].name)
             console.log('after dot operator (...response.data): ', ...response.data);
             console.log('typeof response.data: ', typeof(response.data))
-            delta = () => {
-              setState({
-                optionItems: response
-              });
-            }
+            ingredientsToState(response.data)
+            
+            // delta = () => {
+            //   setState({
+            //     optionItems: response
+            //   });
+            // }
         
             console.log('and this is my state: ', this.state.optionItems)
         })
