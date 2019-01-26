@@ -147,7 +147,7 @@ class AddRecipe extends React.Component{
         this.setState({optionItems: []});
         console.log('displaying setted up state to the console, as well as its type(in brackets): ', this.state.optionItems, ', (', typeof this.state.optionItems,')')
 
-
+        const thisBinded = this;
         // axios.post('http://localhost:8000/tesco-api/grocery-search/', mData, {      
         axios.post(paths.domainName+paths.getProductPath, mData, {
         headers: {
@@ -162,7 +162,7 @@ class AddRecipe extends React.Component{
             console.log('first element of response array name:  '+response.data[0].name)
             console.log('after dot operator (...response.data): ', ...response.data);
             console.log('typeof response.data: ', typeof(response.data))
-            ingredientsToState(response.data)
+            thisBinded.ingredientsToState(response.data)
 
             // delta = () => {
             //   setState({
