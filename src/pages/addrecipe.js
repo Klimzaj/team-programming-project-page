@@ -170,7 +170,7 @@ class AddRecipe extends React.Component{
             //   });
             // }
         
-            console.log('and this is my state: ', this.state.optionItems)
+            console.log('and this is my state: ', thisBinded.state.optionItems)
         })
         .catch(function (error) {
       //handle error
@@ -311,7 +311,7 @@ class AddRecipe extends React.Component{
               type = "text" 
               name = 'image'
               value = {this.state.image}
-              placeholder= 'https://www.somename.com'
+              placeholder= 'https://placehold.it/150x150?text=lolz.jpg'
               onChange = {this.onChangeInput}
               onFocus={this.activateField}
               onBlur={this.disableFocus} 
