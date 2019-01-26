@@ -11,6 +11,10 @@ const windowGlobal = typeof window !== 'undefined' && window
 class AddRecipe extends React.Component{
   constructor(props){
     super(props)
+
+    this.delta = this.delta.bind(this)
+
+
     this.state = {
       
       nameFieldActive: false,
@@ -25,6 +29,7 @@ class AddRecipe extends React.Component{
       image: '',
       description: '',
       votes: 10,
+      
       recipes_ingredients: [
         {
           quantity: "ingredient's quantity",
@@ -153,7 +158,7 @@ class AddRecipe extends React.Component{
             console.log('first element of response array name:  '+response.data[0].name)
             console.log('after dot operator (...response.data): ', ...response.data);
             console.log('typeof response.data: ', typeof(response.data))
-            this.setState({optionItems: response});
+            delta.setState({optionItems: response});
         
             console.log('and this is my state: ', this.state.optionItems)
         })
