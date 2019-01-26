@@ -12,7 +12,7 @@ class AddRecipe extends React.Component{
   constructor(props){
     super(props)
 
-    this.delta = this.delta.bind(this)
+    // this.delta = this.delta.bind(this)
 
 
     this.state = {
@@ -163,7 +163,7 @@ class AddRecipe extends React.Component{
             console.log('after dot operator (...response.data): ', ...response.data);
             console.log('typeof response.data: ', typeof(response.data))
             ingredientsToState(response.data)
-            
+
             // delta = () => {
             //   setState({
             //     optionItems: response
