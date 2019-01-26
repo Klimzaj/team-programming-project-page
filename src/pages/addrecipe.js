@@ -146,7 +146,7 @@ class AddRecipe extends React.Component{
             console.log('first element of response array name:  '+response.data[0].name)
             console.log('after dot operator (...response.data): ', ...response.data)
             this.setState({
-              optionItems: response.data
+              optionItems: [response.data]
             });
 
             console.log('and this is my state: ', this.state.optionItems)
