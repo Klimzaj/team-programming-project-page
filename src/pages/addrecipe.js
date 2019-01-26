@@ -141,7 +141,7 @@ class AddRecipe extends React.Component{
         }).then(function (response) {
         //handle success
 
-            console.log('the whole response from input ingredient post: '+response.data=)
+            console.log('the whole response from input ingredient post: '+response.data)
             console.log('first element of response array:  '+response.data[0])
             console.log('first element of response array name:  '+response.data[0].name)
             console.log('after dot operator (...response.data): ', ...response.data);
