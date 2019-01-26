@@ -144,11 +144,12 @@ class AddRecipe extends React.Component{
             console.log('the whole response from input ingredient post: '+response.data)
             console.log('first element of response array:  '+response.data[0])
             console.log('first element of response array name:  '+response.data[0].name)
-            console.log('after dot operator (...response.data): ', ...response.data)
-            this.setState({
+            console.log('after dot operator (...response.data): ', ...response.data);
+            
+            this.setState = () => ({
               optionItems: [response.data]
             });
-
+        
             console.log('and this is my state: ', this.state.optionItems)
         })
         .catch(function (error) {
