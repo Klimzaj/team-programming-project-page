@@ -158,7 +158,11 @@ class AddRecipe extends React.Component{
             console.log('first element of response array name:  '+response.data[0].name)
             console.log('after dot operator (...response.data): ', ...response.data);
             console.log('typeof response.data: ', typeof(response.data))
-            delta.setState({optionItems: response});
+            delta = () => {
+              setState({
+                optionItems: response
+              });
+            }
         
             console.log('and this is my state: ', this.state.optionItems)
         })
