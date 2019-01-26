@@ -131,7 +131,14 @@ class AddRecipe extends React.Component{
 
       if(windowGlobal){
         console.log('thats my acces token: ', localStorage.getItem('access'))
-      
+        
+
+        console.log('setting up the state with another empty array. ')
+
+        this.setState({optionItems: []});
+        console.log('displaying setted up state to the console, as well as its type(in brackets): ', this.state.optionItems, ', (', typeof this.state.optionItems,')')
+
+
         // axios.post('http://localhost:8000/tesco-api/grocery-search/', mData, {      
         axios.post(paths.domainName+paths.getProductPath, mData, {
         headers: {
