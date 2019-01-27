@@ -289,7 +289,7 @@ class AddRecipe extends React.Component{
                         onBlur={this.disableFocus} 
                         />
 {/* select component */}
-                        <select name = {`selectInput_${i}`} onChange={this.handleOnChange}>
+                        <select className = 'custom-select' style={{width: '200px'}}name = {`selectInput_${i}`} onChange={this.handleOnChange}>
                             {this.state.optionItems?(this.state.optionItems.map((item, i)=>{
                               return(
                                 <option
