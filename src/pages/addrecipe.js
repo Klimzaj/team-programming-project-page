@@ -296,8 +296,7 @@ class AddRecipe extends React.Component{
                                   value={item.name?(item.name):'__mError'}
                                   name={`option_${i}`}
                                   key={`option_${i}`}
-                                >
-                                  lol
+                                > 
                                   {item.name}
                                 </option>
                               )
