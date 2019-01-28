@@ -222,7 +222,7 @@ class AddRecipe extends React.Component{
           console.log('success response: ', response)
           //redirect
             if(windowGlobal){
-              window.location.replace("https://kitchenhelper.netlify.com/myprofile");
+              window.location.replace("https://kitchenhelper.netlify.com/");
             }
             
         })
@@ -245,6 +245,8 @@ class AddRecipe extends React.Component{
     let _unit_price = this.state.r_unit_price
     let _unit_quantity = this.state.r_unit_quantity
     
+    console.log(el)
+
     _name.push(el.name)
     _image.push(el.image)
     _description.push(el.description)
@@ -304,7 +306,7 @@ class AddRecipe extends React.Component{
                   r_name.length != 0 ? r_name.map((el,i )=> {
                     // console.log(el)
                     return (
-                      <li>{el}</li>
+                      <li>{el}</li> // dodac usuniecie
                       )})
                       : ''
                     }
