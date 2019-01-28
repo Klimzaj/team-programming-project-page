@@ -253,7 +253,7 @@ class AddRecipe extends React.Component{
     _price.push(el.price)
     _unit_price.push(el.unitprice)
     _unit_quantity.push(el.UnitQuantity)
-    if(typeof el.description !== string)
+    if(el.description.constructor === Array)
     {
       let a = ''
       for (let i = 0; i < el.description.length; i++) {
@@ -273,7 +273,9 @@ class AddRecipe extends React.Component{
     this.setState({r_unit_price: _unit_price})
     this.setState({r_unit_quantity: _unit_quantity})
   }
-  
+  removeProduct = e => {
+    console.log("usuwam")
+  }
   render(){
     const {r_name} = this.state
     return(
@@ -318,7 +320,7 @@ class AddRecipe extends React.Component{
                   r_name.length != 0 ? r_name.map((el,i )=> {
                     // console.log(el)
                     return (
-                      <li>{el}</li> // dodac usuniecie
+                      <li onClick={this.removeProduct(i)}>{el}</li> // dodac usuniecie
                       )})
                       : ''
                     }
