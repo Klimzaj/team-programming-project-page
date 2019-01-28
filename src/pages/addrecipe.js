@@ -217,7 +217,7 @@ class AddRecipe extends React.Component{
           'Content-Type':'application/json',
           'Authorization': 'Bearer ' + localStorage.getItem('access'),
         },
-        }).then((response) => {
+        }).then(response => {
         //handle success
           console.log('success response: ', response)
           //redirect
