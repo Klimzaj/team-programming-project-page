@@ -21,6 +21,7 @@ class Search extends Component{
         searchInput: '',
         searchInputFieldActive: false,
         recipes: [],
+        isDownload: false
     }
 
   }
@@ -71,7 +72,11 @@ class Search extends Component{
         
 
   render(){
-    this.showNewest()
+    if(this.state.isDownload === false)
+    {
+      this.showNewest()
+      this.setState({isDownload: true})
+    }
     return(
 
       <Layout>
