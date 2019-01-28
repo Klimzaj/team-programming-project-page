@@ -184,7 +184,7 @@ class AddRecipe extends React.Component{
     e.preventDefault()
 
     let products = []
-    for (let i = 0; i < this.state.name.length-1; inidex++) {
+    for (let i = 0; i < this.state.name.length-1; i++) {
       let obj = {
         quantity: "1",
         ingredient: {
