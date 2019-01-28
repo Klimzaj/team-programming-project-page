@@ -259,6 +259,8 @@ class AddRecipe extends React.Component{
       for (let i = 0; i < el.description.length; i++) {
         a.concat(el.description[i])
       }
+      console.log(typeof a)
+      console.log(a)
       _description.push(a)
     }
     else
@@ -320,7 +322,7 @@ class AddRecipe extends React.Component{
                   r_name.length != 0 ? r_name.map((el,i )=> {
                     // console.log(el)
                     return (
-                      <li onClick={this.removeProduct(i)}>{el}</li> // dodac usuniecie
+                      <li><h3>{el}</h3><button onClick={this.removeProduct(i)} /></li> // dodac usuniecie
                       )})
                       : ''
                     }
