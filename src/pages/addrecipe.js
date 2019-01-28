@@ -4,6 +4,7 @@ import * as El from './../components/AddRecipe/style'
 import axios from 'axios'
 // import IngredientInput from '../components/IngredientInput.js'
 import * as paths from './../data/ApiPaths'
+import { array } from 'prop-types';
 
 
 const windowGlobal = typeof window !== 'undefined' && window
@@ -249,10 +250,21 @@ class AddRecipe extends React.Component{
 
     _name.push(el.name)
     _image.push(el.image)
-    _description.push(el.description)
     _price.push(el.price)
     _unit_price.push(el.unitprice)
     _unit_quantity.push(el.UnitQuantity)
+    if(typeof el.description === string)
+    {
+      let a = ''
+      for (let i = 0; i < el.description.length; i++) {
+        a.concat(el.description[i])
+      }
+      _description.push(a)
+    }
+    else
+    {
+      _description.push(el.description)
+    }
 
     this.setState({r_name: _name})
     this.setState({r_image: _image})
