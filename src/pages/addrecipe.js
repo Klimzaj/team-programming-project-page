@@ -213,6 +213,28 @@ class AddRecipe extends React.Component{
     // console.log(e.target.value);
     let el = this.state.optionItems.find(a => a.name == e.target.value)
     console.log(el);
+
+    let _name = this.state.name
+    let _image = this.state.image
+    let _description = this.state.description
+    let _price = this.state.price
+    let _unit_price = this.state.unit_price
+    let _unit_quantity = this.state.unit_quantity
+    
+    _name.push(el.name)
+    _image.push(el.image)
+    _description.push(el.description)
+    _price.push(el.price)
+    _unit_price.push(el.unitprice)
+    _unit_quantity.push(el.UnitQuanity)
+
+    this.setState({name: _name})
+    this.setState({image: _image})
+    this.setState({description: _description})
+    this.setState({price: _price})
+    this.setState({unit_price: _unit_price})
+    this.setState({unit_quantity: _unit_quantity})
+
   }
   
   render(){
@@ -251,9 +273,17 @@ class AddRecipe extends React.Component{
 
             <div style={{display: 'flex',}}>
               <p style={{ color: 'black'}} htmlFor ='component'>Ingredients list: </p>
+
+              <ul>
+                {
+                  this.state.name ? this.state.name.map((el,i )=> {
+                    return (
+                      <li>{el}</li>
+                      )})
+                      : <li></li>
+                    }
+              </ul>
             </div>
-
-
 
 
 
