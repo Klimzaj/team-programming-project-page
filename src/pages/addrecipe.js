@@ -235,6 +235,7 @@ class AddRecipe extends React.Component{
     this.setState({unit_price: _unit_price})
     this.setState({unit_quantity: _unit_quantity})
 
+    console.log(this.state)
   }
   
   render(){
@@ -277,6 +278,7 @@ class AddRecipe extends React.Component{
               <ul>
                 {
                   this.state.name ? this.state.name.map((el,i )=> {
+                    console.log(el)
                     return (
                       <li>{el}</li>
                       )})
