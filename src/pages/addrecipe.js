@@ -174,7 +174,7 @@ class AddRecipe extends React.Component{
         })
         .catch(function (error) {
       //handle error
-          console.log('error: ', error);
+          console.log('catched an error: ', error);
         });
       }
     }
@@ -289,19 +289,21 @@ class AddRecipe extends React.Component{
                         onBlur={this.disableFocus} 
                         />
 {/* select component */}
-                        <select className = 'custom-select' style={{width: '200px'}} name = {`selectInput_${i}`} onChange={this.handleOnChange}>
-                            {this.state.optionItems?(this.state.optionItems.map((item, i)=>{
-                              return(
-                                <option
+                      <div className = 'custom-select' style={{width: '200px'}}>
+                          <select name = {`selectInput_${i}`} onChange={this.handleOnChange}>
+                              {this.state.optionItems?(this.state.optionItems.map((item, i)=>{
+                                return(
+                                  <option
                                   value={item.name?(item.name):'__mError'}
                                   name={`option_${i}`}
                                   key={`option_${i}`}
-                                > 
-                                  {item.name}
-                                </option>
-                              )
-                            })):(<option> test </option>)}
-                        </select>
+                                  > 
+                                    {item.name}
+                                  </option>
+                                )
+                              })):(<option> test </option>)}
+                          </select>
+                        </div>
                     </div>
                 )})
               }
