@@ -321,7 +321,7 @@ class AddRecipe extends React.Component{
                   r_name.length != 0 ? r_name.map((el,i )=> {
                     // console.log(el)
                     return (
-                      <li><h3>{el}</h3><a key={i} onclick={this.removeProduct}>X</a></li> // dodac usuniecie
+                      <li><h3>{el}</h3><input type="button" value={"X"} key={i} onclick={this.removeProduct} /></li> // dodac usuniecie
                       )})
                       : ''
                     }
