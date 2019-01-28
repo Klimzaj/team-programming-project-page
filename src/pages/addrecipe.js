@@ -82,10 +82,9 @@ class AddRecipe extends React.Component{
     e.preventDefault()
   }
 
-  ingredientsToState = (data, objIndex) => {
+  ingredientsToState = (data) => {
     
-    let tempOptionItems = this.state.optionItems;
-    tempOptionItems[objIndex].values = [...data]
+
     this.setState({
       optionItems: [...data]
     });
