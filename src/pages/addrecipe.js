@@ -272,6 +272,7 @@ class AddRecipe extends React.Component{
   }
   removeProduct = e => {
     console.log("usuwam")
+    console.log(e)
   }
   render(){
     const {r_name} = this.state
