@@ -253,7 +253,7 @@ class AddRecipe extends React.Component{
     _price.push(el.price)
     _unit_price.push(el.unitprice)
     _unit_quantity.push(el.UnitQuantity)
-    if(typeof el.description === string)
+    if(typeof el.description !== string)
     {
       let a = ''
       for (let i = 0; i < el.description.length; i++) {
