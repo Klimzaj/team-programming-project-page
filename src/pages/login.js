@@ -83,7 +83,7 @@ class Login extends React.Component {
           if(windowGlobal)
      
 
-            window.location.replace("https://kitchenhelper.netlify.com/myprofile")
+            window.location.replace("https://kitchenhelper.netlify.com/")
           //props.history.push('/myprofile')
 
         })
