@@ -210,12 +210,9 @@ class AddRecipe extends React.Component{
 
   }
   saveProduct = e => {
-    console.log(e);
-    console.log(e.target)
-    console.log(e.target.value);
-    console.log(e.target.keys);
-    console.log(e.target.item);
-
+    // console.log(e.target.value);
+    let el = this.state.optionItems.find(a => a.name == e.target.value)
+    console.log(el);
   }
   
   render(){
