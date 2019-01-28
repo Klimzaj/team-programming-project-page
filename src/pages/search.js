@@ -71,6 +71,7 @@ class Search extends Component{
         
 
   render(){
+    this.showNewest()
     return(
 
       <Layout>
