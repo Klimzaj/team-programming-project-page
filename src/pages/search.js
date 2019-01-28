@@ -49,7 +49,7 @@ class Search extends Component{
   
 
   handleSubmit = e => {
-    e.preventDefault()
+    // e.preventDefault()
     //here request for a specific recipe
   if(windowGlobal)
     axios.get(paths.domainName+paths.searchRecipePath, 
