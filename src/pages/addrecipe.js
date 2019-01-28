@@ -273,6 +273,9 @@ class AddRecipe extends React.Component{
   removeProduct = e => {
     console.log("usuwam")
     console.log(e)
+    console.log(e.target)
+    console.log(e.target.value)
+    console.log(e.target.key)
   }
   render(){
     const {r_name} = this.state
@@ -318,7 +321,7 @@ class AddRecipe extends React.Component{
                   r_name.length != 0 ? r_name.map((el,i )=> {
                     // console.log(el)
                     return (
-                      <li><h3>{el}</h3><button onclick={this.removeProduct(i)} /></li> // dodac usuniecie
+                      <li><h3>{el}</h3><button key={i} onclick={this.removeProduct}>X</button></li> // dodac usuniecie
                       )})
                       : ''
                     }
