@@ -197,9 +197,9 @@ class AddRecipe extends React.Component{
           unit_quantity: this.state.r_unit_quantity[i]
         }
       }
-      // console.log(obj)
       products.push(obj)
     }
+    console.log(products)
 
 
     let mData = JSON.stringify({
