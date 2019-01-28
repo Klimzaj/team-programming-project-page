@@ -245,14 +245,12 @@ class AddRecipe extends React.Component{
     let _unit_price = this.state.r_unit_price
     let _unit_quantity = this.state.r_unit_quantity
     
-    console.log(el)
-    console.log(el.unitQuanity)
     _name.push(el.name)
     _image.push(el.image)
     _description.push(el.description)
     _price.push(el.price)
     _unit_price.push(el.unitprice)
-    _unit_quantity.push(el.unitQuanity)
+    _unit_quantity.push(el.UnitQuantity)
 
     this.setState({r_name: _name})
     this.setState({r_image: _image})
