@@ -25,10 +25,13 @@ class AddRecipe extends React.Component{
 
       optionItems: [],
 
-      name: '',
-      image: '',
-      description: '',
-      votes: 10,
+      image: [],
+      name: [],
+      description: [],
+      price: [],
+      unit_price: [],
+      unit_quantity: [],
+      votes: 0,
       
       recipes_ingredients: [
         {
@@ -43,18 +46,18 @@ class AddRecipe extends React.Component{
           }
         }
       ],
-      ingredientsList: [
-        {
-          // ingredientFieldActive: false,
-          image: 'http://placehold.it/150x150text=foodporn',
-          name: 'Ingredient_1',
-          // value: '',
-          unit_price: 1,
-          price: 1,
-          unit_quantity: "150G",
-          description: 'sample ingredient description'
-        },
-      ],
+      // ingredientsList: [
+      //   {
+      //     // ingredientFieldActive: false,
+      //     image: 'http://placehold.it/150x150text=foodporn',
+      //     name: 'Ingredient_1',
+      //     // value: '',
+      //     unit_price: 1,
+      //     price: 1,
+      //     unit_quantity: "150G",
+      //     description: 'sample ingredient description'
+      //   },
+      // ],
       recipe: '',
       recipeFieldActive: false,
       
@@ -127,8 +130,6 @@ class AddRecipe extends React.Component{
         })
       }
     }else if(e.target.name.includes('ingredient')){
-//ingredient field disableFocus
-// should be recognizing from which input is it coming from, eg. ingredient1,ingredient2,..3,..4
       
       console.log('hello from input ingredient field onBlur!')
       console.log('my value: ', e.target.value)
@@ -136,9 +137,6 @@ class AddRecipe extends React.Component{
       let mData = JSON.stringify({
         query: e.target.value
       })
-
-
-//axios post method
 
       if(windowGlobal){
         console.log('thats my acces token: ', localStorage.getItem('access'))
@@ -153,24 +151,9 @@ class AddRecipe extends React.Component{
             'Authorization': 'Bearer ' + localStorage.getItem('access'),
         }
         }).then(function (response) {
-        //handle success
-            console.log('response.data): ', response.data);
-            console.log('typeof response.data: ', typeof(response.data))
 
-            thisBinded.ingredientsToState(response.data)
-            
+            thisBinded.ingredientsToState(response.data) //10 miodow!!!!!!!!!!
 
-
-            let ingredientDataForSpecificSelect = [ {specificSelectName: e.target.name, ingredientsList: [...response.data] }]
-            console.log('new state is gonna look like this: ', ingredientDataForSpecificSelect)
-
-            ingredientDataForSpecificSelect.map((item, i)=>{
-              console.log('input with name: ', item.specificSelectName, ', has data: ', item.ingredientsList)
-            })
-
-            // thisBinded.ingredientsToState(ingredientDataForSpecificSelect)
-
-            console.log('and this is my state: ', thisBinded.state.optionItems)
         })
         .catch(function (error) {
       //handle error
@@ -214,16 +197,8 @@ class AddRecipe extends React.Component{
         });
 
   }
-  newIngredient  = e => {
-
-    let newName = `Ingredient_${(this.state.ingredientsList.length).toString()}`
-    let newStateData = [...this.state.ingredientsList]
-    newStateData.push({name: newName, value: ''})
-
-    this.setState(() => {
-      return {ingredientsList: newStateData};
-    });
-
+  saveProduct = e => {
+    console.log(e);
   }
   
   render(){
@@ -262,42 +237,44 @@ class AddRecipe extends React.Component{
 
             <div style={{display: 'flex',}}>
               <p style={{ color: 'black'}} htmlFor ='component'>Ingredients list: </p>
-              
-              <El.NewIngredientButton
-                  type="button"
-                  onClick= {this.newIngredient} 
-                  />
             </div>
-            {
-              this.state.ingredientsList.map((item, i)=>{
-                return(
-                  <div key={`div_ingredient_${i}`}>
-                      <input
-                        key = {`Ingredient_${i}`} 
-                        type = "text" 
-                        name = {`ingredient_${i}`}
-                        placeholder= {`New ingredient`}
-                        onChange = {this.onChangeInput}
-                        onFocus={this.activateField}
-                        onBlur={this.disableFocus} 
-                        />
-{/* select component */}
-                          <select name = {`selectInput_${i}`} onChange={this.handleOnChange}>
-                              {this.state.optionItems?(this.state.optionItems.map((item, i)=>{
-                                return(
-                                  <option
-                                  value={item.name?(item.name):'__mError'}
-                                  name={`option_${i}`}
-                                  key={`option_${i}`}
-                                  > 
-                                    {item.name}
-                                  </option>
-                                )
-                              })):(<option> test </option>)}
-                          </select>
-                    </div>
-                )})
-              }
+
+
+
+
+
+            {/* lista produktow */}
+                <input
+                  key = {`Ingredient_${i}`} 
+                  type = "text" 
+                  name = {`ingredient_${i}`}
+                  placeholder= {`New ingredient`}
+                  onChange = {this.onChangeInput}
+                  onFocus={this.activateField}
+                  onBlur={this.disableFocus} 
+                />
+              {/* <div/> */}
+              <select name = {`selectInput_${i}`} onChange={this.saveProduct}>
+                  {
+                    this.state.optionItems?(this.state.optionItems.map((item, i)=>{
+                    return(
+                      <option
+                      value={item.name?(item.name):'__mError'}
+                      name={`option_${i}`}
+                      key={`${i}`}
+                      > 
+                        {item.name}
+                      </option>
+                    )}))
+                  :(<option> test </option>)
+                  }
+              </select>
+
+
+
+
+
+
             <label htmlFor = 'image' className={this.state.imageFieldActive ? "field-active" : ""}>Image's URL</label>
             <input
               type = "text" 
