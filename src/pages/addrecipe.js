@@ -203,9 +203,9 @@ class AddRecipe extends React.Component{
 
 
     let mData = JSON.stringify({
-      image: this.state.r_image,
-      name: this.state.r_name,
-      description: this.state.r_recipe,
+      image: this.state.image,
+      name: this.state.name,
+      description: this.state.recipe,
       votes: this.state.votes,
       recipes_ingredients: products
 
