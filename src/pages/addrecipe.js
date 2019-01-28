@@ -271,6 +271,7 @@ class AddRecipe extends React.Component{
     this.setState({r_unit_quantity: _unit_quantity})
   }
   removeProduct = e => {
+    e.preventDefault()
     console.log("usuwam")
     console.log(e)
     console.log(e.target)
@@ -321,8 +322,11 @@ class AddRecipe extends React.Component{
                   r_name.length != 0 ? r_name.map((el,i )=> {
                     // console.log(el)
                     return (
-                      <li><h3>{el}</h3><input type="button" value={"X"} key={i} onclick={this.removeProduct} /></li> // dodac usuniecie
-                      )})
+                      <li>
+                        <h3>{el}</h3>
+                        <input type="button" value={"X"} key={i} onclick={this.removeProduct} />
+                      </li> // dodac usuniecie
+                    )})
                       : ''
                     }
               </ul>
