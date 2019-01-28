@@ -106,12 +106,19 @@ class Header extends React.Component {
           <El.RightDiv >
             <El.MenuDiv>
               <El.StyledUl>
-                
-                <El.StyledLi key={`menu_element__${i}`}>
+                {
+                  Menu.map((el, i) => {
+                    // const subMenu = [{name: 'Favorite', path:'/favorite'}, {name: 'My recipes', path:'/myrecipes'}, {name: 'Settings', path:'/settings'}]
+                      return(
+                          <El.StyledLi key={`menu_element__${i}`}>
                             <El.StyledLink  activeStyle = {{fontWeight: 'bold', paddingLeft: '5px', borderBottom: '#FFE600 solid 4px'}} to={el.path} className={this.state.path === `${el.path}` ?'active':''}>
                               {el.name}
                             </El.StyledLink>
                           </El.StyledLi>
+                        )
+                    }
+                  )
+                }
               </El.StyledUl>
             </El.MenuDiv>
           </El.RightDiv>
