@@ -136,7 +136,8 @@ class AddRecipe extends React.Component{
             imageFieldActive: false
         })
       }
-    }else if(e.target.name.includes('ingredient')){
+    }
+    else if(e.target.name.includes('ingredient')){
       
       console.log('hello from input ingredient field onBlur!')
       console.log('my value: ', e.target.value)
@@ -161,6 +162,7 @@ class AddRecipe extends React.Component{
 
 
             thisBinded.ingredientsToState(response.data) //10 miodow!!!!!!!!!!
+            //AAAA
 
 
         })
