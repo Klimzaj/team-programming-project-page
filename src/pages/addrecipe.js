@@ -137,7 +137,10 @@ class AddRecipe extends React.Component{
         })
       }
     }
-    else if(e.target.name.includes('ingredient')){
+  }
+
+  disableFocus2 = e => {
+
       
       console.log('hello from input ingredient field onBlur!')
       console.log('my value: ', e.target.value)
@@ -264,7 +267,7 @@ class AddRecipe extends React.Component{
                   placeholder= {`New ingredient`}
                   onChange = {this.onChangeInput}
                   onFocus={this.activateField}
-                  onBlur={this.disableFocus} 
+                  onBlur={this.disableFocus2} 
                 />
               {/* <div/> */}
               <select name = {`selectInput_a`} onChange={this.saveProduct}>
