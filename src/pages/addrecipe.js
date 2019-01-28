@@ -164,6 +164,10 @@ class AddRecipe extends React.Component{
             let ingredientDataForSpecificSelect = [ {specificSelectName: e.target.name, ingredientsList: [...response.data] }]
             console.log('new state is gonna look like this: ', ingredientDataForSpecificSelect)
 
+            ingredientDataForSpecificSelect.map((item, i)=>{
+              console.log('input with name: ', item.specificSelectName, ', has data: ', item.ingredientsList)
+            })
+
             // thisBinded.ingredientsToState(ingredientDataForSpecificSelect)
 
             console.log('and this is my state: ', thisBinded.state.optionItems)
