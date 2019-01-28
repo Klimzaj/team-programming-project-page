@@ -23,6 +23,7 @@ class AddRecipe extends React.Component{
       
       // optionItems: [{name: 'asd1'}, {name: 'asd2'}],
 
+
       optionItems: [],
 
       image: [],
@@ -31,6 +32,7 @@ class AddRecipe extends React.Component{
       price: [],
       unit_price: [],
       unit_quantity: [],
+
       votes: 0,
       
       recipes_ingredients: [
@@ -46,6 +48,7 @@ class AddRecipe extends React.Component{
           }
         }
       ],
+
       // ingredientsList: [
       //   {
       //     // ingredientFieldActive: false,
@@ -58,6 +61,7 @@ class AddRecipe extends React.Component{
       //     description: 'sample ingredient description'
       //   },
       // ],
+
       recipe: '',
       recipeFieldActive: false,
       
@@ -78,7 +82,10 @@ class AddRecipe extends React.Component{
     e.preventDefault()
   }
 
-  ingredientsToState = (data) => {
+  ingredientsToState = (data, objIndex) => {
+    
+    let tempOptionItems = this.state.optionItems;
+    tempOptionItems[objIndex].values = [...data]
     this.setState({
       optionItems: [...data]
     });
@@ -152,7 +159,9 @@ class AddRecipe extends React.Component{
         }
         }).then(function (response) {
 
+
             thisBinded.ingredientsToState(response.data) //10 miodow!!!!!!!!!!
+
 
         })
         .catch(function (error) {
@@ -199,6 +208,7 @@ class AddRecipe extends React.Component{
   }
   saveProduct = e => {
     console.log(e);
+
   }
   
   render(){
@@ -243,6 +253,7 @@ class AddRecipe extends React.Component{
 
 
 
+
             {/* lista produktow */}
                 <input
                   key = {`Ingredient_${i}`} 
@@ -269,6 +280,7 @@ class AddRecipe extends React.Component{
                   :(<option> test </option>)
                   }
               </select>
+
 
 
 
