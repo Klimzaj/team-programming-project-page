@@ -83,6 +83,7 @@ export const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center; 
+    font-weight: bold;
     border-radius: 10px;
     width: 20px;
     height: 20px;
@@ -178,7 +179,7 @@ export const Wrapper = styled.div`
     width: 100px;
     height: 25px;
     text-align: center;
-
+    
     padding: 13px 29px;
     
     margin: 1rem auto;

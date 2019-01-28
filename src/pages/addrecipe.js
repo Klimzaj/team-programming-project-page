@@ -74,6 +74,7 @@ class AddRecipe extends React.Component{
     this.activateField(e)
     e.preventDefault()
   }
+
   ingredientsToState = (data) => {
     this.setState({
       optionItems: [...data]
@@ -136,19 +137,16 @@ class AddRecipe extends React.Component{
         query: e.target.value
       })
 
+
 //axios post method
 
       if(windowGlobal){
         console.log('thats my acces token: ', localStorage.getItem('access'))
         
-
-        console.log('setting up the state with another empty array. ')
-
-        this.setState({optionItems: []});
         console.log('displaying setted up state to the console, as well as its type(in brackets): ', this.state.optionItems, ', (', typeof this.state.optionItems,')')
 
         const thisBinded = this;
-        // axios.post('http://localhost:8000/tesco-api/grocery-search/', mData, {      
+
         axios.post(paths.domainName+paths.getProductPath, mData, {
         headers: {
             'Content-Type':'application/json',
@@ -156,20 +154,18 @@ class AddRecipe extends React.Component{
         }
         }).then(function (response) {
         //handle success
-
-            console.log('the whole response from input ingredient post: '+response.data)
-            console.log('first element of response array:  '+response.data[0])
-            console.log('first element of response array name:  '+response.data[0].name)
-            console.log('after dot operator (...response.data): ', ...response.data);
+            console.log('response.data): ', response.data);
             console.log('typeof response.data: ', typeof(response.data))
-            thisBinded.ingredientsToState(response.data)
 
-            // delta = () => {
-            //   setState({
-            //     optionItems: response
-            //   });
-            // }
-        
+            thisBinded.ingredientsToState(response.data)
+            
+
+
+            let ingredientDataForSpecificSelect = [ {specificSelectName: e.target.name, ingredientsList: [...response.data] }]
+            console.log('new state is gonna look like this: ', ingredientDataForSpecificSelect)
+
+            // thisBinded.ingredientsToState(ingredientDataForSpecificSelect)
+
             console.log('and this is my state: ', thisBinded.state.optionItems)
         })
         .catch(function (error) {
@@ -289,7 +285,7 @@ class AddRecipe extends React.Component{
                         onBlur={this.disableFocus} 
                         />
 {/* select component */}
-                        <select className = 'custom-select' style={{width: '200px'}}name = {`selectInput_${i}`} onChange={this.handleOnChange}>
+                        <select className = 'custom-select' style={{width: '200px'}} name = {`selectInput_${i}`} onChange={this.handleOnChange}>
                             {this.state.optionItems?(this.state.optionItems.map((item, i)=>{
                               return(
                                 <option
