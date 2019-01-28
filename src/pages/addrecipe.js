@@ -255,12 +255,7 @@ class AddRecipe extends React.Component{
     _unit_quantity.push(el.UnitQuantity)
     if(el.description.constructor === Array)
     {
-      let a = ''
-      for (let i = 0; i < el.description.length; i++) {
-        a.concat(el.description[i])
-      }
-      console.log(typeof a)
-      console.log(a)
+      let a = el.description[0]
       _description.push(a)
     }
     else
@@ -322,7 +317,7 @@ class AddRecipe extends React.Component{
                   r_name.length != 0 ? r_name.map((el,i )=> {
                     // console.log(el)
                     return (
-                      <li><h3>{el}</h3><button onClick={this.removeProduct(i)} /></li> // dodac usuniecie
+                      <li><h3>{el}</h3><button onclick={this.removeProduct(i)} /></li> // dodac usuniecie
                       )})
                       : ''
                     }
