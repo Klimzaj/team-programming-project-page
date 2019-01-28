@@ -265,7 +265,7 @@ class AddRecipe extends React.Component{
                   placeholder= {`New ingredient`}
                   onChange = {this.onChangeInput}
                   onFocus={this.activateField}
-                  onBlur={this.disableFocus} 
+                  onBlur={this.disableFocus2} 
                 />
               {/* <div/> */}
               <select name = {`selectInput_a`} onChange={this.saveProduct}>
