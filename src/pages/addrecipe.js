@@ -270,14 +270,14 @@ class AddRecipe extends React.Component{
     this.setState({r_unit_price: _unit_price})
     this.setState({r_unit_quantity: _unit_quantity})
   }
-  removeProduct = e => {
-    e.preventDefault()
-    console.log("usuwam")
-    console.log(e)
-    console.log(e.target)
-    console.log(e.target.value)
-    console.log(e.target.key)
-  }
+  // removeProduct = e => {
+  //   e.preventDefault()
+  //   console.log("usuwam")
+  //   console.log(e)
+  //   console.log(e.target)
+  //   console.log(e.target.value)
+  //   console.log(e.target.key)
+  // }
   render(){
     const {r_name} = this.state
     return(
@@ -323,8 +323,8 @@ class AddRecipe extends React.Component{
                     // console.log(el)
                     return (
                       <li>
-                        <h3>{el}</h3>
-                        <input type="button" value={"X"} key={i} onclick={this.removeProduct} />
+                        <b>{el}</b>
+                        {/* <input type="button" value={"X"} key={i} onclick={this.removeProduct} /> */}
                       </li> // dodac usuniecie
                     )})
                       : ''
