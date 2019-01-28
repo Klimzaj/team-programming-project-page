@@ -210,7 +210,7 @@ class AddRecipe extends React.Component{
 
   }
   saveProduct = e => {
-    console.log(e.target.key);
+    console.log(e);
 
   }
   
@@ -273,9 +273,9 @@ class AddRecipe extends React.Component{
                     this.state.optionItems?(this.state.optionItems.map((item, i)=>{
                     return(
                       <option
-                      value={item.name?(item.name):'__mError'}
-                      name={`option_${i}`}
-                      key={`${i}`}
+                        value={item.name?(item.name):'__mError'}
+                        name={`option_${i}`}
+                        key={`${i}`}
                       > 
                         {item.name}
                       </option>
