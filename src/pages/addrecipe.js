@@ -26,18 +26,18 @@ class AddRecipe extends React.Component{
 
       optionItems: [],
 
-      r_name: '',
-      r_image: '',
-      r_description: '',
-      r_recipe: '',
+      name: '',
+      image: '',
+      description: '',
+      recipe: '',
 
 
-      image: [],
-      name: [],
-      description: [],
-      price: [],
-      unit_price: [],
-      unit_quantity: [],
+      r_image: [],
+      r_name: [],
+      r_description: [],
+      r_price: [],
+      r_unit_price: [],
+      r_unit_quantity: [],
 
       votes: 0,
       
@@ -188,12 +188,12 @@ class AddRecipe extends React.Component{
       let obj = {
         quantity: "1",
         ingredient: {
-          image: this.state.image[i],
-          name: this.state.name[i],
-          description: this.state.description[i],
-          price: this.state.price[i],
-          unit_price: this.state.unit_price[i],
-          unit_quantity: this.state.unit_quantity[i]
+          image: this.state.r_image[i],
+          name: this.state.r_name[i],
+          description: this.state.r_description[i],
+          price: this.state.r_price[i],
+          unit_price: this.state.r_unit_price[i],
+          unit_quantity: this.state.r_unit_quantity[i]
         }
       }
       products.push(obj)
@@ -237,12 +237,12 @@ class AddRecipe extends React.Component{
     let el = this.state.optionItems.find(a => a.name == e.target.value)
     // console.log(el);
 
-    let _name = this.state.name
-    let _image = this.state.image
-    let _description = this.state.description
-    let _price = this.state.price
-    let _unit_price = this.state.unit_price
-    let _unit_quantity = this.state.unit_quantity
+    let _name = this.state.r_name
+    let _image = this.state.r_image
+    let _description = this.state.r_description
+    let _price = this.state.r_price
+    let _unit_price = this.state.r_unit_price
+    let _unit_quantity = this.state.r_unit_quantity
     
     _name.push(el.name)
     _image.push(el.image)
@@ -251,15 +251,16 @@ class AddRecipe extends React.Component{
     _unit_price.push(el.unitprice)
     _unit_quantity.push(el.UnitQuanity)
 
-    this.setState({name: _name})
-    this.setState({image: _image})
-    this.setState({description: _description})
-    this.setState({price: _price})
-    this.setState({unit_price: _unit_price})
-    this.setState({unit_quantity: _unit_quantity})
+    this.setState({r_name: _name})
+    this.setState({r_image: _image})
+    this.setState({r_description: _description})
+    this.setState({r_price: _price})
+    this.setState({r_unit_price: _unit_price})
+    this.setState({r_unit_quantity: _unit_quantity})
   }
   
   render(){
+    const {r_name} = this.state
     return(
       <Layout>
         <El.Wrapper>
@@ -271,7 +272,7 @@ class AddRecipe extends React.Component{
             <input 
               type = 'text' 
               name = 'name' 
-              value={this.state.r_name}
+              value={this.state.name}
               placeholder = 'Recipe name' 
               onChange={this.onChangeInput}
               onFocus={this.activateField}
@@ -284,7 +285,7 @@ class AddRecipe extends React.Component{
             <input 
               type='text' 
               name = 'description'
-              value={this.state.r_description}
+              value={this.state.description}
               placeholder = 'Description' 
               onChange = {this.onChangeInput} 
               onFocus={this.activateField}
@@ -299,17 +300,15 @@ class AddRecipe extends React.Component{
             </div>
               <ul>
                 {
-                  this.state.name.length != 0 ? this.state.name.map((el,i )=> {
+                  r_name.length != 0 ? r_name.map((el,i )=> {
                     // console.log(el)
                     return (
                       <li>{el}</li>
                       )})
-                      : <li></li>
+                      : ''
                     }
               </ul>
 
-
-d
 
             {/* lista produktow */}
                 <input
@@ -349,7 +348,7 @@ d
             <input
               type = "text" 
               name = 'image'
-              value = {this.state.r_image}
+              value = {this.state.image}
               placeholder= 'https://placehold.it/150x150?text=lolz.jpg'
               onChange = {this.onChangeInput}
               onFocus={this.activateField}
@@ -362,7 +361,7 @@ d
             <textarea
               type='text'
               name = 'recipe' 
-              value={this.state.r_recipe}
+              value={this.state.recipe}
               rows = "4"
               placeholder = "Recipe's steps" 
               onChange = {this.onChangeInput} 
