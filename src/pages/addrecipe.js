@@ -184,8 +184,8 @@ class AddRecipe extends React.Component{
     e.preventDefault()
 
     let products = []
-    products.push(5)
-    for (let i = 0; i < this.state.name.length; i++) {
+   
+    for (let i = 0; i < this.state.r_name.length; i++) {
       let obj = {
         quantity: "1",
         ingredient: {
@@ -197,7 +197,7 @@ class AddRecipe extends React.Component{
           unit_quantity: this.state.r_unit_quantity[i]
         }
       }
-      console.log(obj)
+      // console.log(obj)
       products.push(obj)
     }
 
