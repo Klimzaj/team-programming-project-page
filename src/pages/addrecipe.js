@@ -23,12 +23,11 @@ class AddRecipe extends React.Component{
       
       // optionItems: [{name: 'asd1'}, {name: 'asd2'}],
 
-      optionItems: [],
-
+      
       name: '',
       image: '',
       description: '',
-      votes: 10,
+      votes: 0,
       
       recipes_ingredients: [
         {
@@ -43,17 +42,18 @@ class AddRecipe extends React.Component{
           }
         }
       ],
+      optionItems: [{objName: 'select_1', values: []}],
       ingredientsList: [
         {
-          // ingredientFieldActive: false,
           image: 'http://placehold.it/150x150text=foodporn',
           name: 'Ingredient_1',
-          // value: '',
+          optionItems: [],
           unit_price: 1,
           price: 1,
           unit_quantity: "150G",
           description: 'sample ingredient description'
         },
+
       ],
       recipe: '',
       recipeFieldActive: false,
@@ -75,7 +75,10 @@ class AddRecipe extends React.Component{
     e.preventDefault()
   }
 
-  ingredientsToState = (data) => {
+  ingredientsToState = (data, objIndex) => {
+    
+    let tempOptionItems = this.state.optionItems;
+    tempOptionItems[objIndex].optionItems = [...data]
     this.setState({
       optionItems: [...data]
     });
@@ -156,19 +159,8 @@ class AddRecipe extends React.Component{
         //handle success
             console.log('response.data): ', response.data);
             console.log('typeof response.data: ', typeof(response.data))
-
-            thisBinded.ingredientsToState(response.data)
-            
-
-
-            let ingredientDataForSpecificSelect = [ {specificSelectName: e.target.name, ingredientsList: [...response.data] }]
-            console.log('new state is gonna look like this: ', ingredientDataForSpecificSelect)
-
-            ingredientDataForSpecificSelect.map((item, i)=>{
-              console.log('input with name: ', item.specificSelectName, ', has data: ', item.ingredientsList)
-            })
-
-            // thisBinded.ingredientsToState(ingredientDataForSpecificSelect)
+            objIndex = parseInt(e.target.name.split('_')[1])
+            thisBinded.ingredientsToState(response.data, objIndex)
 
             console.log('and this is my state: ', thisBinded.state.optionItems)
         })
@@ -223,6 +215,8 @@ class AddRecipe extends React.Component{
     this.setState(() => {
       return {ingredientsList: newStateData};
     });
+
+    
 
   }
   
@@ -283,7 +277,7 @@ class AddRecipe extends React.Component{
                         />
 {/* select component */}
                           <select name = {`selectInput_${i}`} onChange={this.handleOnChange}>
-                              {this.state.optionItems?(this.state.optionItems.map((item, i)=>{
+                              {this.state.optionItems[i].values?(this.state.optionItems[i].values.map((item, i)=>{
                                 return(
                                   <option
                                   value={item.name?(item.name):'__mError'}
