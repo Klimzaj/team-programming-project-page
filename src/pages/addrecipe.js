@@ -213,7 +213,7 @@ class AddRecipe extends React.Component{
     console.log(e);
     console.log(e.target)
     console.log(e.target.value);
-    console.log(e.target.key);
+    console.log(e.target.keys);
     console.log(e.target.item);
 
   }
