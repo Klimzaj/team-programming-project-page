@@ -296,9 +296,10 @@ class AddRecipe extends React.Component{
             <div style={{display: 'flex',}}>
               <p style={{ color: 'black'}} htmlFor ='component'>Ingredients list: </p>
 
+            </div>
               <ul>
                 {
-                  this.state.name ? this.state.name.map((el,i )=> {
+                  this.state.name.length != 0 ? this.state.name.map((el,i )=> {
                     // console.log(el)
                     return (
                       <li>{el}</li>
@@ -306,10 +307,9 @@ class AddRecipe extends React.Component{
                       : <li></li>
                     }
               </ul>
-            </div>
 
 
-
+d
 
             {/* lista produktow */}
                 <input
