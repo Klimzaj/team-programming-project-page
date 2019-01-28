@@ -245,6 +245,7 @@ class AddRecipe extends React.Component{
     let _unit_price = this.state.r_unit_price
     let _unit_quantity = this.state.r_unit_quantity
     
+    console.log(el.UnitQuanity)
     _name.push(el.name)
     _image.push(el.image)
     _description.push(el.description)
