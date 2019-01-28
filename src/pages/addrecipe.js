@@ -245,16 +245,16 @@ class AddRecipe extends React.Component{
 
             {/* lista produktow */}
                 <input
-                  key = {`Ingredient_${i}`} 
+                  key = {`Ingredient_a`} 
                   type = "text" 
-                  name = {`ingredient_${i}`}
+                  name = {`ingredient_a`}
                   placeholder= {`New ingredient`}
                   onChange = {this.onChangeInput}
                   onFocus={this.activateField}
                   onBlur={this.disableFocus} 
                 />
               {/* <div/> */}
-              <select name = {`selectInput_${i}`} onChange={this.saveProduct}>
+              <select name = {`selectInput_a`} onChange={this.saveProduct}>
                   {
                     this.state.optionItems?(this.state.optionItems.map((item, i)=>{
                     return(
