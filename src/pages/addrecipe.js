@@ -271,14 +271,7 @@ class AddRecipe extends React.Component{
             {
               this.state.ingredientsList.map((item, i)=>{
                 return(
-                  <div className = 'custom-select' key={`div_ingredient_${i}`}>
-                      <label
-                        key = {`label_ingredient_${i}`} 
-                        htmlFor = {`ingredient_${i}}`}
-                        className = {item.ingredientFieldActive ? 'field-active': ''}
-                        >
-                        
-                      </label>
+                  <div key={`div_ingredient_${i}`}>
                       <input
                         key = {`Ingredient_${i}`} 
                         type = "text" 
