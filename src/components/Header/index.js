@@ -39,10 +39,10 @@ class Header extends React.Component {
             name: 'Add a Recipe',
             path: '/addrecipe'
           },
-          {
-            name: 'My Profile',
-            path: '/myprofile'
-          },
+          // {
+          //   name: 'My Profile',
+          //   path: '/myprofile'
+          // },
           {
             name: 'Logout',
             path: '/logout'
