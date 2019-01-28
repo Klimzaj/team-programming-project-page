@@ -26,6 +26,12 @@ class AddRecipe extends React.Component{
 
       optionItems: [],
 
+      r_name: '',
+      r_image: '',
+      r_description: '',
+      r_recipe: '',
+
+
       image: [],
       name: [],
       description: [],
@@ -62,7 +68,6 @@ class AddRecipe extends React.Component{
       //   },
       // ],
 
-      recipe: '',
       recipeFieldActive: false,
       
     }
@@ -178,41 +183,59 @@ class AddRecipe extends React.Component{
   handleSubmit = e => {
     e.preventDefault()
 
-    let mData = JSON.stringify({
-      image: this.state.image,
-      name: this.state.name,
-      description: this.state.recipe,
-      votes: this.state.votes,
-      recipes_ingredients: [...this.state.recipes_ingredients]
+    let products = []
+    for (let i = 0; i < this.state.name.length-1; inidex++) {
+      let obj = {
+        quantity: "1",
+        ingredient: {
+          image: this.state.image[i],
+          name: this.state.name[i],
+          description: this.state.description[i],
+          price: this.state.price[i],
+          unit_price: this.state.unit_price[i],
+          unit_quantity: this.state.unit_quantity[i]
+        }
+      }
+      products.push(obj)
+    }
 
-    })
+    console.log(products)
 
-    if(windowGlobal)
-      axios.post(paths.domainName + paths.addRecipePath,  mData, {
-        headers: {
-          'Content-Type':'application/json',
-          'Authorization': 'Bearer ' + localStorage.getItem('access'),
-        },
-        }).then((response) => {
-        //handle success
-          console.log('success response: ', response)
-          //redirect
-            if(windowGlobal){
-              window.location.replace("https://kitchenhelper.netlify.com/myprofile");
-            }
+    // let mData = JSON.stringify({
+    //   image: this.state.r_image,
+    //   name: this.state.r_name,
+    //   description: this.state.r_recipe,
+    //   votes: this.state.votes,
+    //   recipes_ingredients: [...this.state.recipes_ingredients]
+
+    // })
+
+    // if(windowGlobal)
+    //   axios.post(paths.domainName + paths.addRecipePath,  mData, {
+    //     headers: {
+    //       'Content-Type':'application/json',
+    //       'Authorization': 'Bearer ' + localStorage.getItem('access'),
+    //     },
+    //     }).then((response) => {
+    //     //handle success
+    //       console.log('success response: ', response)
+    //       //redirect
+    //         if(windowGlobal){
+    //           window.location.replace("https://kitchenhelper.netlify.com/myprofile");
+    //         }
             
-        })
-        .catch((response, error) => {//handle error
+    //     })
+    //     .catch((response, error) => {//handle error
 
-          console.log('just error data: ', error.response.data)
-          console.log('response error status: ', response.response.status)
-        });
+    //       console.log('just error data: ', error.response.data)
+    //       console.log('response error status: ', response.response.status)
+    //     });
 
   }
   saveProduct = e => {
     // console.log(e.target.value);
     let el = this.state.optionItems.find(a => a.name == e.target.value)
-    console.log(el);
+    // console.log(el);
 
     let _name = this.state.name
     let _image = this.state.image
@@ -234,8 +257,6 @@ class AddRecipe extends React.Component{
     this.setState({price: _price})
     this.setState({unit_price: _unit_price})
     this.setState({unit_quantity: _unit_quantity})
-
-    console.log(this.state)
   }
   
   render(){
@@ -250,7 +271,7 @@ class AddRecipe extends React.Component{
             <input 
               type = 'text' 
               name = 'name' 
-              value={this.state.name}
+              value={this.state.r_name}
               placeholder = 'Recipe name' 
               onChange={this.onChangeInput}
               onFocus={this.activateField}
@@ -263,7 +284,7 @@ class AddRecipe extends React.Component{
             <input 
               type='text' 
               name = 'description'
-              value={this.state.description}
+              value={this.state.r_description}
               placeholder = 'Description' 
               onChange = {this.onChangeInput} 
               onFocus={this.activateField}
@@ -278,7 +299,7 @@ class AddRecipe extends React.Component{
               <ul>
                 {
                   this.state.name ? this.state.name.map((el,i )=> {
-                    console.log(el)
+                    // console.log(el)
                     return (
                       <li>{el}</li>
                       )})
@@ -328,7 +349,7 @@ class AddRecipe extends React.Component{
             <input
               type = "text" 
               name = 'image'
-              value = {this.state.image}
+              value = {this.state.r_image}
               placeholder= 'https://placehold.it/150x150?text=lolz.jpg'
               onChange = {this.onChangeInput}
               onFocus={this.activateField}
@@ -341,7 +362,7 @@ class AddRecipe extends React.Component{
             <textarea
               type='text'
               name = 'recipe' 
-              value={this.state.recipe}
+              value={this.state.r_recipe}
               rows = "4"
               placeholder = "Recipe's steps" 
               onChange = {this.onChangeInput} 
