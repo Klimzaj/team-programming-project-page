@@ -210,7 +210,7 @@ class AddRecipe extends React.Component{
 
   }
   saveProduct = e => {
-    console.log(e.target);
+    console.log(e.target.value);
 
   }
   
@@ -268,7 +268,7 @@ class AddRecipe extends React.Component{
                   onBlur={this.disableFocus2} 
                 />
               {/* <div/> */}
-              <select name = {`selectInput_a`} >
+              <select name = {`selectInput_a`} onChange={this.saveProduct}>
                   {
                     this.state.optionItems?(this.state.optionItems.map((item, i)=>{
                     return(
@@ -276,7 +276,7 @@ class AddRecipe extends React.Component{
                         value={item.name?(item.name):'__mError'}
                         name={`option_${i}`}
                         key={`${i}`}
-                        onChange={this.saveProduct}
+                        
                       > 
                         {item.name}
                       </option>
