@@ -187,7 +187,7 @@ class AddRecipe extends React.Component{
    
     for (let i = 0; i < this.state.r_name.length; i++) {
       let obj = {
-        quantity: "1",
+        quantity: 1,
         ingredient: {
           image: this.state.r_image[i],
           name: this.state.r_name[i],
@@ -201,37 +201,36 @@ class AddRecipe extends React.Component{
       products.push(obj)
     }
 
-    console.log(products)
 
-    // let mData = JSON.stringify({
-    //   image: this.state.r_image,
-    //   name: this.state.r_name,
-    //   description: this.state.r_recipe,
-    //   votes: this.state.votes,
-    //   recipes_ingredients: [...this.state.recipes_ingredients]
+    let mData = JSON.stringify({
+      image: this.state.r_image,
+      name: this.state.r_name,
+      description: this.state.r_recipe,
+      votes: this.state.votes,
+      recipes_ingredients: products
 
-    // })
+    })
 
-    // if(windowGlobal)
-    //   axios.post(paths.domainName + paths.addRecipePath,  mData, {
-    //     headers: {
-    //       'Content-Type':'application/json',
-    //       'Authorization': 'Bearer ' + localStorage.getItem('access'),
-    //     },
-    //     }).then((response) => {
-    //     //handle success
-    //       console.log('success response: ', response)
-    //       //redirect
-    //         if(windowGlobal){
-    //           window.location.replace("https://kitchenhelper.netlify.com/myprofile");
-    //         }
+    if(windowGlobal)
+      axios.post(paths.domainName + paths.addRecipePath,  mData, {
+        headers: {
+          'Content-Type':'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('access'),
+        },
+        }).then((response) => {
+        //handle success
+          console.log('success response: ', response)
+          //redirect
+            if(windowGlobal){
+              window.location.replace("https://kitchenhelper.netlify.com/myprofile");
+            }
             
-    //     })
-    //     .catch((response, error) => {//handle error
+        })
+        .catch((response, error) => {//handle error
 
-    //       console.log('just error data: ', error.response.data)
-    //       console.log('response error status: ', response.response.status)
-    //     });
+          console.log('just error data: ', error.response.data)
+          console.log('response error status: ', response.response.status)
+        });
 
   }
   saveProduct = e => {
