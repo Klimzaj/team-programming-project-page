@@ -13,8 +13,8 @@ const Recipe = ({name, description, image, url}) =>
 {
     let price = 0
     let nameArray = []
-
-    console.log(url)
+    let a
+    // console.log(url)
     axios.get(url,
     {
         headers:  
@@ -24,10 +24,12 @@ const Recipe = ({name, description, image, url}) =>
     })
     .then( response => {
         console.log(response.data.recipes_ingredients)
+        a = response.data.recipes_ingredients
     })
     .catch( err =>{
         console.log('error: ', err)
     })
+    console.log(a)
     // if(data5)
     // {
     //     for (let i = 0; i < data5.length; i++) {
