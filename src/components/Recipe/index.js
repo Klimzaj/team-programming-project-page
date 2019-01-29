@@ -13,7 +13,7 @@ const Recipe = ({name, description, image, data2}) =>
 {
     let price = 0
     let nameArray = []
-    console.log( typeof data2)
+    // console.log( typeof data2)
     // if(data5)
     // {
     //     for (let i = 0; i < data5.length; i++) {
