@@ -15,16 +15,15 @@ const Recipe = ({name, description, image, data2}) =>
     let nameArray = []
     console.log(data2)
     console.log(typeof data2)
+    console.log(data2[0])
+    console.log(data2.o)
     if(data2)
     {
-        if(data2.constructor === Array)
-        {
-            for (let i = 0; i < data2.length; i++) {
-                const el = data2[i]
-                console.log(el)
-                // price += el.price
-                // nameArray.push(el.name)
-            }
+        for (let i = 0; i < data2.length; i++) {
+            const el = data2[i]
+            console.log(el)
+            // price += el.price
+            // nameArray.push(el.name)
         }
     }
     
