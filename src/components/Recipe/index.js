@@ -9,7 +9,10 @@ import * as El from './style'
 // votes = {item.votes}
 // url = {item.url}
 
-const Recipe = ({name, author, description, image, votes, url}) => (
+const Recipe = ({name, description, image, data2}) => 
+{
+    console.log(data2)
+return(
     <El.Wrapper>
         <El.AddintionalWrapper>
             <El.Top>
@@ -27,10 +30,6 @@ const Recipe = ({name, author, description, image, votes, url}) => (
                     <p>
                         <b>Price: </b>
                         {/* {price} */}
-                    </p>
-                    <p>
-                        <b> Number of portions: </b>
-                        {/* {quantity} */}
                     </p>
                 </El.Right>
 
@@ -61,6 +60,6 @@ const Recipe = ({name, author, description, image, votes, url}) => (
             </El.ToDo>
         </El.AddintionalWrapper>
     </El.Wrapper>
-)
+)}
 
 export default Recipe
