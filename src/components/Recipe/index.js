@@ -30,6 +30,7 @@ const getDetails = async (e) => {
 
 const Recipe = ({name, description, image, url}) => 
 {
+    console.log(url)
     let price = 0
     let nameArray = []
     allDetails = useDetails(url)
@@ -51,7 +52,12 @@ const Recipe = ({name, description, image, url}) =>
     // })
     console.log(`jest cos? ${allDetails}`)
     allDetails.then( r => {
+        console.log(typeof r)
         console.log(r[0])
+        return (
+            <li></li>
+        )
+
     })
 return(
     <El.Wrapper>
