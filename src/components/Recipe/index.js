@@ -1,22 +1,17 @@
 import React from 'react'
 import axios from 'axios'
 import * as El from './style'
-
-// key = {`recipe_id_${i}`}
-// author = {item.author}
-// description = {item.description}
-// image = {item.img}
-// votes = {item.votes}
-// url = {item.url}
-
+let a 
+takeDetails = (e) => {
+    a = e
+}
 const Recipe = ({name, description, image, url}) => 
 {
     let price = 0
     let nameArray = []
-    let a
     
     // console.log(url)
-    await axios.get(url,
+    axios.get(url,
     {
         headers:  
         {
@@ -25,30 +20,12 @@ const Recipe = ({name, description, image, url}) =>
     })
     .then( response => {
         console.log(response.data.recipes_ingredients)
-        a = response.data.recipes_ingredients
+        takeDetails(response.data.recipes_ingredients)
     })
     .catch( err =>{
         console.log('error: ', err)
     })
     console.log(a)
-    // if(data5)
-    // {
-    //     for (let i = 0; i < data5.length; i++) {
-    //         const el = data5[i]
-    //         console.log(el)
-    //         // price += el.price
-    //         // nameArray.push(el.name)
-    //     }
-    // }
-    // if(data5a)
-    // {
-    //     data5a.map((el,i ) => {
-    //         console.log(el)
-    //                 price += el.price
-    //         nameArray.push(el.name)
-    //     })
-    // }
-    
 return(
     <El.Wrapper>
         <El.AddintionalWrapper>
