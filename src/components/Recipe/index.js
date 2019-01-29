@@ -30,7 +30,7 @@ const getDetails = async (e) => {
 
 const Recipe = ({name, description, image, url}) => 
 {
-    price = 0
+    let price = 0
     let nameArray = []
     allDetails = useDetails(url)
     // let myThis = this
