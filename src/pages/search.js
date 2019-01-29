@@ -31,7 +31,7 @@ class Search extends Component{
 
   showNewest = (e) => {
     // e.preventDefault();
-    console.log('test msg show newest button: ')
+    // console.log('test msg show newest button: ')
     if(windowGlobal)
     axios.get(paths.domainName+paths.searchRecipePath, 
     {
@@ -40,7 +40,7 @@ class Search extends Component{
             'Content-Type':'application/json',
         },
     }).then((response) => {
-      console.log('response.data: ',response.data);
+      // console.log('response.data: ',response.data);
       this.setState({recipes: response.data})
     }).then((err)=>{
       console.log('error: ', err)
@@ -60,13 +60,13 @@ class Search extends Component{
             'Content-Type':'application/json',
         },
     }).then((response) => {
-      console.log('response.data: ',response.data);
+      // console.log('response.data: ',response.data);
       this.setState({recipes: response.data})
     }).then((err)=>{
       console.log('error: ', err)
     })          
 
-  console.log("that's my state to ugh: ", this.state)
+  // console.log("that's my state to ugh: ", this.state)
   
 } 
         
@@ -128,7 +128,7 @@ class Search extends Component{
 
           {this.state.recipes ?  (this.state.recipes.reverse().map((item, i)=>
           {
-            console.log(item)
+            // console.log(item)
 
 
             axios.get(item.url, 
