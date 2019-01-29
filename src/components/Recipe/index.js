@@ -23,6 +23,7 @@ const getDetails = async (e) => {
   
     if (details.data.recipes_ingredients) {
       console.log(details.data.recipes_ingredients)
+      allDetails = details.data.recipes_ingredients
     }
   }
   
@@ -48,7 +49,7 @@ const Recipe = ({name, description, image, url}) =>
     // .catch( err =>{
     //     console.log('error: ', err)
     // })
-    // console.log(a)
+    console.log(allDetails)
 return(
     <El.Wrapper>
         <El.AddintionalWrapper>
