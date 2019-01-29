@@ -17,25 +17,25 @@ const Recipe = ({name, description, image, data2, data4a, data5a}) =>
     // console.log(data2)
     // console.log(data2)
     // console.log(data4a)
-    // console.log(data5a)
+    console.log(data5a)
     // console.log(data2[0])
-    // if(data5)
-    // {
-    //     for (let i = 0; i < data5["0"].length; i++) {
-    //         const el = data5[i]
-    //         console.log(el)
-    //         // price += el.price
-    //         // nameArray.push(el.name)
-    //     }
-    // }
-    if(data5a)
+    if(data5)
     {
-        data5a.map((el,i ) => {
+        for (let i = 0; i < data5.length; i++) {
+            const el = data5[i]
             console.log(el)
-                    price += el.price
-            nameArray.push(el.name)
-        })
+            // price += el.price
+            // nameArray.push(el.name)
+        }
     }
+    // if(data5a)
+    // {
+    //     data5a.map((el,i ) => {
+    //         console.log(el)
+    //                 price += el.price
+    //         nameArray.push(el.name)
+    //     })
+    // }
     
 return(
     <El.Wrapper>
