@@ -10,7 +10,8 @@ class Recipe extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            name: []
+            name: [],
+            isLoaded: false
         }
     }
 
@@ -43,15 +44,19 @@ class Recipe extends React.Component {
 
     render()
     {
-        allDetails = this.useDetails(this.props.url)
-        allDetails.then( r => {
-            let nameArray = []
-            r.map((el) => {
-                // console.log(el.ingredient_name)
-                nameArray.push(el.ingredient_name)
+        if(!this.state.isLoaded)
+        {
+            allDetails = this.useDetails(this.props.url)
+            allDetails.then( r => {
+                let nameArray = []
+                r.map((el) => {
+                    // console.log(el.ingredient_name)
+                    nameArray.push(el.ingredient_name)
+                })
+                this.setState({name: nameArray})
             })
-            this.setState({name: nameArray})
-        })
+            this.setState({isLoaded: true})
+        }
         return(
             <El.Wrapper>
                 <El.AddintionalWrapper>
