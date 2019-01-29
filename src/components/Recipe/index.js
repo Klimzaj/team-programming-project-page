@@ -32,7 +32,7 @@ const Recipe = ({name, description, image, url}) =>
 {
     let price = 0
     let nameArray = []
-    allDetails = useDetails(url)
+    allDetails = await useDetails(url)
     // let myThis = this
     // console.log(url)
     // axios.get(url,
