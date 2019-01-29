@@ -14,12 +14,8 @@ const Recipe = ({name, description, image, data2}) =>
     let price = 0
     let nameArray = []
     console.log(typeof data2)
-    console.log(data2["0"])
-    console.log(data2["O"])
-    console.log(data2["o"])
-    console.log(data2[0][0])
-
     console.log(data2)
+    console.log(data2[0])
     if(data2)
     {
         for (let i = 0; i < data2["0"].length; i++) {
