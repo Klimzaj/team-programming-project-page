@@ -11,10 +11,6 @@ import MainImage from '../images/findRecipeImage.jpg'
 
 const windowGlobal = typeof window !== 'undefined' && window
 
-let data2
-let data3
-
-
 class Search extends Component{ 
   constructor(props){
     super(props)
@@ -23,7 +19,6 @@ class Search extends Component{
         searchInputFieldActive: false,
         recipes: [],
         isDownload: false,
-        details: null
     }
 
   }
@@ -31,28 +26,28 @@ class Search extends Component{
     
   }
   
-  takeDetail = () => {
-    console.log("zbieram detale")
-    if(this.state.recipes)
-    {
-      this.state.recipes.reverse().map((item, i)=>
-      {
-        axios.get(item.url,
-          {
-            headers:  
-            {
-              'Content-Type':'application/json',
-            },
-          })
-          .then((response) => {
-            this.setState({details: response.data.recipes_ingredients[0]})
-          })
-          .catch((err)=>{
-            console.log('error: ', err)
-          }) 
-        }) 
-      }
-    }
+  // takeDetail = () => {
+  //   console.log("zbieram detale")
+  //   if(this.state.recipes)
+  //   {
+  //     this.state.recipes.reverse().map((item, i)=>
+  //     {
+  //       axios.get(item.url,
+  //         {
+  //           headers:  
+  //           {
+  //             'Content-Type':'application/json',
+  //           },
+  //         })
+  //         .then((response) => {
+  //           this.setState({details: response.data.recipes_ingredients[0]})
+  //         })
+  //         .catch((err)=>{
+  //           console.log('error: ', err)
+  //         }) 
+  //       }) 
+  //     }
+  //   }
     
     showNewest = (e) => {
       // e.preventDefault();
@@ -70,7 +65,7 @@ class Search extends Component{
       }).catch((err)=>{
         console.log('error: ', err)
       })          
-      this.takeDetail
+      // this.takeDetail
     }
 
   handleSubmit = e => {
@@ -150,12 +145,11 @@ class Search extends Component{
 
         <El.RecipesWrapper>
           {
-            console.log(this.state.details)
-          }
-          {/* {
+            
             this.state.recipes ?  (this.state.recipes.reverse().map((item, i)=>
             {
-            axios.get(item.url, 
+              let data2
+              axios.get(item.url, 
               {
                   headers:  
                   {
@@ -163,31 +157,26 @@ class Search extends Component{
                   },
               }).then((response) => {
                 console.log('response.data: ',response.data.recipes_ingredients[0]);
+                data2 = response.data.recipes_ingredients[0]
               }).catch((err)=>{
                 console.log('error: ', err)
               })
-            return(
-              <Recipe 
-                // key = {`recipe_id_${i}`}
-                // author = {item.author}
-                name = {item.name}
-                description = {item.description}
-                image = {item.image}
-                // votes = {item.votes}
-                data2 = {data2}
-                // data4a = {data4}
-                // data5a = {data5}
-                // data3 = {this.state.data3}
-              />          
-            )})
-          ):(
-            <div>
-              <p> 
-                Something went wrong. 
-              </p>
-            </div>
+              return(
+                <Recipe 
+                  name = {item.name}
+                  description = {item.description}
+                  image = {item.image}
+                  data2 = {data2}
+                />          
+              )})
+            ):(
+              <div>
+                <p> 
+                  Something went wrong. 
+                </p>
+              </div>
             )
-          } */}
+          }
         </El.RecipesWrapper>
         
       </Layout>
