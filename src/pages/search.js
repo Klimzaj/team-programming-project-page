@@ -26,28 +26,30 @@ class Search extends Component{
     
   }
   
-  // takeDetail = () => {
-  //   console.log("zbieram detale")
-  //   if(this.state.recipes)
-  //   {
-  //     this.state.recipes.reverse().map((item, i)=>
-  //     {
-  //       axios.get(item.url,
-  //         {
-  //           headers:  
-  //           {
-  //             'Content-Type':'application/json',
-  //           },
-  //         })
-  //         .then((response) => {
-  //           this.setState({details: response.data.recipes_ingredients[0]})
-  //         })
-  //         .catch((err)=>{
-  //           console.log('error: ', err)
-  //         }) 
-  //       }) 
-  //     }
+  // getNameById (id) {
+  //   return axios.get('/names/?ids=' + id)
+  //       .then(response => {
+  //         this.response = response.data
+  //         return this.response[0].name
+  //       })
   //   }
+
+  takeDetail = e => {
+    return axios.get(e,
+      {
+        headers:  
+        {
+          'Content-Type':'application/json',
+        },
+      })
+      .then((response) => {
+        this.response = response.data.recipes_ingredients[0]
+        return this.response
+      })
+      .catch((err)=>{
+        console.log('error: ', err)
+      }) 
+  }
     
     showNewest = (e) => {
       // e.preventDefault();
@@ -146,20 +148,23 @@ class Search extends Component{
         <El.RecipesWrapper>
           {
             
-            this.state.recipes ?  (this.state.recipes.reverse().map((item, i)=>
-            {
-              var data2
-              axios.get(item.url, 
-              {
-                  headers:  
-                  {
-                      'Content-Type':'application/json',
-                  },
-              }).then( response => {
-                // console.log('response.data: ',response.data.recipes_ingredients[0]);
-                data2 = response.data.recipes_ingredients[0]
-              }).catch( err => {
-                console.log('error: ', err)
+            this.state.recipes ?  (this.state.recipes.reverse().map((item, i) => {
+              // axios.get(item.url, 
+              // {
+                //     headers:  
+                //     {
+                  //         'Content-Type':'application/json',
+                  //     },
+                  // }).then( response => {
+                    //   // console.log('response.data: ',response.data.recipes_ingredients[0]);
+                    //   data2 = response.data.recipes_ingredients[0]
+                    // }).catch( err => {
+                      //   console.log('error: ', err)
+                      // })
+              let data2
+              this.takeDetail(item.url)
+              .then( data =>{
+                data2 = data
               })
               console.log(data2)
               return (
