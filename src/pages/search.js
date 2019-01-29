@@ -129,6 +129,21 @@ class Search extends Component{
           {this.state.recipes ?  (this.state.recipes.reverse().map((item, i)=>
           {
             console.log(item)
+
+
+            axios.get(item.url, 
+              {
+                  'headers':  
+                  {
+                      'Content-Type':'application/json',
+                  },
+              }).then((response) => {
+                console.log('response.data: ',response.data);
+                // this.setState({recipes: response.data})
+              }).then((err)=>{
+                console.log('error: ', err)
+              }) 
+            
             return(
               <Recipe 
                 key = {`recipe_id_${i}`}
