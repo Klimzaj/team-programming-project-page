@@ -149,7 +149,7 @@ class Search extends Component{
 
         <El.RecipesWrapper>
           {
-            console.log(this.satate.details)
+            console.log(this.state.details)
           }
           {/* {
             this.state.recipes ?  (this.state.recipes.reverse().map((item, i)=>
