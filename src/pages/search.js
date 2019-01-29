@@ -12,7 +12,7 @@ import MainImage from '../images/findRecipeImage.jpg'
 const windowGlobal = typeof window !== 'undefined' && window
 
 let data2
-// let data5
+let data3
 
 
 class Search extends Component{ 
@@ -141,6 +141,7 @@ class Search extends Component{
               }).then((response) => {
                 // console.log('response.data: ',response.data.recipes_ingredients[0]);
                 data2 = response.data.recipes_ingredients[0];
+                data3 = response.data.recipes_ingredients;
                 // this.setState({recipes: response.data})
                 // console.log(typeof response.data.recipes_ingredients[0])
                 // console.log(typeof response.data)
@@ -156,6 +157,7 @@ class Search extends Component{
                 console.log('error: ', err)
               }) 
               console.log(data2)
+              console.log(data3)
             return(
               <Recipe 
                 // key = {`recipe_id_${i}`}
