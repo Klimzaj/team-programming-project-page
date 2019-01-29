@@ -156,7 +156,7 @@ class Search extends Component{
                       // })
               let data2
               let a = this
-              await this.takeDetail(item.url)
+              this.takeDetail(item.url)
               .then((response) => {
                 this.data2 = response.data
               })
