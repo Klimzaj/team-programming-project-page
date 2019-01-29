@@ -2,36 +2,36 @@ import React from 'react'
 import axios from 'axios'
 import * as El from './style'
 
-// let allDetails
+let allDetails
 
-// const getDetails = async (e) => {
-//     try {
-//       return await axios.get(e,
-//         {
-//             headers:  
-//             {
-//             'Content-Type':'application/json',
-//             },
-//         })
-//     } catch (error) {
-//       console.error(error)
-//     }
-//   }
+const getDetails = async (e) => {
+    try {
+      return await axios.get(e,
+        {
+            headers:  
+            {
+            'Content-Type':'application/json',
+            },
+        })
+    } catch (error) {
+      console.error(error)
+    }
+  }
   
-//   const useDetails = async (e) => {
-//     const details = await getDetails(e)
+  const useDetails = async (e) => {
+    const details = await getDetails(e)
   
-//     if (details.data.recipes_ingredients) {
-//       console.log(details.data.recipes_ingredients)
-//     }
-//   }
+    if (details.data.recipes_ingredients) {
+      console.log(details.data.recipes_ingredients)
+    }
+  }
   
 
 const Recipe = ({name, description, image, url}) => 
 {
     let price = 0
     let nameArray = []
-    // useDetails(url)
+    useDetails(url)
     // let myThis = this
     // console.log(url)
     // axios.get(url,
