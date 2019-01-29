@@ -158,7 +158,7 @@ class Search extends Component{
               let a = this
               this.takeDetail(item.url)
               .then((response) => {
-                this.data2 = response.data
+                a.data2 = response.data
               })
               .catch((err)=>{
                 console.log('error: ', err)
