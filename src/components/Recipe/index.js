@@ -17,6 +17,8 @@ const Recipe = ({name, description, image, data2}) =>
     console.log(typeof data2)
     console.log(data2[0])
     console.log(data2.o)
+    console.log(data2.O)
+    console.log(data2)
     if(data2)
     {
         for (let i = 0; i < data2.length; i++) {
