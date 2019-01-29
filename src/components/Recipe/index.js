@@ -14,8 +14,9 @@ const Recipe = ({name, description, image, url}) =>
     let price = 0
     let nameArray = []
     let a
+    
     // console.log(url)
-    axios.get(url,
+    await axios.get(url,
     {
         headers:  
         {
