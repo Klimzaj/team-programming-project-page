@@ -30,9 +30,9 @@ const getDetails = async (e) => {
 
 const Recipe = ({name, description, image, url}) => 
 {
-    let price = 0
+    price = 0
     let nameArray = []
-    allDetails = await useDetails(url)
+    allDetails = useDetails(url)
     // let myThis = this
     // console.log(url)
     // axios.get(url,
@@ -49,7 +49,7 @@ const Recipe = ({name, description, image, url}) =>
     // .catch( err =>{
     //     console.log('error: ', err)
     // })
-    console.log(allDetails)
+    console.log(`jest cos? ${allDetails}`)
 return(
     <El.Wrapper>
         <El.AddintionalWrapper>
