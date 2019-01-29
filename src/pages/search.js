@@ -131,7 +131,7 @@ class Search extends Component{
             console.log(item)
 
 
-            axios.get("https://cukierpuder.pythonanywhere.com/api/recipes/22", 
+            axios.get("https://cukierpuder.pythonanywhere.com/api/recipes/22/", 
               {
                   headers:  
                   {
