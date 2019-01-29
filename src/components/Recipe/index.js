@@ -11,11 +11,14 @@ import * as El from './style'
 
 const Recipe = ({name, description, image, data2}) => 
 {
-    
-    data2.map((el) => 
+    if(data2.constru.constructor === Array)
     {
-        console.log(el)
-    })
+        for (let i = 0; i < data2.length; i++) {
+            const el = data2[i]
+            console.log(el)
+            
+        }
+    }
     
 return(
     <El.Wrapper>
