@@ -13,11 +13,8 @@ const Recipe = ({name, description, image, data2}) =>
 {
     let price = 0
     let nameArray = []
-    console.log(data2)
     console.log(typeof data2)
-    console.log(data2[0])
-    console.log(data2.o)
-    console.log(data2.O)
+    console.log(data2["0"])
     console.log(data2)
     if(data2)
     {
@@ -27,6 +24,12 @@ const Recipe = ({name, description, image, data2}) =>
             // price += el.price
             // nameArray.push(el.name)
         }
+    }
+    if(data2)
+    {
+        data2.map((el,i ) => {
+            console.log(el)
+        })
     }
     
 return(
