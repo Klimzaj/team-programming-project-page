@@ -148,7 +148,7 @@ class Search extends Component{
             
             this.state.recipes ?  (this.state.recipes.reverse().map((item, i)=>
             {
-              let data2
+              var data2
               axios.get(item.url, 
               {
                   headers:  
