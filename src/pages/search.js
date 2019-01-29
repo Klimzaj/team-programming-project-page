@@ -11,7 +11,8 @@ import MainImage from '../images/findRecipeImage.jpg'
 
 const windowGlobal = typeof window !== 'undefined' && window
 
-
+let data4
+let data5
 
 
 class Search extends Component{ 
@@ -69,7 +70,7 @@ class Search extends Component{
   // console.log("that's my state to ugh: ", this.state)
   
 } 
-        
+  
 
   render(){
     if(this.state.isDownload === false)
@@ -140,10 +141,12 @@ class Search extends Component{
               }).then((response) => {
                 // console.log('response.data: ',response.data);
                 // this.setState({recipes: response.data})
-                console.log(typeof response.data.recipes_ingredients[0])
+                // console.log(typeof response.data.recipes_ingredients[0])
                 // console.log(typeof response.data)
                 a.setState({data2: response.data})
-                a.setState({data3: response.data.recipes_ingredients})
+                data4 = response.data
+                data5 = response.data.recipes_ingredients
+                // a.setState({data3: response.data.recipes_ingredients})
                 // a.setState({data3: response.data.recipes_ingredients})
 
                 // data2 = response.data
@@ -151,7 +154,7 @@ class Search extends Component{
               }).catch((err)=>{
                 console.log('error: ', err)
               }) 
-              console.log(data2)
+              // console.log(data2)
             return(
               <Recipe 
                 // key = {`recipe_id_${i}`}
@@ -161,7 +164,9 @@ class Search extends Component{
                 image = {item.image}
                 // votes = {item.votes}
                 data2 = {this.state.data2}
-                data3 = {this.state.data3}
+                data4a = {data4}
+                data5a = {data5}
+                // data3 = {this.state.data3}
               />          
             )})
           ):(

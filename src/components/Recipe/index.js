@@ -9,13 +9,15 @@ import * as El from './style'
 // votes = {item.votes}
 // url = {item.url}
 
-const Recipe = ({name, description, image, data2, data3}) => 
+const Recipe = ({name, description, image, data2, data4a, data5a}) => 
 {
     let price = 0
     let nameArray = []
     // console.log(typeof data2)
     // console.log(data2)
-    console.log(data3)
+    console.log(data2)
+    console.log(data4a)
+    console.log(data5a)
     // console.log(data2[0])
     // if(data2)
     // {
