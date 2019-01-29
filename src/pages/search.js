@@ -130,7 +130,7 @@ class Search extends Component{
           {
             // console.log(item)
 
-
+            let data2 = []
             axios.get(item.url, 
               {
                   headers:  
@@ -138,12 +138,13 @@ class Search extends Component{
                       'Content-Type':'application/json',
                   },
               }).then((response) => {
-                console.log('response.data: ',response.data);
+                // console.log('response.data: ',response.data);
                 // this.setState({recipes: response.data})
+                data2.push(response.data.recipes_ingredients)
               }).catch((err)=>{
                 console.log('error: ', err)
               }) 
-            
+              console.log(data2)
             return(
               <Recipe 
                 key = {`recipe_id_${i}`}
