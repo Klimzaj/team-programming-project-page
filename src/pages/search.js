@@ -130,8 +130,8 @@ class Search extends Component{
           {this.state.recipes ?  (this.state.recipes.reverse().map((item, i)=>
           {
             // console.log(item)
-            let a = this
-            let data2
+            // let a = this
+            // let data2
             axios.get(item.url, 
               {
                   headers:  
@@ -143,7 +143,7 @@ class Search extends Component{
                 // this.setState({recipes: response.data})
                 // console.log(typeof response.data.recipes_ingredients[0])
                 // console.log(typeof response.data)
-                a.setState({data2: response.data})
+                // a.setState({data2: response.data})
                 data4 = response.data
                 data5 = response.data.recipes_ingredients
                 // a.setState({data3: response.data.recipes_ingredients})
@@ -163,7 +163,7 @@ class Search extends Component{
                 description = {item.description}
                 image = {item.image}
                 // votes = {item.votes}
-                data2 = {this.state.data2}
+                // data2 = {this.state.data2}
                 data4a = {data4}
                 data5a = {data5}
                 // data3 = {this.state.data3}
