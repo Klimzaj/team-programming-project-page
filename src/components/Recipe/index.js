@@ -20,7 +20,7 @@ const Recipe = ({name, description, image, url}) =>
     })
     .then( response => {
         console.log(response.data.recipes_ingredients)
-        myThis.takeDetails(response.data.recipes_ingredients)
+        // myThis.takeDetails(response.data.recipes_ingredients)
     })
     .catch( err =>{
         console.log('error: ', err)
