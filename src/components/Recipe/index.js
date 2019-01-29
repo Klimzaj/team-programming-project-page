@@ -16,21 +16,21 @@ const Recipe = ({name, description, image, data2}) =>
     console.log(typeof data2)
     console.log(data2)
     console.log(data2[0])
-    if(data2)
-    {
-        for (let i = 0; i < data2["0"].length; i++) {
-            const el = data2[i]
-            console.log(el)
-            // price += el.price
-            // nameArray.push(el.name)
-        }
-    }
-    if(data2)
-    {
-        data2["0"].map((el,i ) => {
-            console.log(el)
-        })
-    }
+    // if(data2)
+    // {
+    //     for (let i = 0; i < data2["0"].length; i++) {
+    //         const el = data2[i]
+    //         console.log(el)
+    //         // price += el.price
+    //         // nameArray.push(el.name)
+    //     }
+    // }
+    // if(data2)
+    // {
+    //     data2["0"].map((el,i ) => {
+    //         console.log(el)
+    //     })
+    // }
     
 return(
     <El.Wrapper>
@@ -61,14 +61,14 @@ return(
                         Components:
                     </b>
 
-                    
-                    {/* {components.map((item, i)=>{
-                        return(
-                            (item[i+1])?<span key={`recipe_component_${i}`}>{`${item}, `}</span>:<span >{`${item}`}</span>
-                            )
-                        })} */}
-                </p>
-
+                </p>    
+                {/* <ul>
+                {nameArray.map((item, i)=>{
+                    return(
+                        <li>{item}</li>
+                    )
+                    })}
+                </ul> */}
             </El.Components>
             <El.ToDo>
                 <p>
