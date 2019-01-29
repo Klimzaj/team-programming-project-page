@@ -8,7 +8,7 @@ import Recipe from './../components/Recipe/'
 import magnifier from '../images/magnifier.png'
 import MainImage from '../images/findRecipeImage.jpg'
 
-
+let dataa
 const windowGlobal = typeof window !== 'undefined' && window
 
 class Search extends Component{ 
@@ -33,7 +33,9 @@ class Search extends Component{
   //         return this.response[0].name
   //       })
   //   }
-
+  addToDataa = e => {
+    dataa = e
+  }
   takeDetail = (e) => {
     return axios.get(e,
       {
@@ -154,17 +156,16 @@ class Search extends Component{
                     // }).catch( err => {
                       //   console.log('error: ', err)
                       // })
-              let data2
-              let a = this
+              let data2 = this
               this.takeDetail(item.url)
               .then((response) => {
-                a.data2 = response.data
+                data2.addToDataa(response.data)                
               })
               .catch((err)=>{
                 console.log('error: ', err)
               }) 
             
-              console.log(data2)
+              console.log(dataa)
               return (
                 <Recipe 
                   name = {item.name}
