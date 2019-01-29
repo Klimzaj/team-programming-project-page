@@ -51,7 +51,7 @@ const Recipe = ({name, description, image, url}) =>
     // })
     console.log(`jest cos? ${allDetails}`)
     allDetails.then( r => {
-        console.log(r)
+        console.log(r[0])
     })
 return(
     <El.Wrapper>
