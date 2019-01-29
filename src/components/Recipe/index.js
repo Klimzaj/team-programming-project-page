@@ -43,12 +43,11 @@ class Recipe extends React.Component {
         {
             allDetails = this.useDetails(this.props.url)
             allDetails.then( r => {
-                console.log(r)
                 let nameArray = []
                 let price = 0
                 r.map((el) => {
                     nameArray.push(el.ingredient_name)
-                    price += ingredient_price
+                    price += el.ingredient_price
                 })
                 this.setState({name: nameArray})
                 this.setState({price: price})
