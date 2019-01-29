@@ -29,7 +29,7 @@ class Search extends Component{
   UNSAFE_componentDidMount = () => {
     
   }
-
+  
   showNewest = (e) => {
     // e.preventDefault();
     // console.log('test msg show newest button: ')
@@ -46,7 +46,28 @@ class Search extends Component{
     }).catch((err)=>{
       console.log('error: ', err)
     })          
-
+    this.takeDetail
+  }
+  takeDetail = () => {
+    if(this.state.recipes)
+    {
+      this.state.recipes.reverse().map((item, i)=>
+      {
+        axios.get(item.url,
+        {
+          headers:  
+          {
+              'Content-Type':'application/json',
+          },
+        })
+        .then((response) => {
+          this.setState({details: response.data.recipes_ingredients[0]})
+        })
+        .catch((err)=>{
+          console.log('error: ', err)
+        }) 
+      }) 
+    }
   }
   
 
@@ -126,12 +147,12 @@ class Search extends Component{
 
 
         <El.RecipesWrapper>
-
-          {this.state.recipes ?  (this.state.recipes.reverse().map((item, i)=>
           {
-            // console.log(item)
-            // let a = this
-            // let data2
+            console.log(this.satate.details)
+          }
+          {/* {
+            this.state.recipes ?  (this.state.recipes.reverse().map((item, i)=>
+            {
             axios.get(item.url, 
               {
                   headers:  
@@ -139,25 +160,10 @@ class Search extends Component{
                       'Content-Type':'application/json',
                   },
               }).then((response) => {
-                // console.log('response.data: ',response.data.recipes_ingredients[0]);
-                data2 = response.data.recipes_ingredients[0];
-                data3 = response.data.recipes_ingredients;
-                // this.setState({recipes: response.data})
-                // console.log(typeof response.data.recipes_ingredients[0])
-                // console.log(typeof response.data)
-                // a.setState({data2: response.data})
-                // data4 = response.data
-                // data5 = response.data.recipes_ingredients
-                // a.setState({data3: response.data.recipes_ingredients})
-                // a.setState({data3: response.data.recipes_ingredients})
-
-                // data2 = response.data
-                // data2 = response.data.recipes_ingredients
+                console.log('response.data: ',response.data.recipes_ingredients[0]);
               }).catch((err)=>{
                 console.log('error: ', err)
-              }) 
-              console.log(data2)
-              console.log(data3)
+              })
             return(
               <Recipe 
                 // key = {`recipe_id_${i}`}
@@ -179,7 +185,7 @@ class Search extends Component{
               </p>
             </div>
             )
-          }
+          } */}
         </El.RecipesWrapper>
         
       </Layout>
