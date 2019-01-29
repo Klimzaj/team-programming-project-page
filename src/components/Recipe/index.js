@@ -103,13 +103,13 @@ return(
                         )
                         console.log(r[0].ingredient_name)
                 })} */}
-                {/* <ul>
+                <ul>
                 {nameArray.map((item, i)=>{
                     return(
                         <li>{item}</li>
                     )
                     })}
-                </ul> */}
+                </ul>
             </El.Components>
             {/* <El.ToDo>
                 <p>
