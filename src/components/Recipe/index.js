@@ -49,7 +49,7 @@ const Recipe = ({name, description, image, url}) =>
     // .catch( err =>{
     //     console.log('error: ', err)
     // })
-    console.log(`jest cos? ${allDetails}`)
+    console.log(`jest cos? ${allDetails[0]}`)
 return(
     <El.Wrapper>
         <El.AddintionalWrapper>
