@@ -15,7 +15,7 @@ const Recipe = ({name, description, image, data2}) =>
     let nameArray = []
     if(data2)
     {
-        if(data2.constru.constructor === Array)
+        if(data2.constructor === Array)
         {
             for (let i = 0; i < data2.length; i++) {
                 const el = data2[i]
