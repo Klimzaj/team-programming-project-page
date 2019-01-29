@@ -30,10 +30,10 @@ const Recipe = ({name, description, image, data2, data4a, data5a}) =>
     // }
     if(data5a)
     {
-        data5a["0"].map((el,i ) => {
+        data5a.map((el,i ) => {
             console.log(el)
-            //         // price += el.price
-    //         // nameArray.push(el.name)
+                    price += el.price
+            nameArray.push(el.name)
         })
     }
     
