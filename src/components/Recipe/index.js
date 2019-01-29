@@ -2,9 +2,6 @@ import React from 'react'
 import axios from 'axios'
 import * as El from './style'
 
-let allDetails
-let price = 0
-
 
 class Recipe extends React.Component {
     constructor(props){
@@ -34,14 +31,9 @@ class Recipe extends React.Component {
         const details = await this.getDetails(e)
       
         if (details.data.recipes_ingredients) {
-        //   console.log(details.data.recipes_ingredients)
           return details.data.recipes_ingredients
         }
     }
-
-    
-    
-
 
     render()
     {
@@ -49,14 +41,14 @@ class Recipe extends React.Component {
         {
             allDetails = this.useDetails(this.props.url)
             allDetails.then( r => {
-                console.log(r)
                 let nameArray = []
+                let price = 0
                 r.map((el) => {
-                    // console.log(el.ingredient_name)
                     nameArray.push(el.ingredient_name)
+                    price += ingredient_price
                 })
                 this.setState({name: nameArray})
-                
+                this.setState({price: price})
             })
             this.setState({isLoaded: true})
         }
@@ -76,8 +68,8 @@ class Recipe extends React.Component {
                                 {this.props.description}
                             </p>
                             <p>
-                                {/* <b>Price: </b> */}
-                                {/* {price} */}
+                                <b>Price: </b>
+                                {this.state.price} $
                             </p>
                             <p>
                             <b>
@@ -95,30 +87,14 @@ class Recipe extends React.Component {
                                 Components:
                             </b>
                         </p>    
-                        {/* {
-                            allDetails.then( r => {
-                                return (
-                                    <b>{r[0].ingredient_name}</b>
-                                )
-                                console.log(r[0].ingredient_name)
-                        })} */}
                         <ul>
                         {this.state.name.map((item, i)=>{
-                            console.log(item)
                             return(
                                 <li>{item}</li>
                             )
                             })}
                         </ul>
                     </El.Components>
-                    {/* <El.ToDo>
-                        <p>
-                            <b>
-                                Steps to reproduce:
-                            </b>
-                                {description}
-                        </p>
-                    </El.ToDo> */}
                 </El.AddintionalWrapper>
             </El.Wrapper>
         )        
