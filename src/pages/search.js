@@ -139,7 +139,7 @@ class Search extends Component{
                       'Content-Type':'application/json',
                   },
               }).then((response) => {
-                // console.log('response.data: ',response.data);
+                console.log('response.data: ',response.data);
                 // this.setState({recipes: response.data})
                 // console.log(typeof response.data.recipes_ingredients[0])
                 // console.log(typeof response.data)
