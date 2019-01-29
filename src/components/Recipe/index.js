@@ -43,9 +43,8 @@ class Recipe extends React.Component {
 
     render()
     {
-        allDetails = useDetails(this.props.url)
-    
-        allDetails.then( r => {
+        this.allDetails = useDetails(this.props.url)
+        this.allDetails.then( r => {
             let nameArray = []
             r.map((el) => {
                 // console.log(el.ingredient_name)
