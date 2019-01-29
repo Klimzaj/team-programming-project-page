@@ -42,14 +42,7 @@ class Search extends Component{
           'Content-Type':'application/json',
         },
       })
-      .then((response) => {
-        this.response = response.data
-        // return this.response.recipes_ingredients[0]
-        return this.response
-      })
-      .catch((err)=>{
-        console.log('error: ', err)
-      }) 
+      
   }
     
     showNewest = (e) => {
@@ -164,9 +157,13 @@ class Search extends Component{
                       // })
               let data2
               this.takeDetail(item.url)
-              .then( data =>{
-                data2 = data
+              .then((response) => {
+                data2 = response.data
               })
+              .catch((err)=>{
+                console.log('error: ', err)
+              }) 
+            
               console.log(data2)
               return (
                 <Recipe 
