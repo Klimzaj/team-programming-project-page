@@ -1,5 +1,5 @@
 import React from 'react'
-
+import axios from 'axios'
 import * as El from './style'
 
 // key = {`recipe_id_${i}`}
