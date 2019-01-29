@@ -9,7 +9,7 @@ const Recipe = ({name, description, image, url}) =>
 {
     let price = 0
     let nameArray = []
-    
+    let myThis = this
     // console.log(url)
     axios.get(url,
     {
@@ -20,7 +20,7 @@ const Recipe = ({name, description, image, url}) =>
     })
     .then( response => {
         console.log(response.data.recipes_ingredients)
-        takeDetails(response.data.recipes_ingredients)
+        myThis.takeDetails(response.data.recipes_ingredients)
     })
     .catch( err =>{
         console.log('error: ', err)
