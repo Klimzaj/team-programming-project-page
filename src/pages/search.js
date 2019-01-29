@@ -144,7 +144,7 @@ class Search extends Component{
               }).catch((err)=>{
                 console.log('error: ', err)
               }) 
-              console.log(data2)
+              // console.log(data2)
             return(
               <Recipe 
                 key = {`recipe_id_${i}`}
@@ -154,6 +154,7 @@ class Search extends Component{
                 image = {item.image}
                 votes = {item.votes}
                 url = {item.url}
+                data2 = {data2}
               />          
             )})
           ):(
