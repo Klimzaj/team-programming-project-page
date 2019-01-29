@@ -136,6 +136,7 @@ class Search extends Component{
                   'headers':  
                   {
                       'Content-Type':'application/json',
+                      'Authorization': 'Bearer ' + localStorage.getItem('access'),
                   },
               }).then((response) => {
                 console.log('response.data: ',response.data);
