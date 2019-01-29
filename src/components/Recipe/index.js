@@ -11,12 +11,18 @@ import * as El from './style'
 
 const Recipe = ({name, description, image, data2}) => 
 {
-    if(data2.constru.constructor === Array)
+    let price = 0
+    let nameArray = []
+    if(data2)
     {
-        for (let i = 0; i < data2.length; i++) {
-            const el = data2[i]
-            console.log(el)
-            
+        if(data2.constru.constructor === Array)
+        {
+            for (let i = 0; i < data2.length; i++) {
+                const el = data2[i]
+                console.log(el)
+                // price += el.price
+                // nameArray.push(el.name)
+            }
         }
     }
     
