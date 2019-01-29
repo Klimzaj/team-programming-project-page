@@ -56,6 +56,12 @@ return(
                         {/* <b>Price: </b> */}
                         {/* {price} */}
                     </p>
+                    <p>
+                    <b>
+                        Steps to reproduce:
+                    </b>
+                        {description}
+                </p>
                 </El.Right>
 
             </El.Top>
@@ -75,14 +81,14 @@ return(
                     })}
                 </ul> */}
             </El.Components>
-            <El.ToDo>
+            {/* <El.ToDo>
                 <p>
                     <b>
                         Steps to reproduce:
                     </b>
                         {description}
                 </p>
-            </El.ToDo>
+            </El.ToDo> */}
         </El.AddintionalWrapper>
     </El.Wrapper>
 )}
