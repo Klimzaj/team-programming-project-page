@@ -130,7 +130,7 @@ class Search extends Component{
           {
             // console.log(item)
 
-            let data2
+            let data2 = 
             axios.get(item.url, 
               {
                   headers:  
@@ -140,7 +140,11 @@ class Search extends Component{
               }).then((response) => {
                 // console.log('response.data: ',response.data);
                 // this.setState({recipes: response.data})
-                data2 = response.data.recipes_ingredients
+                console.log(typeof response.data.recipes_ingredients)
+                console.log(typeof response.data)
+
+                data2 = response.data
+                // data2 = response.data.recipes_ingredients
               }).catch((err)=>{
                 console.log('error: ', err)
               }) 
