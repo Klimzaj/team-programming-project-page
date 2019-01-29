@@ -34,7 +34,7 @@ class Search extends Component{
   //       })
   //   }
 
-  takeDetail = e => {
+  takeDetail = (e) => {
     return axios.get(e,
       {
         headers:  
@@ -43,7 +43,8 @@ class Search extends Component{
         },
       })
       .then((response) => {
-        this.response = response.data.recipes_ingredients[0]
+        this.response = response.data
+        // return this.response.recipes_ingredients[0]
         return this.response
       })
       .catch((err)=>{
