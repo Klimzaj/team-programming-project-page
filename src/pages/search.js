@@ -114,11 +114,11 @@ class Search extends Component{
                 
             </El.Form>
             
-            <El.ShowNewRecipesButton
+            {/* <El.ShowNewRecipesButton
               onClick = {this.showNewest}
             >
               show newest
-            </El.ShowNewRecipesButton>
+            </El.ShowNewRecipesButton> */}
 
                 
         </El.Image>
@@ -126,7 +126,10 @@ class Search extends Component{
 
         <El.RecipesWrapper>
 
-          {this.state.recipes ?  (this.state.recipes.reverse().map((item, i)=>(
+          {this.state.recipes ?  (this.state.recipes.reverse().map((item, i)=>
+          {
+            console.log(item)
+            return(
               <Recipe 
                 key = {`recipe_id_${i}`}
                 author = {item.author}
@@ -136,7 +139,7 @@ class Search extends Component{
                 votes = {item.votes}
                 url = {item.url}
               />          
-            ))
+            )})
           ):(
             <div>
               <p> 
