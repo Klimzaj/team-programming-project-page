@@ -55,10 +55,12 @@ const Recipe = ({name, description, image, url}) =>
     allDetails.then( r => {
         r.map((el) => {
             console.log(el.ingredient_name)
+            nameArray.push(el.ingredient_name)
         })
         // console.log(r)
         // console.log(r[0].ingredient_name)
     })
+    console.log(nameArray)
 return(
     <El.Wrapper>
         <El.AddintionalWrapper>
