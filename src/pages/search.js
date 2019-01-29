@@ -11,7 +11,7 @@ import MainImage from '../images/findRecipeImage.jpg'
 
 const windowGlobal = typeof window !== 'undefined' && window
 
-// let data4
+let data2
 // let data5
 
 
@@ -139,7 +139,8 @@ class Search extends Component{
                       'Content-Type':'application/json',
                   },
               }).then((response) => {
-                console.log('response.data: ',response.data.recipes_ingredients[0]);
+                // console.log('response.data: ',response.data.recipes_ingredients[0]);
+                data2 = response.data.recipes_ingredients[0];
                 // this.setState({recipes: response.data})
                 // console.log(typeof response.data.recipes_ingredients[0])
                 // console.log(typeof response.data)
@@ -163,7 +164,7 @@ class Search extends Component{
                 description = {item.description}
                 image = {item.image}
                 // votes = {item.votes}
-                // data2 = {this.state.data2}
+                data2 = {data2}
                 // data4a = {data4}
                 // data5a = {data5}
                 // data3 = {this.state.data3}
