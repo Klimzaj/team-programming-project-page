@@ -22,19 +22,6 @@ class Search extends Component{
     }
 
   }
-  UNSAFE_componentDidMount = () => {
-    
-  }
-  
-  // getNameById (id) {
-  //   return axios.get('/names/?ids=' + id)
-  //       .then(response => {
-  //         this.response = response.data
-  //         return this.response[0].name
-  //       })
-  //   }
-
-    
     showNewest = (e) => {
       // e.preventDefault();
       // console.log('test msg show newest button: ')
@@ -51,7 +38,6 @@ class Search extends Component{
       }).catch((err)=>{
         console.log('error: ', err)
       })          
-      // this.takeDetail
     }
 
   handleSubmit = e => {
@@ -127,22 +113,9 @@ class Search extends Component{
 
                 
         </El.Image>
-
-
         <El.RecipesWrapper>
           {
-            
             this.state.recipes ?  (this.state.recipes.reverse().map((item, i) => {
-              
-              // let data2 = this
-              // this.takeDetail(item.url)
-              // .then((response) => {
-              //   data2.addToDataa(response.data.recipes_ingredients)                
-              // })
-              // .catch((err)=>{
-              //   console.log('error: ', err)
-              // }) 
-            
               return (
                 <Recipe 
                   name = {item.name}
