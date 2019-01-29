@@ -43,6 +43,7 @@ class Recipe extends React.Component {
         {
             allDetails = this.useDetails(this.props.url)
             allDetails.then( r => {
+                console.log(r)
                 let nameArray = []
                 let price = 0
                 r.map((el) => {
