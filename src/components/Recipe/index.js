@@ -15,7 +15,7 @@ const Recipe = ({name, description, image, data2, data4a, data5a}) =>
     let nameArray = []
     // console.log(typeof data2)
     // console.log(data2)
-    console.log(data2)
+    // console.log(data2)
     console.log(data4a)
     console.log(data5a)
     // console.log(data2[0])
