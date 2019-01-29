@@ -29,7 +29,7 @@ class Recipe extends React.Component {
       }
       
     useDetails = async (e) => {
-        const details = await getDetails(e)
+        const details = await this.getDetails(e)
       
         if (details.data.recipes_ingredients) {
         //   console.log(details.data.recipes_ingredients)
@@ -57,7 +57,7 @@ class Recipe extends React.Component {
                 <El.AddintionalWrapper>
                     <El.Top>
                         <El.Left>
-                            <El.Image src={image} alt='here should be an image of recipe'/>
+                            <El.Image src={this.props.image} alt='here should be an image of recipe'/>
                             {/* <El.Image image = {image}/> */}
                         </El.Left>
                         <El.Right>
