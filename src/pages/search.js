@@ -155,13 +155,14 @@ class Search extends Component{
                   {
                       'Content-Type':'application/json',
                   },
-              }).then((response) => {
+              }).then( response => {
                 // console.log('response.data: ',response.data.recipes_ingredients[0]);
                 data2 = response.data.recipes_ingredients[0]
-              }).catch((err)=>{
+              }).catch( err => {
                 console.log('error: ', err)
               })
-              return(
+              console.log(data2)
+              return (
                 <Recipe 
                   name = {item.name}
                   description = {item.description}
