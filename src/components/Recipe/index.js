@@ -22,8 +22,8 @@ const getDetails = async (e) => {
     const details = await getDetails(e)
   
     if (details.data.recipes_ingredients) {
-      console.log(details.data.recipes_ingredients)
-      allDetails = details.data.recipes_ingredients
+    //   console.log(details.data.recipes_ingredients)
+      return details.data.recipes_ingredients
     }
   }
   
@@ -32,7 +32,7 @@ const Recipe = ({name, description, image, url}) =>
 {
     let price = 0
     let nameArray = []
-    useDetails(url)
+    allDetails = useDetails(url)
     // let myThis = this
     // console.log(url)
     // axios.get(url,
