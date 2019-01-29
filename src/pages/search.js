@@ -130,7 +130,7 @@ class Search extends Component{
           {
             // console.log(item)
 
-            let data2 = 
+            let data2
             axios.get(item.url, 
               {
                   headers:  
