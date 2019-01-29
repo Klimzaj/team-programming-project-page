@@ -31,46 +31,47 @@ class Search extends Component{
     
   }
   
-  showNewest = (e) => {
-    // e.preventDefault();
-    // console.log('test msg show newest button: ')
-    if(windowGlobal)
-    axios.get(paths.domainName+paths.searchRecipePath, 
-    {
-        'headers':  
-        {
-            'Content-Type':'application/json',
-        },
-    }).then((response) => {
-      // console.log('response.data: ',response.data);
-      this.setState({recipes: response.data})
-    }).catch((err)=>{
-      console.log('error: ', err)
-    })          
-    this.takeDetail
-  }
   takeDetail = () => {
+    console.log("zbieram detale")
     if(this.state.recipes)
     {
       this.state.recipes.reverse().map((item, i)=>
       {
         axios.get(item.url,
-        {
-          headers:  
+          {
+            headers:  
+            {
+              'Content-Type':'application/json',
+            },
+          })
+          .then((response) => {
+            this.setState({details: response.data.recipes_ingredients[0]})
+          })
+          .catch((err)=>{
+            console.log('error: ', err)
+          }) 
+        }) 
+      }
+    }
+    
+    showNewest = (e) => {
+      // e.preventDefault();
+      // console.log('test msg show newest button: ')
+      if(windowGlobal)
+      axios.get(paths.domainName+paths.searchRecipePath, 
+      {
+          'headers':  
           {
               'Content-Type':'application/json',
           },
-        })
-        .then((response) => {
-          this.setState({details: response.data.recipes_ingredients[0]})
-        })
-        .catch((err)=>{
-          console.log('error: ', err)
-        }) 
-      }) 
+      }).then((response) => {
+        // console.log('response.data: ',response.data);
+        this.setState({recipes: response.data})
+      }).catch((err)=>{
+        console.log('error: ', err)
+      })          
+      this.takeDetail
     }
-  }
-  
 
   handleSubmit = e => {
     e.preventDefault()
