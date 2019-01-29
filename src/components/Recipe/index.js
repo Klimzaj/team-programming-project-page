@@ -52,10 +52,12 @@ const Recipe = ({name, description, image, url}) =>
 
 
     // console.log(`jest cos? ${allDetails}`)
-    console.log(name)
     allDetails.then( r => {
-        console.log(r)
-        console.log(r[0].ingredient_name)
+        r.map((el) => {
+            console.log(el)
+        })
+        // console.log(r)
+        // console.log(r[0].ingredient_name)
     })
 return(
     <El.Wrapper>
