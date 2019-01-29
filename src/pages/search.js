@@ -42,7 +42,7 @@ class Search extends Component{
     }).then((response) => {
       // console.log('response.data: ',response.data);
       this.setState({recipes: response.data})
-    }).then((err)=>{
+    }).catch((err)=>{
       console.log('error: ', err)
     })          
 
@@ -62,7 +62,7 @@ class Search extends Component{
     }).then((response) => {
       // console.log('response.data: ',response.data);
       this.setState({recipes: response.data})
-    }).then((err)=>{
+    }).catch((err)=>{
       console.log('error: ', err)
     })          
 
@@ -140,7 +140,7 @@ class Search extends Component{
               }).then((response) => {
                 console.log('response.data: ',response.data);
                 // this.setState({recipes: response.data})
-              }).then((err)=>{
+              }).catch((err)=>{
                 console.log('error: ', err)
               }) 
             
