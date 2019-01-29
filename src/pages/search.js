@@ -41,8 +41,7 @@ class Search extends Component{
         {
           'Content-Type':'application/json',
         },
-      })
-      
+      })   
   }
     
     showNewest = (e) => {
@@ -156,9 +155,10 @@ class Search extends Component{
                       //   console.log('error: ', err)
                       // })
               let data2
-              this.takeDetail(item.url)
+              let a = this
+              await this.takeDetail(item.url)
               .then((response) => {
-                data2 = response.data
+                this.data2 = response.data
               })
               .catch((err)=>{
                 console.log('error: ', err)
