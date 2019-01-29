@@ -9,16 +9,11 @@ import * as El from './style'
 // votes = {item.votes}
 // url = {item.url}
 
-const Recipe = ({name, description, image, data2, data4a, data5a}) => 
+const Recipe = ({name, description, image, data2}) => 
 {
     let price = 0
     let nameArray = []
-    // console.log(typeof data2)
-    // console.log(data2)
-    // console.log(data2)
-    // console.log(data4a)
-    // console.log(data5a)
-    // console.log(data2[0])
+    console.log(data2)
     // if(data5)
     // {
     //     for (let i = 0; i < data5.length; i++) {
