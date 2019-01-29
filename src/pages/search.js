@@ -131,12 +131,11 @@ class Search extends Component{
             console.log(item)
 
 
-            axios.get('https://cukierpuder.pythonanywhere.com/api/recipes/20/', 
+            axios.get(item.url, 
               {
                   headers:  
                   {
                       'Content-Type':'application/json',
-                      'Authorization': 'Bearer ' + localStorage.getItem('access'),
                   },
               }).then((response) => {
                 console.log('response.data: ',response.data);
