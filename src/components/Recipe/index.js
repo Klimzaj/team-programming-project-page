@@ -12,6 +12,10 @@ import * as El from './style'
 const Recipe = ({name, description, image, data2}) => 
 {
     console.log(data2)
+    console.log(data2.length)
+    console.log(data2[0])
+    console.log(data2[0].length)
+    
 return(
     <El.Wrapper>
         <El.AddintionalWrapper>
