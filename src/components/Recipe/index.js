@@ -11,6 +11,7 @@ class Recipe extends React.Component {
         super(props)
         this.state = {
             name: [],
+            price: null,
             isLoaded: false
         }
     }
@@ -48,12 +49,14 @@ class Recipe extends React.Component {
         {
             allDetails = this.useDetails(this.props.url)
             allDetails.then( r => {
+                console.log(r)
                 let nameArray = []
                 r.map((el) => {
                     // console.log(el.ingredient_name)
                     nameArray.push(el.ingredient_name)
                 })
                 this.setState({name: nameArray})
+                
             })
             this.setState({isLoaded: true})
         }
