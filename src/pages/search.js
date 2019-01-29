@@ -22,7 +22,8 @@ class Search extends Component{
         searchInput: '',
         searchInputFieldActive: false,
         recipes: [],
-        isDownload: false
+        isDownload: false,
+        details: null
     }
 
   }
