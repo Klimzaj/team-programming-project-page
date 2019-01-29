@@ -165,13 +165,13 @@ class Search extends Component{
                 console.log('error: ', err)
               }) 
             
-              console.log(dataa)
+              // console.log(dataa)
               return (
                 <Recipe 
                   name = {item.name}
                   description = {item.description}
                   image = {item.image}
-                  data2 = {data2}
+                  data2 = {dataa}
                 />          
               )})
             ):(
