@@ -8,7 +8,7 @@ import Recipe from './../components/Recipe/'
 import magnifier from '../images/magnifier.png'
 import MainImage from '../images/findRecipeImage.jpg'
 
-let dataa
+
 const windowGlobal = typeof window !== 'undefined' && window
 
 class Search extends Component{ 
@@ -33,18 +33,7 @@ class Search extends Component{
   //         return this.response[0].name
   //       })
   //   }
-  addToDataa = e => {
-    dataa = e
-  }
-  takeDetail = (e) => {
-    return axios.get(e,
-      {
-        headers:  
-        {
-          'Content-Type':'application/json',
-        },
-      })   
-  }
+
     
     showNewest = (e) => {
       // e.preventDefault();
@@ -144,34 +133,22 @@ class Search extends Component{
           {
             
             this.state.recipes ?  (this.state.recipes.reverse().map((item, i) => {
-              // axios.get(item.url, 
-              // {
-                //     headers:  
-                //     {
-                  //         'Content-Type':'application/json',
-                  //     },
-                  // }).then( response => {
-                    //   // console.log('response.data: ',response.data.recipes_ingredients[0]);
-                    //   data2 = response.data.recipes_ingredients[0]
-                    // }).catch( err => {
-                      //   console.log('error: ', err)
-                      // })
-              let data2 = this
-              this.takeDetail(item.url)
-              .then((response) => {
-                data2.addToDataa(response.data.recipes_ingredients)                
-              })
-              .catch((err)=>{
-                console.log('error: ', err)
-              }) 
+              
+              // let data2 = this
+              // this.takeDetail(item.url)
+              // .then((response) => {
+              //   data2.addToDataa(response.data.recipes_ingredients)                
+              // })
+              // .catch((err)=>{
+              //   console.log('error: ', err)
+              // }) 
             
-              // console.log(dataa)
               return (
                 <Recipe 
                   name = {item.name}
                   description = {item.description}
                   image = {item.image}
-                  data2 = {dataa}
+                  url = {item.url}
                 />          
               )})
             ):(

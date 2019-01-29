@@ -9,11 +9,25 @@ import * as El from './style'
 // votes = {item.votes}
 // url = {item.url}
 
-const Recipe = ({name, description, image, data2}) => 
+const Recipe = ({name, description, image, url}) => 
 {
     let price = 0
     let nameArray = []
-    console.log(data2)
+
+    console.log(url)
+    axios.get(url,
+    {
+        headers:  
+        {
+        'Content-Type':'application/json',
+        },
+    })
+    .then( response => {
+        console.log(response)
+    })
+    .catch( err =>{
+        console.log('error: ', err)
+    })
     // if(data5)
     // {
     //     for (let i = 0; i < data5.length; i++) {
