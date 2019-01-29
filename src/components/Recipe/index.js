@@ -2,6 +2,8 @@ import React from 'react'
 import axios from 'axios'
 import * as El from './style'
 
+let allDetails
+
 
 class Recipe extends React.Component {
     constructor(props){
