@@ -52,9 +52,11 @@ const Recipe = ({name, description, image, url}) =>
 
 
     // console.log(`jest cos? ${allDetails}`)
-    // allDetails.then( r => {
-    //     console.log(r[0].ingredient_name)
-    // })
+    console.log(name)
+    allDetails.then( r => {
+        console.log(r)
+        console.log(r[0].ingredient_name)
+    })
 return(
     <El.Wrapper>
         <El.AddintionalWrapper>
@@ -90,13 +92,13 @@ return(
                         Components:
                     </b>
                 </p>    
-                {
+                {/* {
                     allDetails.then( r => {
                         return (
                             <b>{r[0].ingredient_name}</b>
                         )
-                        // console.log(r[0].ingredient_name)
-                })}
+                        console.log(r[0].ingredient_name)
+                })} */}
                 {/* <ul>
                 {nameArray.map((item, i)=>{
                     return(
