@@ -28,9 +28,9 @@ const Recipe = ({name, description, image, data2, data4a, data5a}) =>
     //         // nameArray.push(el.name)
     //     }
     // }
-    if(data5)
+    if(data5a)
     {
-        data5["0"].map((el,i ) => {
+        data5a["0"].map((el,i ) => {
             console.log(el)
             //         // price += el.price
     //         // nameArray.push(el.name)
