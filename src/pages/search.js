@@ -63,11 +63,11 @@ class Search extends Component{
   
 
   render(){
-    if(this.state.isDownload === false)
-    {
-      this.showNewest()
-      this.setState({isDownload: true})
-    }
+    // if(this.state.isDownload === false)
+    // {
+    //   this.showNewest()
+    //   this.setState({isDownload: true})
+    // }
     return(
 
       <Layout>
