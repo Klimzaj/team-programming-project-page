@@ -3,7 +3,7 @@ import * as El from './styles'
 
 const Features = ({item}) => (
     <El.MainWrapper>
-        <El.Title>Czas to pieniądz</El.Title>
+        <El.Title>Time is priceless</El.Title>
         <El.Underline></El.Underline>
         
         <div styles={{width: '250px', height: '10px', backgroundColor: 'red'}} ></div>
