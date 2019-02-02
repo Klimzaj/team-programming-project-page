@@ -10,30 +10,29 @@ import Img2 from '../images/adults.jpg'
 
 import clock from '../assets/clock.svg'
 import money from '../assets/money.svg'
-// import Test from './../components/test'
 
 const Item = [
   {
     img: clock,
-    text: 'Skorzystaj z naszej wyszukiwarki przepisów, aby w szybki i przyjemny sposób znaleźć pomysł na dzisiejszy posiłek! ',
+    text: 'Use our recipe browser, so you can easly find the best idea for dinner, for you and your family.',    
   }, 
   {
     img: money,
-    text: 'Powiemy Ci ile zapłacisz za produkty potrzebne do gotowania.',  
+    text: "We're about to tell you how much will you spend for components, that you need.",
   }
 
 ]
 
 const Text1 = [
   {
-    title: 'Nie wiesz co ugotować?',
-    text: 'Dzięki nam znajdziesz pomysł na obiad za który powiemy Ci, ile zapłacisz.'
+    title: "Don't you have idea for a dinner?", 
+    text: "Thanks to us, you can find idea for a dinner, and we're going to tell You, how much you're gonna spend on it"
   }
 ]
 const Text2 = [
   {
-    title: 'Gotowanie jest Twoja pasją?',
-    text: 'Dołącz do ludzi, którzy dzielą się swoim doświadczeniem i smakiem!'
+    title: 'Is cooking Your passion?',
+    text: 'Join people, which share their experience and sense of taste. '
   }
 ]
 
