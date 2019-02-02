@@ -7,21 +7,21 @@ const windowGlobal = typeof window !== 'undefined' && window
 
 const Partner = () => (
     <El.MainWrapper>
-        <El.Title>Zostań twórcą</El.Title>
+        <El.Title>Become a Partner</El.Title>
         <El.Underline></El.Underline>
 
         <El.MainText>
-            Załóż konto w naszym serwisie i pochwal się przepisami.
-            Razem stworzymy idealne miejsce dla kulinarnych miłośników.
+            Create an account in our service and show your recipes ideas.
+            Together we're gona create ideal place for culinar lovers.
         </El.MainText>
         
         {windowGlobal && localStorage.getItem('access') !== 'undefined'?(
             <Link to='/addrecipe' style={{textDecoration: 'none'}}>
-                <El.Button>Dodaj własny przepis</El.Button>
+                <El.Button>Add your own recipe</El.Button>
             </Link>
         ):(
             <Link to='/login' style={{textDecoration: 'none'}}>
-                <El.Button>Dodaj własny przepis</El.Button>
+                <El.Button>Add your own recipe</El.Button>
             </Link>
         )}
     </El.MainWrapper>

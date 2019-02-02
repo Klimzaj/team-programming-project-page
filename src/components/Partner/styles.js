@@ -73,7 +73,7 @@ export const Button = styled.div`
     align-items: center;
 
     text-shadow: 0px 2px 5px #d9d9d9; 
-    color: white;
+    color: rgba(0,0,0,0.8);
     box-shadow: 0px 2px 6px #949494; 
     text-transform: uppercase;
     text-decoration: none;
@@ -89,8 +89,8 @@ export const Button = styled.div`
         line-height: 1.2rem;
 
     } 
-    ${this}:active,
+    /* ${this}:active,
     ${this}:focus {
         
-    }
+    } */
 `
